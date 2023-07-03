@@ -39,7 +39,7 @@ const PostCourseComponent = (props) => {
       {!currentUser && (
         <div>
           <p>You must login first before seeing posts.</p>
-          <button class='btn btn-primary btn-lg' onClick={handleTakeToLogin}>
+          <button className='btn btn-primary btn-lg' onClick={handleTakeToLogin}>
             Take me to login page.
           </button>
         </div>

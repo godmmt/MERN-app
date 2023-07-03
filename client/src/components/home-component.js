@@ -42,7 +42,7 @@ const HomeComponent = () => {
                 only, so please do not provide any personal information, such as
                 credit card numbers.
               </p>
-              <button class='btn btn-outline-secondary' type='button'>
+              <button className='btn btn-outline-secondary' type='button'>
                 Login or Register Now
               </button>
             </div>
