@@ -1,3 +1,18 @@
 {
-  "cSpell.words": ["MERN"]
+  "cSpell.words": ["MERN"],
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
