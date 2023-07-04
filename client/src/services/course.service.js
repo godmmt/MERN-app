@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:8080/api/courses';
 
 class CourseService {
   // method-POST新課程
-  post(title, description, price) {
+  static post(title, description, price) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -21,7 +21,7 @@ class CourseService {
     );
   }
 
-  getEnrolledCourses(_id) {
+  static getEnrolledCourses(_id) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -37,7 +37,7 @@ class CourseService {
   }
 
   // method-根據名字尋找課程
-  getCourseByName(name) {
+  static getCourseByName(name) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -53,7 +53,7 @@ class CourseService {
   }
 
   // method-根據講師ID找到課程
-  get(_id) {
+  static get(_id) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -69,7 +69,7 @@ class CourseService {
   }
 
   // 註冊課程
-  enroll(_id, user_id) {
+  static enroll(_id, user_id) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -89,4 +89,4 @@ class CourseService {
   }
 }
 
-export default new CourseService();
+export default CourseService;
