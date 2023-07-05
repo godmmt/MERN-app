@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import CourseService from '../services/course.service';
+import CourseService from '../../services/course.service';
 
-const PostCourseComponent = (props) => {
+const PostCourse = (props) => {
   let { currentUser, setCurrentUser } = props;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -39,7 +39,10 @@ const PostCourseComponent = (props) => {
       {!currentUser && (
         <div>
           <p>You must login first before seeing posts.</p>
-          <button className='btn btn-primary btn-lg' onClick={handleTakeToLogin}>
+          <button
+            className='btn btn-primary btn-lg'
+            onClick={handleTakeToLogin}
+          >
             Take me to login page.
           </button>
         </div>
@@ -94,4 +97,4 @@ const PostCourseComponent = (props) => {
   );
 };
 
-export default PostCourseComponent;
+export default PostCourse;

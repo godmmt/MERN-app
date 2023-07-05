@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import CourseService from '../services/course.service';
+import CourseService from 'services/course.service';
 
-const CourseComponent = (props) => {
+const Course = (props) => {
   let { currentUser, setCurrentUser } = props;
   const history = useHistory();
   const handleTakeToLogin = () => {
@@ -87,4 +87,4 @@ const CourseComponent = (props) => {
   );
 };
 
-export default CourseComponent;
+export default Course;

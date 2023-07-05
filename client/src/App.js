@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import HomeComponent from './components/home-component';
-import NavComponent from './components/nav-component';
-import RegisterComponent from './components/register-component';
-import LoginComponent from './components/login-component';
-import ProfileComponent from './components/profile-component';
-import CourseComponent from './components/course-component';
-import PostCourseComponent from './components/postCourse-component';
-import EnrollComponent from './components/enroll-component';
+import Home from './components/Home';
+import Nav from './components/Nav';
+import Register from './components/Register';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Course from './components/Course';
+import PostCourse from './components/PostCourse';
+import Enroll from './components/Enroll';
 import AuthService from './services/auth.service';
 
 function App() {
@@ -16,43 +16,31 @@ function App() {
 
   return (
     <div>
-      <NavComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Switch>
         <Route path='/' exact>
-          <HomeComponent />
+          <Home />
         </Route>
         <Route path='/register' exact>
-          <RegisterComponent />
+          <Register />
         </Route>
         <Route path='/login' exact>
-          <LoginComponent
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
+          <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path='/profile' exact>
-          <ProfileComponent
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
+          <Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path='/course' exact>
-          <CourseComponent
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
+          <Course currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path='/postCourse' exact>
-          <PostCourseComponent
+          <PostCourse
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
           />
         </Route>
         <Route path='/enroll' exact>
-          <EnrollComponent
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
+          <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
       </Switch>
     </div>

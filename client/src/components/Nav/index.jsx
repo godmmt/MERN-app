@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import AuthService from '../services/auth.service';
+import AuthService from '../../services/auth.service';
 
-const NavComponent = (props) => {
+const Nav = (props) => {
   let { currentUser, setCurrentUser } = props;
   const history = useHistory();
   const handleLogout = () => {
@@ -81,4 +81,4 @@ const NavComponent = (props) => {
   );
 };
 
-export default NavComponent;
+export default Nav;

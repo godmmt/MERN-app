@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthService from '../services/auth.service';
+import AuthService from '../../services/auth.service';
 
-const RegisterComponent = () => {
+const Register = () => {
   const history = useHistory();
   let [username, setUsername] = useState(''); // Wilson用let
   let [email, setEmail] = useState('');
@@ -89,4 +89,4 @@ const RegisterComponent = () => {
   );
 };
 
-export default RegisterComponent;
+export default Register;

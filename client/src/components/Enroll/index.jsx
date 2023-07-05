@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import CourseService from '../services/course.service';
+import CourseService from '../../services/course.service';
 
-const EnrollComponent = (props) => {
+const Enroll = (props) => {
   let { currentUser, setCurrentUser } = props;
   const history = useHistory();
   const [searchInput, setSearchInput] = useState('');
@@ -114,4 +114,4 @@ const EnrollComponent = (props) => {
   );
 };
 
-export default EnrollComponent;
+export default Enroll;
