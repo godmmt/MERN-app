@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthService from '../../services/auth.service';
+import AuthService from 'services/auth.service';
 
 const Register = () => {
   const history = useHistory();
