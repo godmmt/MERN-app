@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeComponent = () => {
+const Home = () => {
   return (
     <main>
       <div className='container py-4'>
@@ -57,4 +57,4 @@ const HomeComponent = () => {
   );
 };
 
-export default HomeComponent;
+export default Home;

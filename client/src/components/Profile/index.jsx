@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AuthService from '../../services/auth.service';
 
-const ProfileComponent = (props) => {
+const Profile = (props) => {
   let { currentUser, setCurrentUser } = props;
 
   return (
@@ -32,4 +32,4 @@ const ProfileComponent = (props) => {
   );
 };
 
-export default ProfileComponent;
+export default Profile;

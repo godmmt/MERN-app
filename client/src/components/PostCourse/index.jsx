@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 
-const PostCourseComponent = (props) => {
+const PostCourse = (props) => {
   let { currentUser, setCurrentUser } = props;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -97,4 +97,4 @@ const PostCourseComponent = (props) => {
   );
 };
 
-export default PostCourseComponent;
+export default PostCourse;
