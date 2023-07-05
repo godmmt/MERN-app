@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import HomeComponent from './components/home-component';
-import NavComponent from './components/nav-component';
-import RegisterComponent from './components/register-component';
-import LoginComponent from './components/login-component';
-import ProfileComponent from './components/profile-component';
-import CourseComponent from './components/course-component';
-import PostCourseComponent from './components/postCourse-component';
-import EnrollComponent from './components/enroll-component';
+import HomeComponent from './components/Home';
+import NavComponent from './components/Nav';
+import RegisterComponent from './components/Register';
+import LoginComponent from './components/Login';
+import ProfileComponent from './components/Profile';
+import CourseComponent from './components/Course';
+import PostCourseComponent from './components/PostCourse';
+import EnrollComponent from './components/Enroll';
 import AuthService from './services/auth.service';
 
 function App() {
