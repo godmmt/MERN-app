@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 
 const Enroll = (props) => {
-  let { currentUser, setCurrentUser } = props;
-  const history = useHistory();
+  let { currentUser } = props;
+  const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const [searchResult, setSearchResult] = useState(null);
   const handleTakeToLogin = () => {
-    history.push('/login');
+    navigate('/login');
   };
   const handleChangeInput = (e) => {
     setSearchInput(e.target.value);
@@ -31,7 +31,7 @@ const Enroll = (props) => {
     CourseService.enroll(e.target.id, currentUser.user._id)
       .then(() => {
         window.alert('Done Enrollment');
-        history.push('/course');
+        navigate('/course');
       })
       .catch((err) => {
         console.log(err);
@@ -86,14 +86,13 @@ const Enroll = (props) => {
                   <p className='card-text'>{course.description}</p>
                   <p>Price: {course.price}</p>
                   <p>Student: {course.students.length}</p>
-                  <a
-                    href='#'
+                  <button
                     onClick={handleEnroll}
                     className='card-text btn btn-primary'
                     id={course._id}
                   >
                     Enroll
-                  </a>
+                  </button>
                 </div>
               </div>
             );
