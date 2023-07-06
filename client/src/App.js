@@ -9,6 +9,7 @@ import Course from './components/Course';
 import PostCourse from './components/PostCourse';
 import Enroll from './components/Enroll';
 import AuthService from './services/auth.service';
+import Footer from 'components/Footer';
 
 function App() {
   // 用一個state來儲存目前網頁使用者是誰
@@ -57,6 +58,7 @@ function App() {
           path='/enroll'
         ></Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

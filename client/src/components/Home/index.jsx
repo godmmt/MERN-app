@@ -48,10 +48,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        <footer className='pt-3 mt-4 text-muted border-top'>
-          &copy; 2021 Wilson Ren
-        </footer>
       </div>
     </main>
   );
