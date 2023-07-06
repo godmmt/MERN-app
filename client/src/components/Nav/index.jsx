@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
 
 const Nav = (props) => {
   let { currentUser, setCurrentUser } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleLogout = () => {
     AuthService.logout();
     window.alert('Logout successfully, now you are redirect to the homepage.');
     setCurrentUser(null); // 也可以寫setCurrentUser(AuthService.getCurrentUser());
-    history.push('/'); // 重新導向至首頁
+    navigate('/'); // 重新導向至首頁
   };
   return (
     <div>

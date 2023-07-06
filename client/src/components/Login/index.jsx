@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import AuthService from 'services/auth.service';
 
 const Login = (props) => {
   let { currentUser, setCurrentUser } = props;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
   let [message, setMessage] = useState('');
@@ -26,7 +26,7 @@ const Login = (props) => {
           'Login successfully, now you are redirect to the profile page.'
         );
         setCurrentUser(AuthService.getCurrentUser());
-        history.push('/profile');
+        navigate('/profile');
       })
       .catch((error) => {
         console.log(error.response);

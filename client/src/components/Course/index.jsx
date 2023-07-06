@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CourseService from 'services/course.service';
 
 const Course = (props) => {
   let { currentUser, setCurrentUser } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleTakeToLogin = () => {
-    history.push('/login');
+    navigate('/login');
   };
   // state 用來儲存從API當中所獲得的Course Data
   let [courseData, setCourseData] = useState(null);

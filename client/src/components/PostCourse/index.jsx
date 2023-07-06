@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 
 const PostCourse = (props) => {
@@ -8,9 +8,9 @@ const PostCourse = (props) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [message, setMessage] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleTakeToLogin = () => {
-    history.push('/login');
+    navigate('/login');
   };
 
   const handleChangeTitle = (e) => {
@@ -26,7 +26,7 @@ const PostCourse = (props) => {
     CourseService.post(title, description, price)
       .then(() => {
         window.alert('New course has been created.');
-        history.push('/course');
+        navigate('/course');
       })
       .catch((error) => {
         console.log(error.response);

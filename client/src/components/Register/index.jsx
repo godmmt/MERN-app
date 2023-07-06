@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
 
 const Register = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   let [username, setUsername] = useState(''); // Wilson用let
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
@@ -29,7 +29,7 @@ const Register = () => {
         window.alert(
           'Registration succeeds. You are now redirected to the login page.'
         );
-        history.push('/login');
+        navigate('/login');
       })
       .catch((error) => {
         console.log(error.response);

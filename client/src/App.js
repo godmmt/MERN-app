@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Nav from './components/Nav';
 import Register from './components/Register';
@@ -15,35 +15,49 @@ function App() {
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   return (
-    <div>
+    <BrowserRouter>
       <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <Switch>
-        <Route path='/' exact>
-          <Home />
-        </Route>
-        <Route path='/register' exact>
-          <Register />
-        </Route>
-        <Route path='/login' exact>
-          <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        </Route>
-        <Route path='/profile' exact>
-          <Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        </Route>
-        <Route path='/course' exact>
-          <Course currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        </Route>
-        <Route path='/postCourse' exact>
-          <PostCourse
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-          />
-        </Route>
-        <Route path='/enroll' exact>
-          <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        </Route>
-      </Switch>
-    </div>
+      <Routes>
+        <Route element={<Home />} path='/'></Route>
+        <Route element={<Register />} path='/register'></Route>
+        <Route
+          element={
+            <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+          path='/login'
+        ></Route>
+        <Route
+          element={
+            <Profile
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+          path='/profile'
+        ></Route>
+        <Route
+          element={
+            <Course currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+          path='/course'
+        ></Route>
+        <Route
+          element={
+            <PostCourse
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+          path='/postCourse'
+        ></Route>
+        <Route
+          element={
+            <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+          path='/enroll'
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
