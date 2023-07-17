@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Nav from './components/Nav';
+import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
@@ -10,6 +10,7 @@ import PostCourse from './components/PostCourse';
 import Enroll from './components/Enroll';
 import AuthService from './services/auth.service';
 import Footer from 'components/Footer';
+import './styles/base.scss';
 
 function App() {
   // 用一個state來儲存目前網頁使用者是誰
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route element={<Home />} path='/'></Route>
         <Route element={<Register />} path='/register'></Route>

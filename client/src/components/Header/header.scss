@@ -1,0 +1,36 @@
+@import 'src/styles/index.scss';
+
+header {
+  @include flex-center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+
+  .logo {
+    width: 10rem;
+    img {
+      width: 100%;
+    }
+  }
+
+  .menu {
+    ul {
+      @include flex-center;
+      gap: 2rem;
+      padding: 1rem;
+      li {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: $primary-white;
+          font-size: 1.5rem;
+          font-weight: bold;
+
+          &:hover {
+            color: $primary-black;
+          }
+        }
+      }
+    }
+  }
+}

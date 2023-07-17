@@ -1,0 +1,39 @@
+@import 'src/styles/index.scss';
+
+.home {
+  .banner {
+    @include flex-center;
+    gap: 5rem;
+    background-image: url('../../assets/images/banner-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 0 10rem;
+
+    .slogan {
+      color: $primary-white;
+
+      h1 {
+        font-size: 3.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+        line-height: 2rem;
+      }
+      .action {
+        @include flex-center;
+        justify-content: flex-start;
+        padding: 1.5rem 0;
+        gap: 2rem;
+      }
+    }
+
+    .video-container {
+      max-width: 50rem;
+      video {
+        width: 100%;
+        border-radius: 1rem;
+      }
+    }
+  }
+}
