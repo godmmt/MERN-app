@@ -6,8 +6,11 @@ $primary-blue: hsl(213, 68%, 44%);
 $primary-red: hsl(357, 69%, 51%);
 $primary-yellow: hsl(39, 76%, 54%);
 
-// secondary color（increase the brightness for the primary color）
+// secondary color (increase the brightness for the primary color)
 $secondary-green: hsl(153, 97%, 42%);
 $secondary-blue: hsl(213, 68%, 57%);
 $secondary-red: hsl(357, 68%, 64%);
 $secondary-yellow: hsl(39, 76%, 67%);
+
+// background color (increase opacity)
+$background-blue: hsla(213, 68%, 44%, 0.504);
