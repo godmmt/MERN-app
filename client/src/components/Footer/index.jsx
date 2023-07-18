@@ -41,14 +41,15 @@ const Footer = () => {
             <li>HTML</li>
             <li>CSS</li>
             <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
           </ul>
         </div>
         <div className='get-in-touch'>
           <h4>Get In Touch</h4>
-          <p>
-            123 Fifth Ave, New York, NY 12004, USA. +1 123 456 78 90
-            mail@example.com
-          </p>
+          <p>123 Fifth Ave, New York, NY 12004, USA.</p>
+          <p>+1 123 456 78 90</p>
+          <p>mail@example.com</p>
         </div>
       </section>
       <div className='copyright'>&copy; {new Date().getFullYear()} Ming</div>
