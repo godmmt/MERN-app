@@ -8,25 +8,27 @@ const Home = () => {
   return (
     <main className='home'>
       <section className='banner'>
-        <div className='slogan'>
-          <h1>Transform Your Life through Online Learning and Education!</h1>
-          <p>
-            Welcome to our online platform for learning programming courses! We
-            are dedicated to providing a high-quality, flexible, and inspiring
-            learning experience that allows you to unleash your coding
-            potential.
-          </p>
-          <div className='action'>
-            <Button>Start Course</Button>
-            <Button>View All Courses</Button>
+        <div className='introduction'>
+          <div className='slogan'>
+            <h1>Transform Your Life through Online Learning and Education!</h1>
+            <p>
+              Welcome to our online platform for learning programming courses!
+              We are dedicated to providing a high-quality, flexible, and
+              inspiring learning experience that allows you to unleash your
+              coding potential.
+            </p>
+            <div className='action'>
+              <Button>Start Course</Button>
+              <Button>View All Courses</Button>
+            </div>
           </div>
-        </div>
 
-        <div className='video-container'>
-          <video muted controls preload>
-            <source src={bannerVideo2} />
-            <source src={bannerVideo1} />
-          </video>
+          <div className='video-container'>
+            <video autoPlay muted preload>
+              <source src={bannerVideo2} />
+              <source src={bannerVideo1} />
+            </video>
+          </div>
         </div>
       </section>
 
@@ -39,7 +41,7 @@ const Home = () => {
               practice purpose only, so please do not provide any personal
               information, such as credit card numbers.
             </p>
-            <button type='button'>Login or Register Now</button>
+            <Button>Login or Register Now</Button>
           </div>
           <div className='instructor'>
             <h2>As an Instructor</h2>
@@ -49,7 +51,7 @@ const Home = () => {
               so please do not provide any personal information, such as credit
               card numbers.
             </p>
-            <button type='button'>Login or Register Now</button>
+            <Button>Login or Register Now</Button>
           </div>
         </div>
       </section>

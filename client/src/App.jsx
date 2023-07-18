@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './pages/Home';
 import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
-import Course from './components/Course';
+import MyCourses from './pages/MyCourses';
 import PostCourse from './components/PostCourse';
 import Enroll from './components/Enroll';
 import AuthService from './services/auth.service';
 import Footer from 'components/Footer';
 import './styles/base.scss';
+import AllCourses from 'pages/AllCourses';
+import About from 'pages/About';
+import Contact from 'pages/Contact';
 
 function App() {
   // 用一個state來儲存目前網頁使用者是誰
@@ -21,6 +24,9 @@ function App() {
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route element={<Home />} path='/'></Route>
+        <Route element={<AllCourses />} path='/all-courses'></Route>
+        <Route element={<About />} path='/about'></Route>
+        <Route element={<Contact />} path='/contact'></Route>
         <Route element={<Register />} path='/register'></Route>
         <Route
           element={
@@ -39,9 +45,12 @@ function App() {
         ></Route>
         <Route
           element={
-            <Course currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <MyCourses
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
           }
-          path='/course'
+          path='/my-courses'
         ></Route>
         <Route
           element={

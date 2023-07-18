@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from 'services/course.service';
 
-const Course = (props) => {
+const MyCourses = (props) => {
   let { currentUser, setCurrentUser } = props;
   const navigate = useNavigate();
   const handleTakeToLogin = () => {
@@ -87,4 +87,4 @@ const Course = (props) => {
   );
 };
 
-export default Course;
+export default MyCourses;

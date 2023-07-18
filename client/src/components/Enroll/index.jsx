@@ -31,7 +31,7 @@ const Enroll = (props) => {
     CourseService.enroll(e.target.id, currentUser.user._id)
       .then(() => {
         window.alert('Done Enrollment');
-        navigate('/course');
+        navigate('/my-courses');
       })
       .catch((err) => {
         console.log(err);
