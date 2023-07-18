@@ -1,0 +1,46 @@
+@import '../../styles';
+
+footer {
+  background-color: $primary-black;
+  color: $primary-white;
+  section {
+    // border: 2px solid blue; // 輔助線
+    display: flex;
+
+    .logo-area {
+      //   border: 2px solid red; // 輔助線
+      padding: 1rem;
+
+      .logo {
+        img {
+          width: 30%;
+        }
+      }
+      .short-description {
+        font-size: 1.25rem;
+      }
+      .contact-icons {
+        display: flex;
+      }
+    }
+
+    .topics {
+      //   border: 2px solid green; // 輔助線
+      padding: 1rem;
+
+      ul {
+        list-style-type: none;
+      }
+    }
+
+    .get-in-touch {
+      //   border: 2px solid blueviolet; // 輔助線
+      padding: 1rem;
+    }
+  }
+}
+
+h4 {
+  font-size: 1.75rem;
+  padding: 0.5rem 0rem;
+}
