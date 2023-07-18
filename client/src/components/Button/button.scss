@@ -1,4 +1,4 @@
-@import 'src/styles/index.scss';
+@import 'src/styles';
 
 .customize-button {
   background-color: $primary-white;
@@ -8,10 +8,15 @@
   outline: none;
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
+  white-space: nowrap;
   cursor: pointer;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px, #d6d6e7 0 -3px 0 inset;
+  transition: 0.2s;
 
   &:hover {
-    background-color: $primary-black;
-    color: $primary-white;
+    background-color: $secondary-yellow;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px, $primary-yellow 0 -3px 0 inset;
   }
 }

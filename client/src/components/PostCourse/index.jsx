@@ -26,7 +26,7 @@ const PostCourse = (props) => {
     CourseService.post(title, description, price)
       .then(() => {
         window.alert('New course has been created.');
-        navigate('/course');
+        navigate('/my-courses');
       })
       .catch((error) => {
         console.log(error.response);
