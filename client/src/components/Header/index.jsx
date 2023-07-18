@@ -13,52 +13,58 @@ const Header = (props) => {
     setCurrentUser(null); // 也可以寫setCurrentUser(AuthService.getCurrentUser());
     navigate('/'); // 重新導向至首頁
   };
+
+  const handleGoToHome = () => {
+    navigate('/');
+  };
+
+  const handleLoginModal = () => {
+    //[TODO]: open login modal
+  };
+
   return (
     <header>
-      <div className='logo'>
+      <div className='logo' onClick={handleGoToHome}>
         <img src={logo} alt='logo' />
       </div>
       <nav className='menu'>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/all-courses'>All Courses</Link>
           </li>
-          {!currentUser && (
-            <li>
-              <Link to='/register'>Register</Link>
-            </li>
-          )}
-          {!currentUser && (
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-          )}
+          <li>
+            <Link to='/about'>About</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact</Link>
+          </li>
+          {/* <li><Link to='/register'>Register</Link></li> */}
+          <li onClick={handleLoginModal}>
+            {/* <Link to='/login'>Login</Link> */}
+            {currentUser ? 'User' : 'Login'}
+          </li>
           {currentUser && (
-            <li>
-              <Link onClick={handleLogout} to='#'>
-                Logout
-              </Link>
-            </li>
-          )}
-          {currentUser && (
-            <li>
-              <Link to='/profile'>Profile</Link>
-            </li>
-          )}
-          {currentUser && (
-            <li>
-              <Link to='/course'>Course</Link>
-            </li>
-          )}
-          {currentUser && currentUser.user.role === 'instructor' && (
-            <li>
-              <Link to='/postCourse'>Post Course</Link>
-            </li>
-          )}
-          {currentUser && currentUser.user.role === 'student' && (
-            <li>
-              <Link to='/enroll'>Enroll</Link>
-            </li>
+            <>
+              <li>
+                <Link onClick={handleLogout}>Logout</Link>
+              </li>
+              <li>
+                <Link to='/profile'>Profile</Link>
+              </li>
+              <li>
+                <Link to='/my-courses'>Course</Link>
+              </li>
+              {currentUser.user.role === 'instructor' && (
+                <li>
+                  <Link to='/postCourse'>Post Course</Link>
+                </li>
+              )}
+              {currentUser.user.role === 'student' && (
+                <li>
+                  <Link to='/enroll'>Enroll</Link>
+                </li>
+              )}
+            </>
           )}
         </ul>
       </nav>

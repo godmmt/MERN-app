@@ -4,12 +4,13 @@ header {
   @include flex-center;
   justify-content: space-between;
   position: fixed;
-  top: 0px;
   width: 100%;
-  background-color: $background-blue;
+  background-color: $background-black;
+  padding: 0 1rem;
 
   .logo {
     width: 10rem;
+    cursor: pointer;
     img {
       width: 100%;
     }
@@ -18,15 +19,22 @@ header {
   .menu {
     ul {
       @include flex-center;
-      gap: 2rem;
-      padding: 1rem;
+      align-items: normal;
       li {
         list-style-type: none;
+        cursor: pointer;
+        color: $primary-white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0 1rem;
+
+        &:hover {
+          color: $primary-black;
+        }
+
         a {
-          text-decoration: none;
           color: $primary-white;
-          font-size: 1.5rem;
-          font-weight: bold;
+          text-decoration: none;
 
           &:hover {
             color: $primary-black;
