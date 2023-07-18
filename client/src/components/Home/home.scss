@@ -1,4 +1,4 @@
-@import 'src/styles/index.scss';
+@import '../../styles/';
 
 .home {
   .banner {
@@ -33,6 +33,52 @@
       video {
         width: 100%;
         border-radius: 1rem;
+      }
+    }
+  }
+
+  .role-intro {
+    background-color: $secondary-yellow;
+
+    .role {
+      // border: 2px solid red; // 輔助線
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      div {
+        // border: 2px solid green; // 輔助線
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        flex-direction: column;
+        margin: 1rem;
+        flex: 1 1 300px;
+        background-color: $background-wheat;
+
+        h2 {
+          font-size: 1.6rem;
+          padding: 0.5rem 0rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          color: $font-color;
+          text-indent: 2rem;
+          line-height: 1.5rem;
+          padding: 0.5rem;
+          text-align: center;
+        }
+
+        button {
+          padding: 0.7rem 1rem;
+          margin: 0.7rem 0rem;
+          background-color: $primary-white;
+          border: 2px solid $primary-yellow;
+          border-radius: 12px;
+          cursor: pointer;
+        }
       }
     }
   }

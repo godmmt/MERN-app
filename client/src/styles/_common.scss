@@ -10,7 +10,16 @@ $primary-yellow: hsl(39, 76%, 54%);
 $secondary-green: hsl(153, 97%, 42%);
 $secondary-blue: hsl(213, 68%, 57%);
 $secondary-red: hsl(357, 68%, 64%);
-$secondary-yellow: hsl(39, 76%, 67%);
+$secondary-yellow: hsl(39, 76%, 70%);
 
 // background color (increase opacity)
-$background-blue: hsla(213, 68%, 44%, 0.504);
+$background-blue: rgba(36, 105, 188, 0.504);
+$background-wheat: rgb(245, 222, 178);
+
+// font color (darker)
+$font-color: rgb(85, 85, 85);
+
+// font family
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+$font-family: 'PT Sans', sans-serif;
