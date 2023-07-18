@@ -30,7 +30,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='roleIntro'>
+      <section className='role-intro'>
         <div className='role'>
           <div className='student'>
             <h2>As a student</h2>
