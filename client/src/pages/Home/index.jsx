@@ -6,6 +6,7 @@ import css3Icon from 'assets/images/css3-icon.svg';
 import javascriptIcon from 'assets/images/javascript-icon.svg';
 import nodejsIcon from 'assets/images/nodejs-icon.svg';
 import reactIcon from 'assets/images/react-icon.svg';
+import userPhotoFeedbackUse from 'assets/images/user-photo-feedback-use.jpg';
 import './home.scss';
 import Button from 'components/Button';
 
@@ -36,46 +37,66 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className='gallery'>
-        <div>
-          <img src={html5Icon} alt='html5' />
-        </div>
-        <div>
-          <img src={css3Icon} alt='css3' />
-        </div>
-        <div>
-          <img src={javascriptIcon} alt='javascript' />
-        </div>
-        <div>
-          <img src={reactIcon} alt='react' />
-        </div>
-        <div>
-          <img src={nodejsIcon} alt='nodejs' />
-        </div>
-      </section>
-      <section className='role-intro'>
-        <div className='role'>
-          <div className='student'>
-            <h2>As a student</h2>
-            <p>
-              Students can register in courses they like. This website is for
-              practice purpose only, so please do not provide any personal
-              information, such as credit card numbers.
-            </p>
-            <Button>Login or Register Now</Button>
+
+      <div>
+        <section className='gallery'>
+          <div>
+            <img src={html5Icon} alt='html5' />
           </div>
-          <div className='instructor'>
-            <h2>As an Instructor</h2>
-            <p>
-              You can become an instructor by registering as one, and start
-              making online courses. This website is for practice purpose only,
-              so please do not provide any personal information, such as credit
-              card numbers.
-            </p>
-            <Button>Login or Register Now</Button>
+          <div>
+            <img src={css3Icon} alt='css3' />
           </div>
-        </div>
-      </section>
+          <div>
+            <img src={javascriptIcon} alt='javascript' />
+          </div>
+          <div>
+            <img src={reactIcon} alt='react' />
+          </div>
+          <div>
+            <img src={nodejsIcon} alt='nodejs' />
+          </div>
+        </section>
+        <section className='feedback'>
+          <div className='user-photo-feedback-use'>
+            <img src={userPhotoFeedbackUse} alt='userPhoto' />
+          </div>
+          <div className='feedback-content'>
+            <h6>WHAT OUR HAPPY STUDENT SAY</h6>
+            <p>
+              I found this tutorial website to be very user-friendly and it has
+              been incredibly helpful for me. The step-by-step instructions and
+              clear explanations have made it easy for me to grasp complex
+              concepts. I appreciate the variety of topics covered, which has
+              allowed me to learn and explore different areas of interest.
+              Overall, this website has been an invaluable resource for my
+              learning journey.
+            </p>
+          </div>
+        </section>
+        <section className='role-intro'>
+          <div className='role'>
+            <div className='student'>
+              <h2>As a student</h2>
+              <p>
+                Students can register in courses they like. This website is for
+                practice purpose only, so please do not provide any personal
+                information, such as credit card numbers.
+              </p>
+              <Button>Login or Register Now</Button>
+            </div>
+            <div className='instructor'>
+              <h2>As an Instructor</h2>
+              <p>
+                You can become an instructor by registering as one, and start
+                making online courses. This website is for practice purpose
+                only, so please do not provide any personal information, such as
+                credit card numbers.
+              </p>
+              <Button>Login or Register Now</Button>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 };

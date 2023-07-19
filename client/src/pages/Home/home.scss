@@ -55,9 +55,41 @@
   }
   .gallery {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     div {
       padding: 1rem;
+    }
+  }
+  .feedback {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    padding: 0.5rem 3rem;
+    .user-photo-feedback-use {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      padding: 0 0 0 2rem;
+      img {
+        width: 70%;
+      }
+    }
+    .feedback-content {
+      flex: 1 1 500px;
+      padding: 1rem 4rem 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h6 {
+        font-weight: 800;
+        margin: 0 0 1rem 0;
+      }
+      p {
+        color: $font-color;
+        font-size: 1.5rem;
+      }
     }
   }
   .role-intro {
