@@ -55,7 +55,9 @@
       }
     }
   }
-
+  .gallery {
+    display: flex;
+  }
   .role-intro {
     background-color: $secondary-yellow;
 
