@@ -6,7 +6,7 @@ import css3Icon from 'assets/images/css3-icon.svg';
 import javascriptIcon from 'assets/images/javascript-icon.svg';
 import nodejsIcon from 'assets/images/nodejs-icon.svg';
 import reactIcon from 'assets/images/react-icon.svg';
-import userPhotoFeedbackUse from 'assets/images/user-photo-feedback-use.jpg';
+import happyStudent from 'assets/images/happy-student.jpg';
 import './home.scss';
 import Button from 'components/Button';
 
@@ -38,7 +38,7 @@ const Home = () => {
         </div>
       </section>
 
-      <div>
+      <div className='content-container'>
         <section className='gallery'>
           <div>
             <img src={html5Icon} alt='html5' />
@@ -57,8 +57,8 @@ const Home = () => {
           </div>
         </section>
         <section className='feedback'>
-          <div className='user-photo-feedback-use'>
-            <img src={userPhotoFeedbackUse} alt='userPhoto' />
+          <div className='feedback-photo'>
+            <img src={happyStudent} alt='userPhoto' />
           </div>
           <div className='feedback-content'>
             <h6>WHAT OUR HAPPY STUDENT SAY</h6>
