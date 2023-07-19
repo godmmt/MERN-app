@@ -58,6 +58,10 @@ footer {
       }
     }
   }
+  .copyright {
+    padding: 0.25rem;
+    text-align: right;
+  }
 }
 
 h4 {
@@ -65,9 +69,3 @@ h4 {
   padding: 1rem 0rem;
   white-space: nowrap;
 }
-
-.copyright {
-  padding: 0.25rem;
-  text-align: right;
-}
-// 這個單獨拉下來是ok的嗎 還是一定要放在巢狀內部呢?

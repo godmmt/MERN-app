@@ -1,6 +1,11 @@
 import React from 'react';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
+import html5Icon from 'assets/images/html5-icon.svg';
+import css3Icon from 'assets/images/css3-icon.svg';
+import javascriptIcon from 'assets/images/javascript-icon.svg';
+import nodejsIcon from 'assets/images/nodejs-icon.svg';
+import reactIcon from 'assets/images/react-icon.svg';
 import './home.scss';
 import Button from 'components/Button';
 
@@ -31,7 +36,23 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+      <section className='gallery'>
+        <div>
+          <img src={html5Icon} alt='html5' />
+        </div>
+        <div>
+          <img src={css3Icon} alt='css3' />
+        </div>
+        <div>
+          <img src={javascriptIcon} alt='javascript' />
+        </div>
+        <div>
+          <img src={nodejsIcon} alt='nodejs' />
+        </div>
+        <div>
+          <img src={reactIcon} alt='react' />
+        </div>
+      </section>
       <section className='role-intro'>
         <div className='role'>
           <div className='student'>
