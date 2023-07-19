@@ -22,43 +22,35 @@ const Footer = () => {
           </div>
           <div className='contact-icons'>
             <div className='twitter'>
-              <a
-                href='https://twitter.com/iingwen?lang=zh-Hant'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <img title='以蔡英文總統為範例' src={twitter} alt='twitter' />
+              <a href='https://twitter.com/' target='_blank' rel='noreferrer'>
+                <img title='twitter' src={twitter} alt='twitter' />
               </a>
             </div>
             <div className='instagram'>
               <a
-                href='https://www.instagram.com/tsai_ingwen/?hl=zh-tw'
+                href='https://www.instagram.com/'
                 target='_blank'
                 rel='noreferrer'
               >
-                <img
-                  title='以蔡英文總統為範例'
-                  src={instagram}
-                  alt='instagram'
-                />
+                <img title='instagram' src={instagram} alt='instagram' />
               </a>
             </div>
             <div className='facebook'>
               <a
-                href='https://www.facebook.com/tsaiingwen/'
+                href='https://www.facebook.com/'
                 target='_blank'
                 rel='noreferrer'
               >
-                <img title='以蔡英文總統為範例' src={facebook} alt='facebook' />
+                <img title='facebook' src={facebook} alt='facebook' />
               </a>
             </div>
             <div className='youtube'>
               <a
-                href='https://www.youtube.com/@ingwen831/videos'
+                href='https://www.youtube.com/'
                 target='_blank'
                 rel='noreferrer'
               >
-                <img title='以蔡英文總統為範例' src={youtube} alt='youtube' />
+                <img title='youtube' src={youtube} alt='youtube' />
               </a>
             </div>
           </div>
