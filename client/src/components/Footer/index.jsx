@@ -22,16 +22,36 @@ const Footer = () => {
           </div>
           <div className='contact-icons'>
             <div className='twitter'>
-              <img src={twitter} alt='twitter' />
+              <a href='https://twitter.com/' target='_blank' rel='noreferrer'>
+                <img title='twitter' src={twitter} alt='twitter' />
+              </a>
             </div>
             <div className='instagram'>
-              <img src={instagram} alt='instagram' />
+              <a
+                href='https://www.instagram.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img title='instagram' src={instagram} alt='instagram' />
+              </a>
             </div>
             <div className='facebook'>
-              <img src={facebook} alt='facebook' />
+              <a
+                href='https://www.facebook.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img title='facebook' src={facebook} alt='facebook' />
+              </a>
             </div>
             <div className='youtube'>
-              <img src={youtube} alt='youtube' />
+              <a
+                href='https://www.youtube.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img title='youtube' src={youtube} alt='youtube' />
+              </a>
             </div>
           </div>
         </div>
