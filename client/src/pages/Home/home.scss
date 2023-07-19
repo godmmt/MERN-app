@@ -57,6 +57,10 @@
   }
   .gallery {
     display: flex;
+    justify-content: space-evenly;
+    div {
+      padding: 1rem;
+    }
   }
   .role-intro {
     background-color: $secondary-yellow;

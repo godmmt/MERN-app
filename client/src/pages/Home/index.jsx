@@ -47,10 +47,10 @@ const Home = () => {
           <img src={javascriptIcon} alt='javascript' />
         </div>
         <div>
-          <img src={nodejsIcon} alt='nodejs' />
+          <img src={reactIcon} alt='react' />
         </div>
         <div>
-          <img src={reactIcon} alt='react' />
+          <img src={nodejsIcon} alt='nodejs' />
         </div>
       </section>
       <section className='role-intro'>
