@@ -9,8 +9,13 @@ import reactIcon from 'assets/images/react-icon.svg';
 import happyStudent from 'assets/images/happy-student.jpg';
 import './home.scss';
 import Button from 'components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleClickAllCourses = () => {
+    navigate('/all-courses');
+  };
   return (
     <main className='home'>
       <section className='banner'>
@@ -25,12 +30,12 @@ const Home = () => {
             </p>
             <div className='action'>
               <Button>Start Course</Button>
-              <Button>View All Courses</Button>
+              <Button onClick={handleClickAllCourses}>View All Courses</Button>
             </div>
           </div>
 
           <div className='video-container'>
-            <video autoPlay muted preload>
+            <video autoPlay muted preload='true'>
               <source src={bannerVideo2} />
               <source src={bannerVideo1} />
             </video>
@@ -74,26 +79,24 @@ const Home = () => {
           </div>
         </section>
         <section className='role-intro'>
-          <div className='role'>
-            <div className='student'>
-              <h2>As a student</h2>
-              <p>
-                Students can register in courses they like. This website is for
-                practice purpose only, so please do not provide any personal
-                information, such as credit card numbers.
-              </p>
-              <Button>Login or Register Now</Button>
-            </div>
-            <div className='instructor'>
-              <h2>As an Instructor</h2>
-              <p>
-                You can become an instructor by registering as one, and start
-                making online courses. This website is for practice purpose
-                only, so please do not provide any personal information, such as
-                credit card numbers.
-              </p>
-              <Button>Login or Register Now</Button>
-            </div>
+          <div className='student'>
+            <h2>As a student</h2>
+            <p>
+              Students can register in courses they like. This website is for
+              practice purpose only, so please do not provide any personal
+              information, such as credit card numbers.
+            </p>
+            <Button>Login or Register Now</Button>
+          </div>
+          <div className='instructor'>
+            <h2>As an Instructor</h2>
+            <p>
+              You can become an instructor by registering as one, and start
+              making online courses. This website is for practice purpose only,
+              so please do not provide any personal information, such as credit
+              card numbers.
+            </p>
+            <Button>Login or Register Now</Button>
           </div>
         </section>
       </div>
