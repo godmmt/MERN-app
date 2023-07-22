@@ -7,6 +7,7 @@ header {
   width: 100%;
   background-color: $background-black;
   padding: 0 1rem;
+  z-index: 1;
 
   .logo {
     width: 10rem;
@@ -16,31 +17,85 @@ header {
     }
   }
 
-  .menu {
-    ul {
-      @include flex-center;
-      align-items: normal;
-      li {
-        list-style-type: none;
-        cursor: pointer;
+  nav {
+    li {
+      list-style-type: none;
+      cursor: pointer;
+      color: $primary-white;
+      font-weight: bold;
+      padding: 0 1rem;
+      font-size: $font-size-h4;
+
+      &:hover {
+        color: $primary-yellow;
+      }
+
+      a {
+        display: block;
         color: $primary-white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 0 1rem;
+        text-decoration: none;
+        font-size: $font-size-h4;
 
         &:hover {
           color: $primary-yellow;
         }
+      }
+    }
+  }
+
+  .web {
+    display: block;
+    ul {
+      @include flex-center;
+      align-items: normal;
+    }
+  }
+
+  .mobile {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $background-black;
+    width: 100%;
+
+    ul {
+      flex-direction: column;
+      li {
+        display: flex;
+        height: 3rem;
+        line-height: 3rem;
+        align-items: center;
+        &:hover {
+          background-color: $primary-black;
+        }
 
         a {
-          color: $primary-white;
-          text-decoration: none;
-
-          &:hover {
-            color: $primary-yellow;
-          }
+          width: 100%;
         }
       }
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+    cursor: pointer;
+    img {
+      width: 3rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hamburger-menu {
+      display: block;
+    }
+
+    .web {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
     }
   }
 }
