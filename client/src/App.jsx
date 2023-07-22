@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header';
-import Register from './components/Register';
-import Login from './components/Login';
 import Profile from './components/Profile';
 import MyCourses from './pages/MyCourses';
 import PostCourse from './components/PostCourse';
@@ -15,6 +13,17 @@ import AllCourses from 'pages/AllCourses';
 import About from 'pages/About';
 import Contact from 'pages/Contact';
 
+export const ROUTER_PATH = {
+  home: '/',
+  allCourses: '/all-courses',
+  about: '/about',
+  contact: '/contact',
+  myCourses: '/my-courses',
+  profile: '/profile',
+  postCourse: '/postCourse',
+  enroll: '/enroll',
+};
+
 function App() {
   // 用一個state來儲存目前網頁使用者是誰
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -23,17 +32,10 @@ function App() {
     <BrowserRouter>
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-        <Route element={<Home />} path='/'></Route>
-        <Route element={<AllCourses />} path='/all-courses'></Route>
-        <Route element={<About />} path='/about'></Route>
-        <Route element={<Contact />} path='/contact'></Route>
-        <Route element={<Register />} path='/register'></Route>
-        <Route
-          element={
-            <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          }
-          path='/login'
-        ></Route>
+        <Route element={<Home />} path={ROUTER_PATH.home}></Route>
+        <Route element={<AllCourses />} path={ROUTER_PATH.allCourses}></Route>
+        <Route element={<About />} path={ROUTER_PATH.about}></Route>
+        <Route element={<Contact />} path={ROUTER_PATH.contact}></Route>
         <Route
           element={
             <Profile
@@ -41,7 +43,7 @@ function App() {
               setCurrentUser={setCurrentUser}
             />
           }
-          path='/profile'
+          path={ROUTER_PATH.profile}
         ></Route>
         <Route
           element={
@@ -50,7 +52,7 @@ function App() {
               setCurrentUser={setCurrentUser}
             />
           }
-          path='/my-courses'
+          path={ROUTER_PATH.myCourses}
         ></Route>
         <Route
           element={
@@ -59,13 +61,13 @@ function App() {
               setCurrentUser={setCurrentUser}
             />
           }
-          path='/postCourse'
+          path={ROUTER_PATH.postCourse}
         ></Route>
         <Route
           element={
             <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
           }
-          path='/enroll'
+          path={ROUTER_PATH.enroll}
         ></Route>
       </Routes>
       <Footer />
