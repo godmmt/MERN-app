@@ -1,0 +1,17 @@
+@import '../../styles';
+
+.modal-backdrop {
+  @include flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: z-index('modal');
+
+  .modal-container {
+    border-radius: 0.5rem;
+    width: max(30%, 25rem);
+    background-color: $primary-white;
+  }
+}

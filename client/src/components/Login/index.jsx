@@ -1,37 +1,36 @@
+import { ROUTER_PATH } from 'App';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import AuthService from 'services/auth.service';
 
-const Login = (props) => {
-  let { currentUser, setCurrentUser } = props;
-
+const Login = ({ setCurrentUser, handleCloseLoginModal }) => {
   const navigate = useNavigate();
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
-  let [message, setMessage] = useState('');
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleLogin = () => {
-    AuthService.login(email, password)
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.token) {
-          localStorage.setItem('user', JSON.stringify(response.data));
-        }
-        window.alert(
-          'Login successfully, now you are redirect to the profile page.'
-        );
-        setCurrentUser(AuthService.getCurrentUser());
-        navigate('/profile');
-      })
-      .catch((error) => {
-        console.log(error.response);
-        setMessage(error.response.data);
-      });
+
+  const handleLogin = async () => {
+    try {
+      const res = await AuthService.login(email, password);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      window.alert(
+        'Login successfully, now you are redirect to the profile page.'
+      );
+      setCurrentUser(res.data);
+      navigate(ROUTER_PATH.profile);
+      handleCloseLoginModal();
+    } catch (error) {
+      setMessage(error.response.data);
+    }
   };
 
   return (
