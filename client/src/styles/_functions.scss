@@ -1,0 +1,12 @@
+@function z-index($key) {
+  $z-layer: (
+    'modal': 100,
+  );
+
+  @if map-has-key($z-layer, $key) {
+    @return map-get($z-layer, $key);
+  }
+
+  @warn '#{$z-layer} 中沒有 #{$key} 層級';
+  @return null;
+}

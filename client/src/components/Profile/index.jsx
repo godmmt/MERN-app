@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import AuthService from '../../services/auth.service';
+import React from 'react';
 
-const Profile = (props) => {
-  let { currentUser, setCurrentUser } = props;
-
+const Profile = ({ currentUser }) => {
   return (
     <div style={{ padding: '3rem' }}>
       {!currentUser && (
