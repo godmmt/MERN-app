@@ -7,6 +7,7 @@ import javascriptIcon from 'assets/images/javascript-icon.svg';
 import nodejsIcon from 'assets/images/nodejs-icon.svg';
 import reactIcon from 'assets/images/react-icon.svg';
 import happyStudent from 'assets/images/happy-student.jpg';
+import computer from 'assets/images/computer.jpg';
 import './home.scss';
 import Button from 'components/Button';
 import { useNavigate } from 'react-router-dom';
@@ -77,6 +78,36 @@ const Home = () => {
               learning journey.
             </p>
           </div>
+        </section>
+        <section className='featured-course'>
+          <div className='featured-course-img'>
+            <img src={computer} alt='computer' />
+          </div>
+          <div className='featured-course-content'>
+            <h6>FEATURED COURSE</h6>
+            <h2>Getting Started With Python 3 for Beginner</h2>
+            <p>
+              Jumpstart your Python journey with our beginner-friendly course,
+              "Getting Started With Python 3"!
+            </p>
+            <ul>
+              <li>Fundamental</li>
+              <li>Input and output</li>
+              <li>Conditional branching</li>
+              <li>8+ more lessons</li>
+            </ul>
+            <Button>Start Course</Button>
+          </div>
+        </section>
+        <section className='courses-carousel'>
+          <div>
+            <h6>FRONT END</h6>
+            <h5>HTML 5 Web Component Fundamentals</h5>
+            <div className='level'>Beginner</div>
+            <div className='duration'>2h 24m</div>
+          </div>
+          <div></div>
+          <div></div>
         </section>
         <section className='role-intro'>
           <div className='student'>
