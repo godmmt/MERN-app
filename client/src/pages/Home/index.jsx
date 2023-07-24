@@ -163,27 +163,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='role-intro'>
-          <div className='student'>
-            <h2>As a student</h2>
-            <p>
-              Students can register in courses they like. This website is for
-              practice purpose only, so please do not provide any personal
-              information, such as credit card numbers.
-            </p>
-            <Button>Login or Register Now</Button>
-          </div>
-          <div className='instructor'>
-            <h2>As an Instructor</h2>
-            <p>
-              You can become an instructor by registering as one, and start
-              making online courses. This website is for practice purpose only,
-              so please do not provide any personal information, such as credit
-              card numbers.
-            </p>
-            <Button>Login or Register Now</Button>
-          </div>
-        </section>
       </div>
     </main>
   );

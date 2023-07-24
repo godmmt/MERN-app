@@ -184,37 +184,6 @@
         }
       }
     }
-    .role-intro {
-      background-color: $background-gray;
-      padding: 0.5rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        flex: 1 1 300px;
-        background-color: $primary-white;
-        padding: 1rem 0.5rem;
-        gap: 1.5rem;
-        h2 {
-          font-size: 1.6rem;
-        }
-        p {
-          flex-grow: 1;
-          font-size: 1.2rem;
-          color: $font-color;
-          text-indent: 2rem;
-          line-height: 1.5rem;
-          text-align: center;
-        }
-        .customize-button {
-          font-size: 1rem;
-        }
-      }
-    }
   }
 }
 
