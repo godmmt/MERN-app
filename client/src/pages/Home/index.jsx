@@ -1,4 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import Button from 'components/Button';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
 import html5Icon from 'assets/images/html5-icon.svg';
@@ -8,15 +14,19 @@ import nodejsIcon from 'assets/images/nodejs-icon.svg';
 import reactIcon from 'assets/images/react-icon.svg';
 import happyStudent from 'assets/images/happy-student.jpg';
 import computer from 'assets/images/computer.jpg';
+import computer2 from 'assets/images/computer2.jpg';
+import computer3 from 'assets/images/computer3.jpg';
+import computer4 from 'assets/images/computer4.jpg';
 import './home.scss';
-import Button from 'components/Button';
-import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
   const handleClickAllCourses = () => {
     navigate('/all-courses');
   };
+  const hourglassIcon = <FontAwesomeIcon icon={faHourglassHalf} />;
+  const userIcon = <FontAwesomeIcon icon={faUser} />;
+
   return (
     <main className='home'>
       <section className='banner'>
@@ -99,15 +109,34 @@ const Home = () => {
             <Button>Start Course</Button>
           </div>
         </section>
-        <section className='courses-carousel'>
-          <div>
+        <section className='courses-cards'>
+          <div className='card'>
+            <div className='card-img'>
+              <img src={computer2} alt='computer2' />
+            </div>
             <h6>FRONT END</h6>
             <h5>HTML 5 Web Component Fundamentals</h5>
-            <div className='level'>Beginner</div>
-            <div className='duration'>2h 24m</div>
+            <div className='level'>{userIcon} Beginner</div>
+            <div className='duration'>{hourglassIcon} 2h 24m</div>
           </div>
-          <div></div>
-          <div></div>
+          <div className='card'>
+            <div className='card-img'>
+              <img src={computer3} alt='computer3' />
+            </div>
+            <h6>FRONT END</h6>
+            <h5>Mastering CSS 3 Flexbox With Real World Projects</h5>
+            <div className='level'>{userIcon} Beginner</div>
+            <div className='duration'>{hourglassIcon} 3h 18m</div>
+          </div>
+          <div className='card'>
+            <div className='card-img'>
+              <img src={computer4} alt='computer4' />
+            </div>
+            <h6>FRONT END</h6>
+            <h5>Full Stack Web Development with React Hooks and Redux</h5>
+            <div className='level'>{userIcon} Intermediate</div>
+            <div className='duration'>{hourglassIcon} 4h 36m</div>
+          </div>
         </section>
         <section className='role-intro'>
           <div className='student'>
