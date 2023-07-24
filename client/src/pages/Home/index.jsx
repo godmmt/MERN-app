@@ -2,8 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
 import Button from 'components/Button';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
@@ -19,13 +21,20 @@ import computer3 from 'assets/images/computer3.jpg';
 import computer4 from 'assets/images/computer4.jpg';
 import './home.scss';
 
+const circleIcon = <FontAwesomeIcon icon={faCircle} className='circle-icon' />;
+const circleCheckIcon = (
+  <FontAwesomeIcon icon={faCircleCheck} className='circle-check-icon' />
+);
+const userIcon = <FontAwesomeIcon icon={faUser} className='user-icon' />;
+const hourglassIcon = (
+  <FontAwesomeIcon icon={faHourglassHalf} className='hourglass-icon' />
+);
+
 const Home = () => {
   const navigate = useNavigate();
   const handleClickAllCourses = () => {
     navigate('/all-courses');
   };
-  const hourglassIcon = <FontAwesomeIcon icon={faHourglassHalf} />;
-  const userIcon = <FontAwesomeIcon icon={faUser} />;
 
   return (
     <main className='home'>
@@ -94,19 +103,23 @@ const Home = () => {
             <img src={computer} alt='computer' />
           </div>
           <div className='featured-course-content'>
-            <h6>FEATURED COURSE</h6>
+            <h6>{circleIcon}FEATURED COURSE</h6>
             <h2>Getting Started With Python 3 for Beginner</h2>
             <p>
               Jumpstart your Python journey with our beginner-friendly course,
               "Getting Started With Python 3"!
             </p>
-            <ul>
-              <li>Fundamental</li>
-              <li>Input and output</li>
-              <li>Conditional branching</li>
-              <li>8+ more lessons</li>
-            </ul>
-            <Button>Start Course</Button>
+            <div className='list'>
+              <div className='list-left'>
+                <p>{circleCheckIcon}Fundamental</p>
+                <p>{circleCheckIcon}Input and output</p>
+              </div>
+              <div className='list-right'>
+                <p>{circleCheckIcon}Conditional branching</p>
+                <p>{circleCheckIcon}8+ more lessons</p>
+              </div>
+            </div>
+            <Button cx='start-course'>Start Course</Button>
           </div>
         </section>
         <section className='courses-cards'>
@@ -116,8 +129,8 @@ const Home = () => {
             </div>
             <h6>FRONT END</h6>
             <h5>HTML 5 Web Component Fundamentals</h5>
-            <div className='level'>{userIcon} Beginner</div>
-            <div className='duration'>{hourglassIcon} 2h 24m</div>
+            <div className='level'>{userIcon}Beginner</div>
+            <div className='duration'>{hourglassIcon}2h 24m</div>
           </div>
           <div className='card'>
             <div className='card-img'>
@@ -125,7 +138,7 @@ const Home = () => {
             </div>
             <h6>FRONT END</h6>
             <h5>Mastering CSS 3 Flexbox With Real World Projects</h5>
-            <div className='level'>{userIcon} Beginner</div>
+            <div className='level'>{userIcon}Beginner</div>
             <div className='duration'>{hourglassIcon} 3h 18m</div>
           </div>
           <div className='card'>
@@ -134,7 +147,7 @@ const Home = () => {
             </div>
             <h6>FRONT END</h6>
             <h5>Full Stack Web Development with React Hooks and Redux</h5>
-            <div className='level'>{userIcon} Intermediate</div>
+            <div className='level'>{userIcon}Intermediate</div>
             <div className='duration'>{hourglassIcon} 4h 36m</div>
           </div>
         </section>
