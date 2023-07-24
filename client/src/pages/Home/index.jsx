@@ -127,28 +127,40 @@ const Home = () => {
             <div className='card-img'>
               <img src={computer2} alt='computer2' />
             </div>
-            <h6>FRONT END</h6>
-            <h5>HTML 5 Web Component Fundamentals</h5>
-            <div className='level'>{userIcon}Beginner</div>
-            <div className='duration'>{hourglassIcon}2h 24m</div>
+            <div className='card-content'>
+              <h6>FRONT END</h6>
+              <h5>HTML 5 Web Component Fundamentals</h5>
+              <div className='level-and-duration'>
+                <div className='level'>{userIcon}Beginner</div>
+                <div className='duration'>{hourglassIcon}2h 24m</div>
+              </div>
+            </div>
           </div>
           <div className='card'>
             <div className='card-img'>
               <img src={computer3} alt='computer3' />
             </div>
-            <h6>FRONT END</h6>
-            <h5>Mastering CSS 3 Flexbox With Real World Projects</h5>
-            <div className='level'>{userIcon}Beginner</div>
-            <div className='duration'>{hourglassIcon} 3h 18m</div>
+            <div className='card-content'>
+              <h6>FRONT END</h6>
+              <h5>Mastering CSS 3 Flexbox With Real World Projects</h5>
+              <div className='level-and-duration'>
+                <div className='level'>{userIcon}Beginner</div>
+                <div className='duration'>{hourglassIcon}3h 18m</div>
+              </div>
+            </div>
           </div>
           <div className='card'>
             <div className='card-img'>
               <img src={computer4} alt='computer4' />
             </div>
-            <h6>FRONT END</h6>
-            <h5>Full Stack Web Development with React Hooks and Redux</h5>
-            <div className='level'>{userIcon}Intermediate</div>
-            <div className='duration'>{hourglassIcon} 4h 36m</div>
+            <div className='card-content'>
+              <h6>FRONT END</h6>
+              <h5>Full Stack Web Development with React Hooks and Redux</h5>
+              <div className='level-and-duration'>
+                <div className='level'>{userIcon}Intermediate</div>
+                <div className='duration'>{hourglassIcon}4h 36m</div>
+              </div>
+            </div>
           </div>
         </section>
         <section className='role-intro'>

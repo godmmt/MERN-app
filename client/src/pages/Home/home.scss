@@ -144,6 +144,46 @@
         }
       }
     }
+    .courses-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .card {
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+          rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+        flex: 1 1 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .card-img {
+          align-self: center;
+          img {
+            width: 100%;
+            max-width: 25rem;
+            border-radius: 1rem;
+          }
+        }
+        .card-content {
+          padding: 1rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          .level-and-duration {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0;
+            > div {
+              flex-grow: 1;
+            }
+          }
+        }
+      }
+    }
     .role-intro {
       background-color: $background-gray;
       padding: 0.5rem;
@@ -188,9 +228,11 @@
 }
 .user-icon {
   color: $primary-yellow;
+  margin: 0 0.5rem 0 0;
 }
 .hourglass-icon {
   color: $font-color;
+  margin: 0 0.5rem 0 0;
 }
 
 @keyframes typing {
