@@ -6,6 +6,7 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
+import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
 import Button from 'components/Button';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
@@ -33,6 +34,7 @@ const userIcon = <FontAwesomeIcon icon={faUser} className='user-icon' />;
 const hourglassIcon = (
   <FontAwesomeIcon icon={faHourglassHalf} className='hourglass-icon' />
 );
+const rightArrowIcon = <FontAwesomeIcon icon={faCircleRight} />;
 
 const Home = () => {
   const navigate = useNavigate();
@@ -91,7 +93,7 @@ const Home = () => {
           </div>
           <div className='feedback-content'>
             <h6>WHAT OUR HAPPY STUDENT SAY</h6>
-            <p>
+            <h5>
               I found this tutorial website to be very user-friendly and it has
               been incredibly helpful for me. The step-by-step instructions and
               clear explanations have made it easy for me to grasp complex
@@ -99,7 +101,17 @@ const Home = () => {
               allowed me to learn and explore different areas of interest.
               Overall, this website has been an invaluable resource for my
               learning journey.
-            </p>
+            </h5>
+            <div className='feedback-content-footer'>
+              <div className='left'>
+                <div className='feedback-name'>Elena Miles</div>
+                <div className='role'>Student</div>
+              </div>
+              <div className='right'>
+                <div>Read All Reviews</div>
+                <div>{rightArrowIcon}</div>
+              </div>
+            </div>
           </div>
         </section>
         <section className='featured-course'>

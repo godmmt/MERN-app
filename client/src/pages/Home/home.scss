@@ -92,15 +92,34 @@
         flex: 1 1 30rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        gap: 1.5rem;
+
         h6 {
-          font-weight: 800;
+          letter-spacing: 0.2rem;
+          font-size: 0.75rem;
           margin: 0 0 1rem 0;
         }
-        p {
-          color: $font-color;
-          font-size: 1.75rem;
-          line-height: 2.25rem;
+        h5 {
+          line-height: 2rem;
+        }
+        .feedback-content-footer {
+          display: flex;
+          justify-content: space-between;
+          .left {
+            .feedback-name {
+              font-size: 1.15rem;
+              font-weight: 600;
+              padding: 0 0 0.75rem 0;
+            }
+            .role {
+              color: $font-color;
+            }
+          }
+          .right {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+          }
         }
       }
     }
@@ -124,6 +143,7 @@
         line-height: 2rem;
         h6 {
           letter-spacing: 0.2rem;
+          font-size: 0.75rem;
         }
         h2 {
           line-height: 3rem;
@@ -223,6 +243,9 @@
 .hourglass-icon {
   color: $font-color;
   margin: 0 0.5rem 0 0;
+}
+.rightArrowIcon {
+  color: $primary-black;
 }
 
 @keyframes typing {
