@@ -19,6 +19,10 @@ import computer from 'assets/images/computer.jpg';
 import computer2 from 'assets/images/computer2.jpg';
 import computer3 from 'assets/images/computer3.jpg';
 import computer4 from 'assets/images/computer4.jpg';
+import user1 from 'assets/images/user1.jpg';
+import user2 from 'assets/images/user2.jpg';
+import user3 from 'assets/images/user3.jpg';
+import user4 from 'assets/images/user4.jpg';
 import './home.scss';
 
 const circleIcon = <FontAwesomeIcon icon={faCircle} className='circle-icon' />;
@@ -160,6 +164,58 @@ const Home = () => {
                 <div className='level'>{userIcon}Intermediate</div>
                 <div className='duration'>{hourglassIcon}4h 36m</div>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className='testimonial'>
+          <div className='testimonial-head'>
+            <h6>TESTIMONIALS</h6>
+            <h2>Trusted by Thousand of Students and Tutors</h2>
+            <Button>Start Learning</Button>
+          </div>
+          <div className='testimonial-carousel'>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user1} alt='user1' />
+              </div>
+              <p>
+                "Through this online course platform, I've learned programming
+                and grown immensely. Grateful for the invaluable knowledge
+                gained."
+              </p>
+              <div>EMMA HART</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user2} alt='user2' />
+              </div>
+              <p>
+                "This website has guided me on my React learning journey, ending
+                my confusion and uncertainty. Grateful for the clarity it
+                provided."
+              </p>
+              <div>LEE JI EUN</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user3} alt='user3' />
+              </div>
+              <p>
+                "As a new PM in the software industry, this website has been
+                instrumental in expanding my knowledge of software-related
+                topics."
+              </p>
+              <div>JUSTIN DOE</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user4} alt='user4' />
+              </div>
+              <p>
+                "This website enlightened me on the inner workings of computers.
+                Many courses here are worth having, truly valuable."
+              </p>
+              <div>MIKE EDWARD</div>
             </div>
           </div>
         </section>
