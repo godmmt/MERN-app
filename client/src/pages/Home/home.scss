@@ -57,6 +57,10 @@
     }
   }
   .content-container {
+    background-image: url('https://websitedemos.net/online-coding-course-02/wp-content/uploads/sites/713/2020/10/online-coding-course-dots-bg.png');
+    // background-position: top right;
+    background-repeat: no-repeat;
+
     width: min(85%, 1200px);
     display: flex;
     flex-direction: column;
@@ -165,11 +169,16 @@
       }
     }
     .courses-cards {
+      background-image: url('https://websitedemos.net/online-coding-course-02/wp-content/uploads/sites/713/2020/10/online-coding-course-dots-bg.png');
+      background-position: top right;
+      background-repeat: no-repeat;
+      padding: 5rem 0 0 0;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
 
       .card {
+        background-color: #fff;
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
           rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -177,7 +186,6 @@
         flex: 1 1 15rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
 
         .card-img {
           align-self: center;
@@ -191,7 +199,7 @@
           padding: 1rem 1.5rem;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.5rem;
 
           .level-and-duration {
             display: flex;
@@ -206,7 +214,12 @@
     }
     .testimonial {
       padding: 0 2rem 6rem 2rem;
-
+      .testimonial-head {
+        h6 {
+          letter-spacing: 0.2rem;
+          font-size: 0.75rem;
+        }
+      }
       .testimonial-carousel {
         display: flex;
         flex-wrap: wrap;
@@ -276,4 +289,10 @@
 .slick-prev:before,
 .slick-next:before {
   color: $primary-blue;
+}
+
+@media screen and (max-width: 900px) {
+  .courses-cards {
+    flex-direction: column;
+  }
 }
