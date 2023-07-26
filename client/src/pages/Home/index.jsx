@@ -24,6 +24,10 @@ import user1 from 'assets/images/user1.jpg';
 import user2 from 'assets/images/user2.jpg';
 import user3 from 'assets/images/user3.jpg';
 import user4 from 'assets/images/user4.jpg';
+import user5 from 'assets/images/user5.jpg';
+import user6 from 'assets/images/user6.jpg';
+import user7 from 'assets/images/user7.jpg';
+import user8 from 'assets/images/user8.jpg';
 import './home.scss';
 
 const circleIcon = <FontAwesomeIcon icon={faCircle} className='circle-icon' />;
@@ -191,9 +195,11 @@ const Home = () => {
                 <img src={user1} alt='user1' />
               </div>
               <p>
-                "Through this online course platform, I've learned programming
-                and grown immensely. Grateful for the invaluable knowledge
-                gained."
+                This website has been an invaluable resource in my journey to
+                learn HTML, CSS, and JavaScript. It has provided me with
+                comprehensive tutorials and practical examples, making the
+                learning process efficient and enjoyable. Grateful for the
+                knowledge gained here!
               </p>
               <div>EMMA HART</div>
             </div>
@@ -202,20 +208,22 @@ const Home = () => {
                 <img src={user2} alt='user2' />
               </div>
               <p>
-                "This website has guided me on my React learning journey, ending
-                my confusion and uncertainty. Grateful for the clarity it
-                provided."
+                This website has been a guiding light on my journey to learn
+                React. It has provided me with clarity and direction, making the
+                learning process enjoyable and rewarding. Grateful for the
+                valuable resources and support!
               </p>
-              <div>LEE JI EUN</div>
+              <div>ISABELLA BROWN</div>
             </div>
             <div className='testimonial-card'>
               <div className='testimonial-card-img'>
                 <img src={user3} alt='user3' />
               </div>
               <p>
-                "As a new PM in the software industry, this website has been
-                instrumental in expanding my knowledge of software-related
-                topics."
+                As a new PM in the software industry, this website has been an
+                invaluable resource in deepening my understanding of
+                software-related topics and equipping me with essential
+                knowledge for my role.
               </p>
               <div>JUSTIN DOE</div>
             </div>
@@ -224,10 +232,58 @@ const Home = () => {
                 <img src={user4} alt='user4' />
               </div>
               <p>
-                "This website enlightened me on the inner workings of computers.
-                Many courses here are worth having, truly valuable."
+                This exceptional website has provided me with invaluable
+                insights into the intricate workings of computers. With a wide
+                array of courses to choose from, each worth having, it has been
+                an enlightening journey of learning and growth.
               </p>
               <div>MIKE EDWARD</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user5} alt='user5' />
+              </div>
+              <p>
+                I love this website! It's perfect for a 10-year-old like me.
+                With my parents' guidance, I choose exciting courses that make
+                learning super fun!
+              </p>
+              <div>LILY ANDERSON</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user6} alt='user6' />
+              </div>
+              <p>
+                This website is amazing! It sparks my coding curiosity with a
+                wide range of courses I adore exploring. Learning here is fun
+                and empowers my coding journey!
+              </p>
+              <div>JACKSON SMITH</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user7} alt='user7' />
+              </div>
+              <p>
+                This platform is a game-changer! As a career transitioner, I've
+                gained invaluable guidance here. The diverse courses let me
+                explore and discover the perfect programming language for me.
+              </p>
+              <div>EMILY JONES</div>
+            </div>
+            <div className='testimonial-card'>
+              <div className='testimonial-card-img'>
+                <img src={user8} alt='user8' />
+              </div>
+              <p>
+                I found my passion here, never thought learning a programming
+                language could be so fun and effortless. This platform offers a
+                wide range of courses that cater to all levels, allowing me to
+                explore and discover my interests. It's truly an amazing
+                experience!
+              </p>
+              <div>JAMES TAYLOR</div>
             </div>
           </div>
         </section>
