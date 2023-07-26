@@ -72,8 +72,9 @@ const Home = () => {
   const handleClickAllCourses = () => {
     navigate('/all-courses');
   };
-  const handleClickHome = () => {
-    navigate('/');
+  const handleClickToTop = () => {
+    // 導航到當前頁面的頂部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -89,7 +90,7 @@ const Home = () => {
               coding potential.
             </p>
             <div className='action'>
-              <Button>Start Course</Button>
+              <Button onClick={handleClickToTop}>Start Course</Button>
               <Button onClick={handleClickAllCourses}>View All Courses</Button>
             </div>
           </div>
@@ -141,7 +142,7 @@ const Home = () => {
                 <div className='feedback-name'>Elena Miles</div>
                 <div className='role'>Student</div>
               </div>
-              <div className='right' onClick={handleClickHome}>
+              <div className='right' onClick={handleClickToTop}>
                 <div>Read All Reviews</div>
                 <div>{rightArrowIcon}</div>
               </div>
@@ -215,9 +216,13 @@ const Home = () => {
         </section>
         <section className='testimonial'>
           <div className='testimonial-head'>
-            <h6>TESTIMONIALS</h6>
-            <h2>Trusted by Thousand of Students and Tutors</h2>
-            <Button>Start Learning</Button>
+            <div className='testimonial-head-left'>
+              <h6>TESTIMONIALS</h6>
+              <h2>Trusted by Thousand of Students and Tutors</h2>
+            </div>
+            <div className='testimonial-head-right'>
+              <Button>Start Learning</Button>
+            </div>
           </div>
           <Slider {...settings} className='testimonial-carousel'>
             <div className='testimonial-card'>

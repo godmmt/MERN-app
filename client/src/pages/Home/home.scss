@@ -241,10 +241,29 @@
     }
     .testimonial {
       padding: 0 2rem 6rem 2rem;
+
       .testimonial-head {
-        h6 {
-          letter-spacing: 0.2rem;
-          font-size: 0.75rem;
+        display: flex;
+        padding: 0 0 1.25rem 0;
+
+        .testimonial-head-left {
+          flex: 1 1 0;
+          h6 {
+            letter-spacing: 0.2rem;
+            font-size: 0.75rem;
+            color: $primary-yellow;
+            padding: 1rem 0;
+          }
+          h2 {
+            line-height: 3rem;
+          }
+        }
+        .testimonial-head-right {
+          flex: 1 1 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-end;
         }
       }
       .testimonial-carousel {
