@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    padding: 10rem 0;
+    padding: 10rem 0.2rem;
 
     .introduction {
       @include flex-center;
@@ -272,6 +272,7 @@
   }
 }
 
+// React Slick settings for Arrow icons
 .slick-prev:before,
 .slick-next:before {
   color: $primary-blue;
