@@ -205,6 +205,8 @@
       }
     }
     .testimonial {
+      padding: 0 2rem 6rem 2rem;
+
       .testimonial-carousel {
         display: flex;
         flex-wrap: wrap;
@@ -268,4 +270,9 @@
   100% {
     border-right-color: transparent;
   }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: $primary-blue;
 }

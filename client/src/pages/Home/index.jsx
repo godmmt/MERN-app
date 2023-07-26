@@ -1,5 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// React Slick
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +49,29 @@ const Home = () => {
   const navigate = useNavigate();
   const handleClickAllCourses = () => {
     navigate('/all-courses');
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2, // 頁面顯示數目
+    slidesToScroll: 1, // 一次滾動數目
+    autoplay: true,
+    autoplaySpeed: 5000,
+    nextArrow: <div style={{ display: 'block', background: 'red' }} />,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -189,7 +217,7 @@ const Home = () => {
             <h2>Trusted by Thousand of Students and Tutors</h2>
             <Button>Start Learning</Button>
           </div>
-          <div className='testimonial-carousel'>
+          <Slider {...settings} className='testimonial-carousel'>
             <div className='testimonial-card'>
               <div className='testimonial-card-img'>
                 <img src={user1} alt='user1' />
@@ -285,7 +313,7 @@ const Home = () => {
               </p>
               <div>JAMES TAYLOR</div>
             </div>
-          </div>
+          </Slider>
         </section>
       </div>
     </main>
