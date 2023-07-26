@@ -43,35 +43,37 @@ const userIcon = <FontAwesomeIcon icon={faUser} className='user-icon' />;
 const hourglassIcon = (
   <FontAwesomeIcon icon={faHourglassHalf} className='hourglass-icon' />
 );
-const rightArrowIcon = <FontAwesomeIcon icon={faCircleRight} />;
+const rightArrowIcon = (
+  <FontAwesomeIcon icon={faCircleRight} className='right-arrow-icon' />
+);
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 2, // 頁面顯示數目
+  slidesToScroll: 1, // 一次滾動數目
+  autoplay: true,
+  autoplaySpeed: 5000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+  ],
+};
 
 const Home = () => {
   const navigate = useNavigate();
   const handleClickAllCourses = () => {
     navigate('/all-courses');
   };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2, // 頁面顯示數目
-    slidesToScroll: 1, // 一次滾動數目
-    autoplay: true,
-    autoplaySpeed: 5000,
-    nextArrow: <div style={{ display: 'block', background: 'red' }} />,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-    ],
+  const handleClickHome = () => {
+    navigate('/');
   };
 
   return (
@@ -139,7 +141,7 @@ const Home = () => {
                 <div className='feedback-name'>Elena Miles</div>
                 <div className='role'>Student</div>
               </div>
-              <div className='right'>
+              <div className='right' onClick={handleClickHome}>
                 <div>Read All Reviews</div>
                 <div>{rightArrowIcon}</div>
               </div>
