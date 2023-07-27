@@ -46,11 +46,6 @@
       h1 {
         font-size: $font-size-h1;
         margin-bottom: 2rem;
-        // overflow: hidden;
-        // white-space: nowrap;
-        // border-right: 2px solid;
-        // width: 0;
-        // animation: typing 1.5s steps(30, end) forwards, blinking 1s infinite;
       }
 
       p {
@@ -77,10 +72,6 @@
     }
   }
   .content-container {
-    background-image: url('https://websitedemos.net/online-coding-course-02/wp-content/uploads/sites/713/2020/10/online-coding-course-dots-bg.png');
-    // background-position: top right;
-    background-repeat: no-repeat;
-
     width: min(85%, 1200px);
     display: flex;
     flex-direction: column;
@@ -89,10 +80,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      padding: 3rem 0 0 0;
+      padding: 2rem 0 0 0;
       div {
         @include flex-center;
-        padding: 1.5rem 1rem;
+        padding: 0.5rem;
       }
     }
     .feedback {
@@ -100,16 +91,17 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 1rem;
+      background-image: url('../../assets/images/dot-bg.png');
+      background-position: top left;
+      background-repeat: no-repeat;
+
       .feedback-photo {
         flex: 1 1 15rem;
         text-align: center;
 
         img {
           width: 100%;
-          max-width: 25rem;
-          border-radius: 50%;
-          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-            rgba(0, 0, 0, 0.22) 0px 10px 10px;
+          max-width: 20rem;
         }
       }
       .feedback-content {
@@ -196,7 +188,7 @@
       }
     }
     .courses-cards {
-      background-image: url('https://websitedemos.net/online-coding-course-02/wp-content/uploads/sites/713/2020/10/online-coding-course-dots-bg.png');
+      background-image: url('../../assets/images/dot-bg.png');
       background-position: top right;
       background-repeat: no-repeat;
       padding: 5rem 0 0 0;
@@ -240,14 +232,16 @@
       }
     }
     .testimonial {
-      padding: 0 2rem 6rem 2rem;
+      padding: 0 0 3rem 0;
 
       .testimonial-head {
         display: flex;
         padding: 0 0 1.25rem 0;
+        flex-wrap: wrap;
+        gap: 2rem;
 
         .testimonial-head-left {
-          flex: 1 1 0;
+          flex: 1 1 20rem;
           h6 {
             letter-spacing: 0.2rem;
             font-size: 0.75rem;
@@ -259,7 +253,7 @@
           }
         }
         .testimonial-head-right {
-          flex: 1 1 0;
+          flex: 1 1 20rem;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -269,9 +263,20 @@
       .testimonial-carousel {
         display: flex;
         flex-wrap: wrap;
+
+        // React Slick settings for Arrow icons
+        .slick-prev:before,
+        .slick-next:before {
+          color: $primary-blue;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+
         .testimonial-card {
           max-width: 35rem;
-          padding: 2rem;
+          padding: 1rem;
           .testimonial-card-img {
             img {
               border-radius: 1rem;
@@ -279,7 +284,7 @@
             }
           }
           p {
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             font-size: 1.05rem;
             line-height: 2rem;
             font-weight: 600;
@@ -288,14 +293,27 @@
       }
     }
   }
-}
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
+  .subscription {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    background-image: url('../../assets/images/subscribe-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15rem;
     width: 100%;
+    color: $primary-white;
+
+    input {
+      border: none;
+      outline: none;
+      border-radius: 1rem;
+      height: 2rem;
+      padding: 0 1rem;
+      width: min(70%, 25rem);
+    }
   }
 }
 
@@ -309,12 +327,6 @@
   100% {
     border-right-color: transparent;
   }
-}
-
-// React Slick settings for Arrow icons
-.slick-prev:before,
-.slick-next:before {
-  color: $primary-blue;
 }
 
 @media screen and (max-width: 900px) {
