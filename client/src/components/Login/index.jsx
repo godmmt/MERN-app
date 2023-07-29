@@ -1,19 +1,19 @@
-import { ROUTER_PATH } from 'App';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ROUTER_PATH } from 'App';
 import AuthService from 'services/auth.service';
+import Button from 'components/Button';
+import './login.scss';
 
-const Login = ({ setCurrentUser, handleCloseLoginModal }) => {
-  const navigate = useNavigate();
-
+const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
-
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -34,38 +34,33 @@ const Login = ({ setCurrentUser, handleCloseLoginModal }) => {
   };
 
   return (
-    <div style={{ padding: '3rem' }} className='col-md-12'>
-      <div>
-        {message && (
-          <div className='alert alert-danger' role='alert'>
-            {message}
-          </div>
-        )}
-        <div className='form-group'>
-          <label htmlFor='username'>Email</label>
+    <div className='login-content'>
+      <h1>Login</h1>
+      <main>
+        <div className='inputs'>
           <input
             onChange={handleChangeEmail}
             type='text'
-            className='form-control'
             name='email'
+            placeholder='Email'
           />
-        </div>
-        <br />
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
           <input
             onChange={handleChangePassword}
             type='password'
-            className='form-control'
             name='password'
+            placeholder='Password'
           />
         </div>
-        <br />
-        <div className='form-group'>
-          <button onClick={handleLogin} className='btn btn-primary btn-block'>
-            <span>Login</span>
-          </button>
+        {message && <div className='alert'>{message}</div>}
+        <div className='forgot-password'>
+          <span>Forgot your password?</span>
         </div>
+        <Button cx='login-btn' onClick={handleLogin}>
+          Login
+        </Button>
+      </main>
+      <div className='click-sign-up'>
+        <span onClick={() => setHasAccount(false)}>Click to sign up!</span>
       </div>
     </div>
   );

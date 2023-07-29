@@ -5,7 +5,7 @@ const Modal = ({ onClose, children }) => {
   return (
     <div className='modal-backdrop' onClick={onClose}>
       <div
-        className='modal-container'
+        className='modal-content'
         onClick={(event) => event.stopPropagation()}
       >
         {children}

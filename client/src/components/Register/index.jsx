@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
+import Button from 'components/Button';
+import './register.scss';
 
-const Register = () => {
-  const navigate = useNavigate();
-  let [username, setUsername] = useState(''); // Wilson用let
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
-  let [role, setRole] = useState('');
-  let [message, setMessage] = useState('');
+const Register = ({ setHasAccount, handleCloseLoginModal }) => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleChangeUsername = (e) => {
-    // onChange是一個EventListener,可以用e.target
     setUsername(e.target.value);
   };
+  // onChange是一個EventListener,可以用e.target
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -23,67 +23,62 @@ const Register = () => {
   const handleChangeRole = (e) => {
     setRole(e.target.value);
   };
-  const handleRegister = () => {
-    AuthService.register(username, email, password, role)
-      .then(() => {
-        window.alert(
-          'Registration succeeds. You are now redirected to the login page.'
-        );
-        navigate('/login');
-      })
-      .catch((error) => {
-        console.log(error.response);
-        setMessage(error.response.data);
-      });
+
+  const handleRegister = async () => {
+    try {
+      await AuthService.register(username, email, password, role);
+      window.alert(
+        'Registration succeeds. You are now redirected to the login page.'
+      );
+      // navigate(ROUTER_PATH.home);
+      setHasAccount(true);
+    } catch (error) {
+      console.log(error.response);
+      setMessage(error.response.data);
+    }
   };
 
   return (
-    <div style={{ padding: '3rem' }} className='col-md-12'>
-      <div>
-        {message && <div className='alert alert-danger'>{message}</div>}
-        <div>
-          <label htmlFor='username'>Username</label>
+    <div className='register-content'>
+      <h1>Register</h1>
+      <main>
+        <div className='inputs'>
           <input
             onChange={handleChangeUsername}
             type='text'
-            className='form-control'
             name='username'
+            placeholder='Username'
           />
-        </div>
-        <br />
-        <div className='form-group'>
-          <label htmlFor='email'>email</label>
           <input
             onChange={handleChangeEmail}
             type='text'
-            className='form-control'
             name='email'
+            placeholder='Email'
           />
-        </div>
-        <br />
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
           <input
             onChange={handleChangePassword}
             type='password'
-            className='form-control'
             name='password'
+            placeholder='Password'
           />
+          <select name='role' onChange={handleChangeRole}>
+            <option disabled selected>
+              Choose your role:
+            </option>
+            <option value='student'>Student</option>
+            <option value='instructor'>Instructor</option>
+          </select>
         </div>
-        <br />
-        <div className='form-group'>
-          <label htmlFor='password'>role</label>
-          <input
-            onChange={handleChangeRole}
-            type='text'
-            className='form-control'
-            name='role'
-          />
-        </div>
-        <br />
-        <button onClick={handleRegister} className='btn btn-primary'>
-          <span>Register</span>
-        </button>
+
+        {message && <div className='alert'>{message}</div>}
+
+        <Button cx='register-btn' onClick={handleRegister}>
+          Register
+        </Button>
+      </main>
+
+      <div className='click-login'>
+        <span onClick={() => setHasAccount(true)}>Click to login!</span>
       </div>
     </div>
   );
