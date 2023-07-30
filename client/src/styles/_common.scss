@@ -7,7 +7,6 @@ $primary-red: hsl(357, 69%, 51%);
 $primary-yellow: hsl(39, 76%, 54%);
 
 // secondary color (increase the brightness for the primary color)
-$secondary-green: hsl(153, 97%, 42%);
 $secondary-blue: hsl(213, 68%, 57%);
 $secondary-red: hsl(357, 68%, 64%);
 $secondary-yellow: hsl(39, 76%, 70%);
@@ -17,7 +16,10 @@ $background-blue: rgba(36, 105, 188, 0.504);
 $background-black: rgba(0, 0, 0, 0.7);
 $background-gray: rgb(219, 219, 219);
 
-// font color (darker)
+// btn color
+$btn-gray: rgb(175, 175, 175);
+
+// font color
 $font-color: rgb(85, 85, 85);
 $font-color-light: rgb(128, 128, 128);
 
