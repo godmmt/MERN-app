@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEye,
+  faEyeSlash,
+  faCircleXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
 
 const Register = ({ setHasAccount, handleCloseLoginModal }) => {
@@ -9,6 +16,11 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
 
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -30,7 +42,6 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
       window.alert(
         'Registration succeeds. You are now redirected to the login page.'
       );
-      // navigate(ROUTER_PATH.home);
       setHasAccount(true);
     } catch (error) {
       console.log(error.response);
@@ -41,6 +52,13 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
   return (
     <div className='register-content'>
       <h1>Register</h1>
+
+      <FontAwesomeIcon
+        onClick={handleCloseLoginModal}
+        icon={faCircleXmark}
+        className='close-icon fa-2xl'
+      />
+
       <main>
         <div className='inputs'>
           <input
@@ -55,12 +73,20 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
             name='email'
             placeholder='Email'
           />
-          <input
-            onChange={handleChangePassword}
-            type='password'
-            name='password'
-            placeholder='Password'
-          />
+          <div className='input-password'>
+            <input
+              onChange={handleChangePassword}
+              type={isPasswordVisible ? 'text' : 'password'}
+              name='password'
+              placeholder='Password'
+            />
+            <FontAwesomeIcon
+              icon={isPasswordVisible ? faEye : faEyeSlash}
+              className='eye-icon'
+              onClick={togglePasswordVisibility}
+            />
+          </div>
+
           <select name='role' onChange={handleChangeRole}>
             <option disabled selected>
               Choose your role:

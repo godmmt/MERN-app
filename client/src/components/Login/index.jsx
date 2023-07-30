@@ -3,13 +3,26 @@ import { useNavigate } from 'react-router';
 import { ROUTER_PATH } from 'App';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEye,
+  faEyeSlash,
+  faCircleXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import './login.scss';
 
 const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -36,6 +49,12 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
   return (
     <div className='login-content'>
       <h1>Login</h1>
+      <FontAwesomeIcon
+        onClick={handleCloseLoginModal}
+        icon={faCircleXmark}
+        className='close-icon fa-2xl'
+      />
+
       <main>
         <div className='inputs'>
           <input
@@ -44,12 +63,19 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
             name='email'
             placeholder='Email'
           />
-          <input
-            onChange={handleChangePassword}
-            type='password'
-            name='password'
-            placeholder='Password'
-          />
+          <div className='input-password'>
+            <input
+              onChange={handleChangePassword}
+              type={isPasswordVisible ? 'text' : 'password'}
+              name='password'
+              placeholder='Password'
+            />
+            <FontAwesomeIcon
+              icon={isPasswordVisible ? faEye : faEyeSlash}
+              className='eye-icon'
+              onClick={togglePasswordVisibility}
+            />
+          </div>
         </div>
         {message && <div className='alert'>{message}</div>}
         <div className='forgot-password'>

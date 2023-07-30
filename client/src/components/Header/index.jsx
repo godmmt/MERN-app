@@ -28,7 +28,7 @@ const Header = ({ currentUser, setCurrentUser }) => {
 
   const handleCloseLoginModal = () => {
     setIsModalOpen(false);
-    setHasAccount(true);
+    // setHasAccount(true);
   };
 
   return (

@@ -1,11 +1,18 @@
 @import '../../styles/';
 
 .login-content {
-  color: $secondary-blue;
+  color: $primary-blue;
+  position: relative;
 
   h1 {
-    padding: 1rem;
-    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+  .close-icon {
+    position: absolute;
+    top: 1.25rem;
+    right: 1rem;
+    color: $font-color-light;
+    cursor: pointer;
   }
 
   main {
@@ -35,15 +42,29 @@
           outline-color: $primary-blue;
         }
         &::placeholder {
-          color: $secondary-blue;
+          color: $primary-blue;
           opacity: 100;
+        }
+      }
+      .input-password {
+        position: relative;
+        input {
+          width: 100%;
+        }
+        .eye-icon {
+          cursor: pointer;
+          padding: 0.5rem;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
         }
       }
     }
 
     .alert {
       color: $primary-red;
-      margin: 1rem 0;
+      margin: 0.5rem 0;
       font-weight: 800;
     }
 
@@ -65,6 +86,7 @@
   }
 
   .click-sign-up {
+    color: $secondary-blue;
     text-align: center;
     padding: 1.5rem;
     span {

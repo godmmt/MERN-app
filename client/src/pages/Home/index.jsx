@@ -7,11 +7,18 @@ import 'slick-carousel/slick/slick-theme.css';
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
-import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
+// solid-svg-icons
+import {
+  faCircle,
+  faCircleCheck,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
+// regular-svg-icons
+import {
+  faHourglassHalf,
+  faCircleRight,
+} from '@fortawesome/free-regular-svg-icons';
+
 import Button from 'components/Button';
 import { ROUTER_PATH } from 'App';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
