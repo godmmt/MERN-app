@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import aboutVideo1 from 'assets/video/about-video1.mp4';
+import Button from 'components/Button';
 import { instructorCards } from 'config/about.config';
 import './about.scss';
 
@@ -78,6 +79,13 @@ const About = () => {
             </div>
           ))}
         </div>
+      </section>
+      <section className='subscription'>
+        <div>SUBSCRIBE</div>
+        <h3>All Access Membership</h3>
+        <p>Unleash the Secrets of Knowledge, Subscribe to our Newsletter!</p>
+        <input type='text' placeholder='Please enter your email' />
+        <Button>Subscribe & Save</Button>
       </section>
     </main>
   );
