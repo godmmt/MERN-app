@@ -8,7 +8,7 @@ const Navbar = ({
   currentUser,
   setCurrentUser,
   setIsModalOpen,
-  setIsOpenMenu,
+  setIsMenuOpen,
 }) => {
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Navbar = ({
   };
 
   const handleCloseMenu = () => {
-    setIsOpenMenu(false);
+    setIsMenuOpen(false);
   };
 
   return (

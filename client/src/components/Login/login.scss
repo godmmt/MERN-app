@@ -1,0 +1,96 @@
+@import '../../styles/';
+
+.login-content {
+  color: $primary-blue;
+  position: relative;
+
+  h1 {
+    padding: 1rem 1.5rem;
+  }
+  .close-icon {
+    position: absolute;
+    top: 1.25rem;
+    right: 1rem;
+    color: $btn-gray;
+    cursor: pointer;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+
+    border: 2px solid $primary-white;
+    border-left: none;
+    border-right: none;
+    padding: 1.5rem;
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+
+      input {
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0 0.5rem;
+        height: 2.75rem;
+        background-color: $primary-white;
+        &:focus {
+          outline-color: $primary-blue;
+        }
+        &::placeholder {
+          color: $primary-blue;
+          opacity: 100;
+        }
+      }
+      .input-password {
+        position: relative;
+        input {
+          width: 100%;
+        }
+        .eye-icon {
+          cursor: pointer;
+          padding: 0.5rem;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+
+    .alert {
+      color: $primary-red;
+      margin: 0.5rem 0;
+      font-weight: 800;
+    }
+
+    .forgot-password {
+      color: $secondary-blue;
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .login-btn {
+      width: 100%;
+      height: 2.75rem;
+      border-radius: 0.25rem;
+      box-shadow: none;
+      background-color: $secondary-blue;
+      color: $primary-white;
+    }
+  }
+
+  .click-sign-up {
+    color: $secondary-blue;
+    text-align: center;
+    padding: 1.5rem;
+    span {
+      cursor: pointer;
+    }
+  }
+}

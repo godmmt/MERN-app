@@ -3,30 +3,32 @@ import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'components/Modal';
 import Login from 'components/Login';
+import Register from 'components/Register';
 import Navbar from './Navbar';
+import { ROUTER_PATH } from 'App';
 import logo from 'assets/images/logo.png';
 import burgerMenu from 'assets/images/burger-menu.svg';
 import close from 'assets/images/close.svg';
 import './header.scss';
 
-const Header = (props) => {
-  let { currentUser, setCurrentUser } = props;
-
+const Header = ({ currentUser, setCurrentUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
 
   const navigate = useNavigate();
 
   const handleGoToHome = () => {
-    navigate('/');
+    navigate(ROUTER_PATH.home);
   };
 
   const handleToggleMenu = () => {
-    setIsOpenMenu((prev) => !prev);
+    setIsMenuOpen((prev) => !prev);
   };
 
   const handleCloseLoginModal = () => {
     setIsModalOpen(false);
+    setHasAccount(true);
   };
 
   return (
@@ -40,30 +42,38 @@ const Header = (props) => {
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
         setIsModalOpen={setIsModalOpen}
-        setIsOpenMenu={setIsOpenMenu}
+        setIsMenuOpen={setIsMenuOpen}
       />
 
       <div className='hamburger-menu' onClick={handleToggleMenu}>
-        <img src={isOpenMenu ? close : burgerMenu} alt='hamburger-menu' />
+        <img src={isMenuOpen ? close : burgerMenu} alt='hamburger-menu' />
       </div>
 
-      {isOpenMenu && (
+      {isMenuOpen && (
         <Navbar
           type='mobile'
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           setIsModalOpen={setIsModalOpen}
-          setIsOpenMenu={setIsOpenMenu}
+          setIsMenuOpen={setIsMenuOpen}
         />
       )}
 
       {isModalOpen &&
         createPortal(
           <Modal onClose={handleCloseLoginModal}>
-            <Login
-              setCurrentUser={setCurrentUser}
-              handleCloseLoginModal={handleCloseLoginModal}
-            />
+            {hasAccount ? (
+              <Login
+                setCurrentUser={setCurrentUser}
+                handleCloseLoginModal={handleCloseLoginModal}
+                setHasAccount={setHasAccount}
+              />
+            ) : (
+              <Register
+                setHasAccount={setHasAccount}
+                handleCloseLoginModal={handleCloseLoginModal}
+              />
+            )}
           </Modal>,
           document.body
         )}
