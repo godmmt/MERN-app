@@ -1,5 +1,150 @@
 @import '../../styles';
 
 .about {
-  font-size: 10rem;
+  .banner {
+    background-image: url('../../assets/images/banner-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 8.5rem 2.5rem 0 2.5rem;
+
+    .introduction {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      // gap: 3rem;
+      color: $primary-white;
+      h1 {
+        padding: 0 0 2.5rem 0;
+        letter-spacing: 0.1rem;
+      }
+      p {
+        padding: 0 7.5rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.05rem;
+      }
+      .video-container {
+        position: relative;
+        bottom: -3rem;
+        video {
+          width: 70%;
+          border-radius: 1rem;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+        }
+      }
+    }
+  }
+  .founder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 2.5rem 3rem 2.5rem;
+
+    text-align: center;
+    .quote-icon {
+      color: $primary-blue;
+      font-size: 3rem;
+    }
+    p {
+      padding: 2.5rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+    }
+    .divider {
+      width: 3rem;
+      padding: 0 0 1rem 0;
+    }
+    .founder-name {
+      padding: 0.5rem 0;
+    }
+    .founder-title {
+      color: $font-color;
+    }
+  }
+  .instructors {
+    padding: 5rem 2.5rem;
+
+    .instructors-header {
+      padding: 0 0 2rem 0;
+      h6 {
+        padding: 0 0 1.75rem 0;
+        letter-spacing: 0.25rem;
+      }
+    }
+
+    .instructors-cards {
+      display: flex;
+      flex-wrap: wrap;
+
+      .card {
+        flex: 1 1 0;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+
+        .instructor-intro {
+          h5 {
+            padding-bottom: 0.5rem;
+          }
+          p {
+            color: $font-color;
+          }
+        }
+
+        .instructor-img {
+          img {
+            width: 12rem;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          }
+        }
+
+        .instructor-contact {
+          .icon {
+            font-size: 1.25rem;
+            padding: 0 0.75rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .subscription {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    background-image: url('../../assets/images/subscribe-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15rem;
+    width: 100%;
+    color: $primary-white;
+
+    input {
+      border: none;
+      outline: none;
+      border-radius: 1rem;
+      height: 2rem;
+      padding: 0 1rem;
+      width: min(70%, 25rem);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .about {
+    .banner {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      .introduction {
+        p {
+          padding: 0;
+        }
+      }
+    }
+  }
 }
