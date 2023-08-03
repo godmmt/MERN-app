@@ -1,5 +1,148 @@
 @import '../../styles';
 
 .contact {
-  font-size: 10rem;
+  .banner {
+    background-image: url('../../assets/images/banner-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 10rem 2.5rem 5rem 2.5rem;
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+
+      .information {
+        flex: 1 1 25rem;
+        background-color: $primary-white;
+        padding: 3.5rem;
+        .head {
+          h1 {
+            letter-spacing: 0.1rem;
+            font-size: 3.5rem;
+          }
+          p {
+            color: $font-color;
+            padding: 1.75rem 0;
+            line-height: 1.5;
+            font-size: 1.125rem;
+          }
+        }
+        .column {
+          display: flex;
+          gap: 1rem;
+          padding: 1.25rem 0;
+
+          > div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            p {
+              line-height: 1.5;
+              font-weight: 600;
+            }
+          }
+
+          .contact-icon {
+            border: 0.15rem solid $secondary-blue;
+            padding: 1rem;
+            border-radius: 50%;
+            color: $secondary-blue;
+          }
+        }
+        .sns {
+          > div {
+            padding: 1.25rem 0;
+          }
+          .sns-icon {
+            font-size: 1.35rem;
+            margin: 0 1.25rem 0 0;
+            cursor: pointer;
+          }
+        }
+      }
+      .form {
+        flex: 1 1 25rem;
+        background-color: white;
+        padding: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          label {
+            font-weight: 600;
+            span {
+              color: $primary-red;
+              font-weight: normal;
+            }
+          }
+
+          input,
+          textarea {
+            background-color: $primary-white;
+            outline: 0.1rem solid $background-gray;
+            border: none;
+            border-radius: 0.125rem;
+            padding: 0.5rem;
+            font-size: 1.25rem;
+
+            &:focus {
+              outline: 0.1rem solid $primary-black;
+              background-color: white;
+            }
+            &::placeholder {
+              color: $font-color-light;
+            }
+          }
+        }
+
+        .submit-btn {
+          align-self: flex-start;
+          background-color: $primary-blue;
+          color: white;
+          box-shadow: none;
+
+          &:hover {
+            background-color: $primary-yellow;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  .map {
+    display: flex;
+    iframe {
+      width: 100%;
+      height: 25rem;
+      border: none;
+    }
+  }
+
+  .subscription {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    background-image: url('../../assets/images/subscribe-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15rem;
+    width: 100%;
+    color: $primary-white;
+
+    input {
+      border: none;
+      outline: none;
+      border-radius: 1rem;
+      height: 2rem;
+      padding: 0 1rem;
+      width: min(70%, 25rem);
+    }
+  }
 }
