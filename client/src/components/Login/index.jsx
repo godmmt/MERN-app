@@ -52,7 +52,7 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
       <FontAwesomeIcon
         onClick={handleCloseLoginModal}
         icon={faCircleXmark}
-        className='close-icon fa-2xl'
+        className='close-icon'
       />
 
       <main>

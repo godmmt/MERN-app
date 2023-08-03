@@ -56,7 +56,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
       <FontAwesomeIcon
         onClick={handleCloseLoginModal}
         icon={faCircleXmark}
-        className='close-icon fa-2xl'
+        className='close-icon'
       />
 
       <main>
