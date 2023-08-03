@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    padding: 10rem 2.5rem 5rem 2.5rem;
+    padding: 10rem 5% 5rem 5%;
 
     .content {
       display: flex;
@@ -89,6 +89,7 @@
             border-radius: 0.125rem;
             padding: 0.5rem;
             font-size: 1.25rem;
+            width: 100%;
 
             &:focus {
               outline: 0.1rem solid $primary-black;
