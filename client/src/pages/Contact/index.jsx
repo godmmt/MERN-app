@@ -129,7 +129,7 @@ const Contact = () => {
           title='This is a google map.'
           src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33243.5258847339!2d120.90605874480298!3d23.854099662021788!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468d5e076ee0005%3A0xec17a6fd5312a528!2sSun%20Moon%20Lake!5e0!3m2!1sen!2stw!4v1691055180134!5m2!1sen!2stw'
           loading='lazy'
-          referrerpolicy='no-referrer-when-downgrade'
+          referrerPolicy='no-referrer-when-downgrade'
         ></iframe>
       </section>
       <section className='subscription'>
