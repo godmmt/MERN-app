@@ -1,14 +1,15 @@
-const router = require('express').Router();
-const Course = require('../models').courseModel;
-const courseValidation = require('../validation').courseValidation;
-// middleware
-router.use((req, res, next) => {
-  console.log('A request is coming into api...');
-  next();
-});
+import { Router } from 'express';
+import { CourseModel } from '../models';
+import { courseValidation } from '../validation';
+import passport from '../config/passport.config';
 
-router.get('/', (req, res) => {
-  Course.find({}) // 獲得所有課程的資料
+const courseRouter = Router();
+
+// middleware
+courseRouter.use(passport.authenticate('jwt', { session: false }));
+
+courseRouter.get('/', (req, res) => {
+  CourseModel.find({}) // 獲得所有課程的資料
     .populate('instructor', ['username', 'email'])
     .then((course) => {
       res.send(course);
@@ -18,9 +19,9 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/instructor/:_instructor_id', (req, res) => {
+courseRouter.get('/instructor/:_instructor_id', (req, res) => {
   let { _instructor_id } = req.params; // 根據講師ID獲得課程內容
-  Course.find({ instructor: _instructor_id })
+  CourseModel.find({ instructor: _instructor_id })
     .populate('instructor', ['username', 'email'])
     .then((data) => {
       res.send(data);
@@ -30,7 +31,7 @@ router.get('/instructor/:_instructor_id', (req, res) => {
     });
 });
 
-router.get('/findByName/:name', (req, res) => {
+courseRouter.get('/findByName/:name', (req, res) => {
   let { name } = req.params;
   console.log('進來findByName了');
   Course.find({ title: name })
@@ -43,7 +44,7 @@ router.get('/findByName/:name', (req, res) => {
     });
 });
 
-router.get('/student/:_student_id', (req, res) => {
+courseRouter.get('/student/:_student_id', (req, res) => {
   let { _student_id } = req.params;
   Course.find({ students: _student_id })
     .populate('instructor', ['username', 'email']) // 不見得會用到啦就練習
@@ -55,7 +56,7 @@ router.get('/student/:_student_id', (req, res) => {
     });
 });
 
-router.get('/:_id', (req, res) => {
+courseRouter.get('/:_id', (req, res) => {
   let { _id } = req.params;
   Course.findOne({ _id }) // 根據課程ID來找到課程內容
     .populate('instructor', ['email'])
@@ -67,7 +68,7 @@ router.get('/:_id', (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+courseRouter.post('/', async (req, res) => {
   // validate the inputs before making a new course
   const { error } = courseValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -93,7 +94,7 @@ router.post('/', async (req, res) => {
   }
 });
 // 讓學生註冊一個課程
-router.post('/enroll/:_id', async (req, res) => {
+courseRouter.post('/enroll/:_id', async (req, res) => {
   let { _id } = req.params;
   let { user_id } = req.body;
   try {
@@ -106,7 +107,7 @@ router.post('/enroll/:_id', async (req, res) => {
   }
 });
 
-router.patch('/:_id', async (req, res) => {
+courseRouter.patch('/:_id', async (req, res) => {
   // validate the inputs before making a new course
   const { error } = courseValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -145,7 +146,7 @@ router.patch('/:_id', async (req, res) => {
   }
 });
 
-router.delete('/:_id', async (req, res) => {
+courseRouter.delete('/:_id', async (req, res) => {
   let { _id } = req.params;
   let course = await Course.findOne({ _id });
   if (!course) {
@@ -177,4 +178,4 @@ router.delete('/:_id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default courseRouter;

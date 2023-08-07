@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
@@ -16,6 +18,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
