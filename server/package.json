@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon index.js",
+    "start-mac": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon index.js",
+    "start-window": "set NODE_OPTIONS=--experimental-specifier-resolution=node && nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
