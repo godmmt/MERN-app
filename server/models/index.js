@@ -1,4 +1,2 @@
-module.exports = {
-  userModel: require('./user-model'),
-  courseModel: require('./course-model'),
-};
+export { default as UserModel } from './user.model';
+export { default as CourseModel } from './course.model';

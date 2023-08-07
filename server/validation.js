@@ -1,7 +1,7 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 //  Register Validation 註冊驗證器
-const registerValidation = (data) => {
+export const registerValidation = (data) => {
   const schema = Joi.object({
     username: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(6).max(50).required().email(),
@@ -12,7 +12,7 @@ const registerValidation = (data) => {
 };
 
 // Login Validation 登入驗證器 - 登入只需驗證信箱和密碼
-const loginValidation = (data) => {
+export const loginValidation = (data) => {
   const schema = Joi.object({
     email: Joi.string().min(6).max(50).required().email(),
     password: Joi.string().min(6).max(255).required(),
@@ -21,7 +21,7 @@ const loginValidation = (data) => {
 };
 
 // 新增課程驗證器
-const courseValidation = (data) => {
+export const courseValidation = (data) => {
   const schema = Joi.object({
     title: Joi.string().min(6).max(50).required(),
     description: Joi.string().min(6).max(50).required(),
@@ -29,7 +29,3 @@ const courseValidation = (data) => {
   });
   return schema.validate(data);
 };
-
-module.exports.registerValidation = registerValidation;
-module.exports.loginValidation = loginValidation;
-module.exports.courseValidation = courseValidation;
