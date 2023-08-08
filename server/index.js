@@ -3,7 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
-import apiRouter from './routes';
+import apiRouter from './routes/index.js';
 
 // connect to DB
 (async function connectToDB() {

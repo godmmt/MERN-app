@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { CourseModel } from '../models';
-import { courseValidation } from '../validation';
-import passport from '../config/passport.config';
+import { CourseModel } from '../models/index.js';
+import { courseValidation } from '../validation.js';
+import passport from '../config/passport.config.js';
 
 const courseRouter = Router();
 
