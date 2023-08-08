@@ -2,6 +2,7 @@
   "cSpell.words": ["MERN"],
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 150,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
