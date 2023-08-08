@@ -65,16 +65,17 @@
       select {
         border: none;
         border-radius: 0.25rem;
-        padding: 0 0.5rem;
+        padding: 0 0.25rem;
         height: 2.75rem;
         background-color: $primary-white;
-        color: $font-color-light;
+        color: $primary-blue;
 
         &:focus {
           outline-color: $primary-blue;
         }
         option {
           margin: 2rem;
+          color: $font-color-light;
         }
       }
     }
