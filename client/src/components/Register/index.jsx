@@ -3,11 +3,7 @@ import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faEye,
-  faEyeSlash,
-  faCircleXmark,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
 
 const Register = ({ setHasAccount, handleCloseLoginModal }) => {
@@ -39,9 +35,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
   const handleRegister = async () => {
     try {
       await AuthService.register(username, email, password, role);
-      window.alert(
-        'Registration succeeds. You are now redirected to the login page.'
-      );
+      window.alert('Registration succeeds. You are now redirected to the login page.');
       setHasAccount(true);
     } catch (error) {
       console.log(error.response);
@@ -53,44 +47,19 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
     <div className='register-content'>
       <h1>Register</h1>
 
-      <FontAwesomeIcon
-        onClick={handleCloseLoginModal}
-        icon={faCircleXmark}
-        className='close-icon'
-      />
+      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className='close-icon' />
 
       <main>
         <div className='inputs'>
-          <input
-            onChange={handleChangeUsername}
-            type='text'
-            name='username'
-            placeholder='Username'
-          />
-          <input
-            onChange={handleChangeEmail}
-            type='text'
-            name='email'
-            placeholder='Email'
-          />
+          <input onChange={handleChangeUsername} type='text' name='username' placeholder='Username' />
+          <input onChange={handleChangeEmail} type='text' name='email' placeholder='Email' />
           <div className='input-password'>
-            <input
-              onChange={handleChangePassword}
-              type={isPasswordVisible ? 'text' : 'password'}
-              name='password'
-              placeholder='Password'
-            />
-            <FontAwesomeIcon
-              icon={isPasswordVisible ? faEye : faEyeSlash}
-              className='eye-icon'
-              onClick={togglePasswordVisibility}
-            />
+            <input onChange={handleChangePassword} type={isPasswordVisible ? 'text' : 'password'} name='password' placeholder='Password' />
+            <FontAwesomeIcon icon={isPasswordVisible ? faEye : faEyeSlash} className='eye-icon' onClick={togglePasswordVisibility} />
           </div>
 
           <select name='role' onChange={handleChangeRole}>
-            <option disabled selected>
-              Choose your role:
-            </option>
+            <option hidden>Choose Your Role:</option>
             <option value='student'>Student</option>
             <option value='instructor'>Instructor</option>
           </select>
@@ -104,7 +73,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
       </main>
 
       <div className='click-login'>
-        <span onClick={() => setHasAccount(true)}>Click to login!</span>
+        <span onClick={() => setHasAccount(true)}>Click to Login!</span>
       </div>
     </div>
   );
