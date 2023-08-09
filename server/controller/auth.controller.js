@@ -11,8 +11,7 @@ class AuthController {
 
     // check if the user exists 檢查使用者信箱是否已被註冊
     const emailExist = await UserModel.findOne({ email: req.body.email });
-    if (emailExist)
-      return res.status(400).send('Email has already been registered.');
+    if (emailExist) return res.status(400).send('Email has already been registered.');
 
     // register the user 通過以上的檢查都OK後就幫使用者註冊
     const newUser = new UserModel({
@@ -48,7 +47,8 @@ class AuthController {
           // 製作JWT
           const tokenObject = { _id: user._id, email: user.email };
           const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
-          res.send({ success: true, token: 'JWT ' + token, user }); // token回傳給user
+          res.send({ success: true, token: 'JWT ' + token, user });
+          // 伺服器回傳物件包含屬性success & token & 物件user
         } else {
           res.status(401).send('Wrong password');
         }

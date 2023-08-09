@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from 'services/course.service';
 
-const MyCourses = (props) => {
-  let { currentUser, setCurrentUser } = props;
+const MyCourses = ({ currentUser }) => {
   const navigate = useNavigate();
   const handleTakeToLogin = () => {
     navigate('/login');
   };
   // state 用來儲存從API當中所獲得的Course Data
-  let [courseData, setCourseData] = useState(null);
+  const [courseData, setCourseData] = useState(null);
 
   // 一進入網頁就要根據身分得到所對應的課程
   useEffect(() => {
@@ -20,17 +19,18 @@ const MyCourses = (props) => {
     } else {
       _id = '';
     }
-    if (currentUser.user.role === 'instructor') {
+    if (currentUser && currentUser.user.role === 'instructor') {
       // 身分是講師就得到講師創立的所有課程
       CourseService.get(_id)
         .then((data) => {
-          console.log(data);
+          console.log({ data });
+          console.log({ currentUser });
           setCourseData(data.data);
         })
         .catch((err) => {
           console.log(err);
         });
-    } else if (currentUser.user.role === 'student') {
+    } else if (currentUser && currentUser.user.role === 'student') {
       // 身分是學生就得到學生註冊的所有課程
       CourseService.getEnrolledCourses(_id)
         .then((data) => {
@@ -41,17 +41,14 @@ const MyCourses = (props) => {
           console.log(error);
         });
     }
-  }, []);
+  }, [currentUser]);
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <main className='my-courses'>
       {!currentUser && (
         <div>
           <p>You must login before seeing your courses.</p>
-          <button
-            onClick={handleTakeToLogin}
-            className='btn btn-primary btn-lg'
-          >
+          <button onClick={handleTakeToLogin} className='btn btn-primary btn-lg'>
             Take me to login page
           </button>
         </div>
@@ -83,7 +80,7 @@ const MyCourses = (props) => {
           })}
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

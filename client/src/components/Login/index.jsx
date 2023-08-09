@@ -29,7 +29,7 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
 
   const handleLogin = async () => {
     try {
-      const res = await AuthService.login(email, password);
+      const res = await AuthService.login(email, password); // 接住伺服器回傳的物件(成為被包在res物件裡面的data物件)
       localStorage.setItem('user', JSON.stringify(res.data));
       window.alert('Login successfully, now you are redirect to the profile page.');
       setCurrentUser(res.data);
