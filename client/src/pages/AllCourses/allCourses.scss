@@ -9,7 +9,6 @@
     padding: 10rem 5%;
     display: flex;
     flex-direction: column;
-    // align-items: flex-start;
     gap: 5rem;
 
     .search-bar {
@@ -36,8 +35,6 @@
     }
 
     .all-courses {
-      // border: 2px solid red;
-
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
