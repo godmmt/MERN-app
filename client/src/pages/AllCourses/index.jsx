@@ -34,23 +34,26 @@ const AllCourses = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} className='search-btn' fixedWidth />
           </div>
         </div>
-      </section>
-      <section className='all-courses'>
-        {courseData &&
-          courseData.length !== 0 &&
-          courseData.map((course) => {
-            return (
-              <div className='course'>
-                <h3>{course.title}</h3>
-                <p>{course.description}</p>
-                <div className='instructor'>
-                  <h6>Instructor: {course.instructor.username}</h6>
+        <div className='all-courses'>
+          {courseData &&
+            courseData.length !== 0 &&
+            courseData.map((course) => {
+              return (
+                <div className='course'>
+                  <div className='intro'>
+                    <h2>{course.title}</h2>
+                    <p>{course.description}</p>
+                  </div>
+                  <div className='instructor'>{course.instructor.username}</div>
+                  <div className='course-price'>
+                    <span>$ </span>
+                    <span>{course.price}</span>
+                  </div>
+                  <Button cx='see-more-btn'>See More...</Button>
                 </div>
-                <div className='course-price'>Price: {course.price}</div>
-                <Button>See More...</Button>
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
       </section>
     </main>
   );
