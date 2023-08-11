@@ -8,7 +8,7 @@ const MyCourses = ({ currentUser }) => {
     navigate('/login');
   };
   // state 用來儲存從API當中所獲得的Course Data
-  const [courseData, setCourseData] = useState(null);
+  const [courseData, setCourseData] = useState([]);
 
   // 一進入網頁就要根據身分得到所對應的課程
   useEffect(() => {
@@ -19,18 +19,18 @@ const MyCourses = ({ currentUser }) => {
     } else {
       _id = '';
     }
-    if (currentUser && currentUser.user.role === 'instructor') {
+    if (currentUser?.user.role === 'instructor') {
       // 身分是講師就得到講師創立的所有課程
       CourseService.get(_id)
         .then((data) => {
-          console.log({ data });
-          console.log({ currentUser });
+          // console.log({ data });
+          // console.log({ currentUser });
           setCourseData(data.data);
         })
         .catch((err) => {
           console.log(err);
         });
-    } else if (currentUser && currentUser.user.role === 'student') {
+    } else if (currentUser?.user.role === 'student') {
       // 身分是學生就得到學生註冊的所有課程
       CourseService.getEnrolledCourses(_id)
         .then((data) => {

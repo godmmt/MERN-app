@@ -10,11 +10,11 @@ import './allCourses.scss';
 
 const AllCourses = () => {
   // state 用來儲存從API當中所獲得的Course Data
-  const [courseData, setCourseData] = useState(null);
+  const [courseData, setCourseData] = useState([]);
 
   // 網頁組件渲染完後就執行effect
   useEffect(() => {
-    console.log('Using effect!');
+    // console.log('Using effect!');
     CourseService.getAllCourses()
       .then((data) => {
         console.log({ data });
@@ -35,24 +35,22 @@ const AllCourses = () => {
           </div>
         </div>
         <div className='all-courses'>
-          {courseData &&
-            courseData.length !== 0 &&
-            courseData.map((course) => {
-              return (
-                <div className='course'>
-                  <div className='intro'>
-                    <h2>{course.title}</h2>
-                    <p>{course.description}</p>
-                  </div>
-                  <div className='instructor'>{course.instructor.username}</div>
-                  <div className='course-price'>
-                    <span>$ </span>
-                    <span>{course.price}</span>
-                  </div>
-                  <Button cx='see-more-btn'>See More...</Button>
+          {courseData.map((course) => {
+            return (
+              <div className='course'>
+                <div className='intro'>
+                  <h2>{course.title}</h2>
+                  <p>{course.description}</p>
                 </div>
-              );
-            })}
+                <div className='instructor'>{course.instructor.username}</div>
+                <div className='course-price'>
+                  <span>$ </span>
+                  <span>{course.price}</span>
+                </div>
+                <Button cx='see-more-btn'>See More...</Button>
+              </div>
+            );
+          })}
         </div>
       </section>
     </main>
