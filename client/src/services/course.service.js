@@ -52,6 +52,11 @@ class CourseService {
     });
   }
 
+  // method-尋找所有課程
+  static getAllCourses() {
+    return axios.get(API_URL);
+  }
+
   // method-根據講師ID找到課程
   static get(_id) {
     let token;

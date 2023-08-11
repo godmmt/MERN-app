@@ -4,10 +4,10 @@ import passport from '../config/passport.config.js';
 
 const courseRouter = Router();
 
+courseRouter.get('/', CourseController.getCourses); // 訪客可使用
 courseRouter.use(passport.authenticate('jwt', { session: false }));
 
 // fetch Course
-courseRouter.get('/', CourseController.getCourses);
 courseRouter.get('/findByName/:name', CourseController.getCoursesByCourseName);
 courseRouter.get('/instructor/:_instructor_id', CourseController.getCoursesByInstructorID);
 courseRouter.get('/student/:_student_id', CourseController.getCoursesByStudentID);
