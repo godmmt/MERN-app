@@ -38,18 +38,8 @@ class CourseService {
 
   // method-根據名字尋找課程
   static getCourseByName(name) {
-    let token;
-    if (localStorage.getItem('user')) {
-      token = JSON.parse(localStorage.getItem('user')).token;
-    } else {
-      token = '';
-    }
-
-    return axios.get(API_URL + '/findByName/' + name, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    // 查詢課程應該不用驗證，等要註冊enroll再驗證身分
+    return axios.get(API_URL + '/findByName/' + name);
   }
 
   // method-尋找所有課程

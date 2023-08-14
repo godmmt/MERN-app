@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
+import Button from 'components/Button';
+import './enroll.scss';
 
-const Enroll = (props) => {
-  let { currentUser } = props;
+const Enroll = ({ currentUser }) => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const [searchResult, setSearchResult] = useState(null);
@@ -46,16 +47,11 @@ const Enroll = (props) => {
   }, [searchResult]);
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <main className='enroll'>
       {!currentUser && (
         <div>
           <p>You must login first before searching for courses.</p>
-          <button
-            className='btn btn-primary btn-lg'
-            onClick={handleTakeToLogin}
-          >
-            Take me to login page.
-          </button>
+          <Button onClick={handleTakeToLogin}>Take me to login page.</Button>
         </div>
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
@@ -64,15 +60,9 @@ const Enroll = (props) => {
         </div>
       )}
       {currentUser && currentUser.user.role === 'student' && (
-        <div className='search input-group mb-3'>
-          <input
-            onChange={handleChangeInput}
-            type='text'
-            className='form-control'
-          />
-          <button onClick={handleSearch} className='btn btn-primary'>
-            Search
-          </button>
+        <div>
+          <input onChange={handleChangeInput} type='text' />
+          <Button onClick={handleSearch}>搜尋</Button>
         </div>
       )}
       {currentUser && searchResult && searchResult.length > 0 && (
@@ -80,19 +70,15 @@ const Enroll = (props) => {
           <p>以下為查詢結果:</p>
           {searchResult.map((course) => {
             return (
-              <div key={course._id} className='card' style={{ width: '18rem' }}>
+              <div key={course._id} className='card'>
                 <div className='card-body'>
                   <h5 className='card-title'>{course.title}</h5>
                   <p className='card-text'>{course.description}</p>
                   <p>Price: {course.price}</p>
                   <p>Student: {course.students.length}</p>
-                  <button
-                    onClick={handleEnroll}
-                    className='card-text btn btn-primary'
-                    id={course._id}
-                  >
+                  <Button onClick={handleEnroll} id={course._id}>
                     Enroll
-                  </button>
+                  </Button>
                 </div>
               </div>
             );
@@ -109,7 +95,7 @@ const Enroll = (props) => {
           <h1>請輸入欲查詢的課程名稱</h1>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

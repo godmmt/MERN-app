@@ -7,7 +7,7 @@ class CourseController {
     CourseModel.find({})
       .populate('instructor', ['username', 'email'])
       .then((course) => {
-        res.send(course);
+        res.status(200).send(course);
       })
       .catch(() => {
         res.status(500).send('Error! Cannot get Course!');
