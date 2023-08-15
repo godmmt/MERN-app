@@ -13,27 +13,35 @@ const AllCourses = () => {
   const [courseData, setCourseData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [searchResult, setSearchResult] = useState([]);
+  const [showMessage, setShowMessage] = useState(false);
+  const [showNotFoundMsg, setShowNotFoundMsg] = useState(false);
 
   const handleChangeInput = (e) => {
     setSearchInput(e.target.value);
   };
   const handleSearch = () => {
-    if (searchInput) {
-      CourseService.getCourseByName(searchInput)
+    setSearchResult([]); // 清空搜尋結果
+    setShowMessage(false); // 清空提示
+    setShowNotFoundMsg(false); // 清空查無資料提示
+
+    if (searchInput.trim() !== '') {
+      CourseService.getCourseByName(searchInput.trim())
         .then((data) => {
           console.log({ data });
-          if (data.data.length === 0) {
-            setSearchResult(null);
+          if (data.data.length !== 0) {
+            setSearchResult(data.data); // 取得資料
           } else {
-            setSearchResult(data.data);
+            setShowNotFoundMsg(true); // 打開查無資料提示
           }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      setSearchInput(null);
+      setShowMessage(true); // 打開提示
     }
+
+    setSearchInput(''); // 清空搜尋欄位的值
   };
 
   // 網頁組件渲染完後就執行effect
@@ -53,24 +61,20 @@ const AllCourses = () => {
     <main className='all-courses'>
       <section className='banner'>
         <div className='search-bar'>
-          <input type='text' placeholder='Search...' onChange={handleChangeInput} />
+          <input type='text' value={searchInput} placeholder='Search...' onChange={handleChangeInput} />
           <div>
             <FontAwesomeIcon icon={faMagnifyingGlass} className='search-btn' fixedWidth onClick={handleSearch} />
           </div>
         </div>
         <div className='search-result'>
-          {!searchResult && (
-            <div className='search-msg'>
+          {showNotFoundMsg && (
+            <div className='message'>
               No matching courses found!
               <br />
               Please enter the course name you want to search again.
             </div>
           )}
-          {searchInput === null && (
-            <div>
-              <h1>請輸入欲查詢的課程名稱</h1>
-            </div>
-          )}
+          {showMessage && <div className='message'>Please enter the course name you want to search.</div>}
           {searchResult &&
             searchResult.map((course) => {
               return (
