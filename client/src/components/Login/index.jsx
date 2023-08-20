@@ -9,7 +9,7 @@ import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-ic
 import './login.scss';
 
 const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,9 +31,9 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
     try {
       const res = await AuthService.login(email, password); // 接住伺服器回傳的物件(成為被包在res物件裡面的data物件)
       localStorage.setItem('user', JSON.stringify(res.data));
-      window.alert('Login successfully, now you are redirect to the profile page.');
+      window.alert('Login successfully.');
       setCurrentUser(res.data);
-      navigate(ROUTER_PATH.profile);
+      // navigate(ROUTER_PATH.profile);
       handleCloseLoginModal();
     } catch (error) {
       setMessage(error.response.data);

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CourseService from 'services/course.service';
+import { ROUTER_PATH } from 'App';
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +11,8 @@ import Button from 'components/Button';
 import './allCourses.scss';
 
 const AllCourses = () => {
+  const navigate = useNavigate();
+
   // state 用來儲存從API當中所獲得的Course Data
   const [courseData, setCourseData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -42,6 +46,12 @@ const AllCourses = () => {
     }
 
     setSearchInput(''); // 清空搜尋欄位的值
+  };
+
+  const handleTakeToEnroll = (course) => {
+    navigate(ROUTER_PATH.enroll, {
+      state: course,
+    });
   };
 
   // 網頁組件渲染完後就執行effect
@@ -88,7 +98,14 @@ const AllCourses = () => {
                     <span>$ </span>
                     <span>{course.price}</span>
                   </div>
-                  <Button cx='see-more-btn'>See More...</Button>
+                  <Button
+                    cx='see-more-btn'
+                    onClick={() => {
+                      handleTakeToEnroll(course);
+                    }}
+                  >
+                    See More...
+                  </Button>
                 </div>
               );
             })}
@@ -108,7 +125,14 @@ const AllCourses = () => {
                   <span>$ </span>
                   <span>{course.price}</span>
                 </div>
-                <Button cx='see-more-btn'>See More...</Button>
+                <Button
+                  cx='see-more-btn'
+                  onClick={() => {
+                    handleTakeToEnroll(course);
+                  }}
+                >
+                  See More...
+                </Button>
               </div>
             );
           })}
