@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
@@ -8,12 +8,14 @@ import './enroll.scss';
 const Enroll = ({ currentUser }) => {
   const location = useLocation();
   const course = location.state;
+  const navigate = useNavigate();
 
   const handleEnroll = async () => {
     try {
       const res = await CourseService.enroll(course._id, currentUser.user._id);
       window.alert(res.data);
       console.log({ res });
+      navigate(ROUTER_PATH.myCourses);
     } catch (err) {
       console.log(err);
     }
