@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
+import './postCourse.scss';
 
 const PostCourse = (props) => {
-  let { currentUser, setCurrentUser } = props;
+  const { currentUser } = props;
   const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [message, setMessage] = useState('');
@@ -16,6 +18,9 @@ const PostCourse = (props) => {
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
   };
+  const handleChangeSubtitle = (e) => {
+    setSubtitle(e.target.value);
+  };
   const handleChangeDescription = (e) => {
     setDescription(e.target.value);
   };
@@ -23,7 +28,7 @@ const PostCourse = (props) => {
     setPrice(e.target.value);
   };
   const postCourse = () => {
-    CourseService.post(title, description, price)
+    CourseService.post({ title, subtitle, description, price })
       .then(() => {
         window.alert('New course has been created.');
         navigate('/my-courses');
@@ -35,16 +40,11 @@ const PostCourse = (props) => {
   };
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <main className='post-course'>
       {!currentUser && (
         <div>
           <p>You must login first before seeing posts.</p>
-          <button
-            className='btn btn-primary btn-lg'
-            onClick={handleTakeToLogin}
-          >
-            Take me to login page.
-          </button>
+          <button onClick={handleTakeToLogin}>Take me to login page.</button>
         </div>
       )}
       {currentUser && currentUser.user.role !== 'instructor' && (
@@ -53,47 +53,26 @@ const PostCourse = (props) => {
         </div>
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
-        <div className='form-group'>
-          <label for='exampleForTitle'>Title</label>
-          <input
-            name='title'
-            type='text'
-            className='form-control'
-            id='exampleForTitle'
-            onChange={handleChangeTitle}
-          />
+        <div>
+          <label htmlFor='exampleForTitle'>Title</label>
+          <input name='title' type='text' id='exampleForTitle' onChange={handleChangeTitle} />
           <br />
-          <label for='exampleForContent'>Content</label>
-          <textarea
-            className='form-control'
-            id='exampleForContent'
-            aria-describedby='emailHelp'
-            name='content'
-            onChange={handleChangeDescription}
-          ></textarea>
+          <label htmlFor='exampleForSubtitle'>Subtitle</label>
+          <input name='subtitle' type='text' id='exampleForSubtitle' onChange={handleChangeSubtitle} />
           <br />
-          <label for='exampleForPrice'>Price</label>
-          <input
-            name='price'
-            type='number'
-            className='form-control'
-            id='exampleForPrice'
-            onChange={handleChangePrice}
-          />
+          <label htmlFor='exampleForContent'>Content</label>
+          <textarea id='exampleForContent' aria-describedby='emailHelp' name='content' onChange={handleChangeDescription}></textarea>
           <br />
-          <button className='btn btn-primary' onClick={postCourse}>
-            Submit
-          </button>
+          <label htmlFor='exampleForPrice'>Price</label>
+          <input name='price' type='number' id='exampleForPrice' onChange={handleChangePrice} />
+          <br />
+          <button onClick={postCourse}>Submit</button>
           <br />
           <br />
-          {message && (
-            <div className='alert alert-warning' role='alert'>
-              {message}
-            </div>
-          )}
+          {message && <div role='alert'>{message}</div>}
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

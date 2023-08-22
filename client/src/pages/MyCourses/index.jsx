@@ -70,7 +70,8 @@ const MyCourses = ({ currentUser }) => {
             return (
               <div className='card' style={{ width: '18rem' }}>
                 <div className='card-body'>
-                  <h5 className='card-title'>{course.title}</h5>
+                  <h3 className='card-title'>{course.title}</h3>
+                  <h5>{course.subtitle}</h5>
                   <p className='card-text'>{course.description}</p>
                   <p>Student Count: {course.students.length}</p>
                   <button className='btn btn-primary'>{course.price}</button>

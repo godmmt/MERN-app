@@ -91,7 +91,7 @@ const AllCourses = () => {
                 <div className='course' key={course._id}>
                   <div className='intro'>
                     <h2>{course.title}</h2>
-                    <p>{course.description}</p>
+                    <p>{course.subtitle}</p>
                   </div>
                   <div className='instructor'>{course.instructor.username}</div>
                   <div className='course-price'>
@@ -118,7 +118,7 @@ const AllCourses = () => {
               <div className='course' key={course._id}>
                 <div className='intro'>
                   <h2>{course.title}</h2>
-                  <p>{course.description}</p>
+                  <p>{course.subtitle}</p>
                 </div>
                 <div className='instructor'>{course.instructor.username}</div>
                 <div className='course-price'>
