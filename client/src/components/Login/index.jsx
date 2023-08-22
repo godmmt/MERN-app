@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { ROUTER_PATH } from 'App';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
@@ -9,8 +7,6 @@ import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-ic
 import './login.scss';
 
 const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
-  // const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');

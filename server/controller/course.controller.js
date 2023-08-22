@@ -2,7 +2,7 @@ import { CourseModel } from '../models/index.js';
 import { courseValidation } from '../validation.js';
 
 class CourseController {
-  // 搜尋所有課程
+  // method - 搜尋所有課程
   static getCourses = (req, res) => {
     CourseModel.find({})
       .populate('instructor', ['username', 'email'])
@@ -14,7 +14,7 @@ class CourseController {
       });
   };
 
-  // 搜尋課程名稱
+  // method - 搜尋課程名稱
   static getCoursesByCourseName = (req, res) => {
     let { name } = req.params;
     console.log('進來findByName了');
@@ -28,7 +28,7 @@ class CourseController {
       });
   };
 
-  // 根據講師ID獲得課程內容
+  // method - 根據講師ID獲得課程內容
   static getCoursesByInstructorID = (req, res) => {
     let { _instructor_id } = req.params;
     CourseModel.find({ instructor: _instructor_id })
@@ -41,11 +41,11 @@ class CourseController {
       });
   };
 
-  // 根據學生ID獲得課程內容
+  // method - 根據學生ID獲得課程內容
   static getCoursesByStudentID = (req, res) => {
     let { _student_id } = req.params;
     CourseModel.find({ students: _student_id })
-      .populate('instructor', ['username', 'email']) // 不見得會用到啦就練習
+      .populate('instructor', ['username', 'email'])
       .then((courses) => {
         res.status(200).send(courses); // 因為會找到複數的課程
       })
@@ -54,7 +54,7 @@ class CourseController {
       });
   };
 
-  // 根據課程ID來找到課程內容
+  // method - 根據課程ID來找到課程內容
   static getCourse = (req, res) => {
     let { _id } = req.params;
     CourseModel.findOne({ _id })
@@ -67,7 +67,7 @@ class CourseController {
       });
   };
 
-  // 新增課程
+  // method - 新增課程
   static createCourse = async (req, res) => {
     // validate the inputs before making a new course
     const { error } = courseValidation(req.body);
@@ -95,7 +95,7 @@ class CourseController {
     }
   };
 
-  // 編輯課程
+  // method - 編輯課程
   static editCourse = async (req, res) => {
     // validate the inputs before making a new course
     const { error } = courseValidation(req.body);
@@ -134,7 +134,7 @@ class CourseController {
     }
   };
 
-  // 刪除課程
+  // method - 刪除課程
   static deleteCourse = async (req, res) => {
     let { _id } = req.params;
     let course = await CourseModel.findOne({ _id });
@@ -166,12 +166,12 @@ class CourseController {
     }
   };
 
-  // 讓學生註冊一個課程
+  // method - 學生註冊課程
   static enrollCourse = async (req, res) => {
-    let { _id } = req.params;
+    let { course_id } = req.params;
     let { user_id } = req.body;
     try {
-      let course = await CourseModel.findOne({ _id });
+      let course = await CourseModel.findOne({ _id: course_id });
       course.students.push(user_id);
       await course.save();
       res.send('Done Enrollment.');

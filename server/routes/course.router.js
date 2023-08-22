@@ -20,6 +20,6 @@ courseRouter.patch('/:_id', CourseController.editCourse);
 courseRouter.delete('/:_id', CourseController.deleteCourse);
 
 // Enroll Course
-courseRouter.post('/enroll/:_id', CourseController.enrollCourse);
+courseRouter.post('/enroll/:course_id', CourseController.enrollCourse);
 
 export default courseRouter;
