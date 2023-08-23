@@ -27,48 +27,21 @@ export const ROUTER_PATH = {
 function App() {
   // 用一個state來儲存目前網頁使用者是誰
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  // 控制Login Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <BrowserRouter>
-      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <Routes>
         <Route element={<Home />} path={ROUTER_PATH.home}></Route>
-        <Route element={<AllCourses />} path={ROUTER_PATH.allCourses}></Route>
+        <Route element={<AllCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.allCourses}></Route>
         <Route element={<About />} path={ROUTER_PATH.about}></Route>
         <Route element={<Contact />} path={ROUTER_PATH.contact}></Route>
-        <Route
-          element={
-            <Profile
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-          path={ROUTER_PATH.profile}
-        ></Route>
-        <Route
-          element={
-            <MyCourses
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-          path={ROUTER_PATH.myCourses}
-        ></Route>
-        <Route
-          element={
-            <PostCourse
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-          path={ROUTER_PATH.postCourse}
-        ></Route>
-        <Route
-          element={
-            <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
-          }
-          path={ROUTER_PATH.enroll}
-        ></Route>
+        <Route element={<Profile currentUser={currentUser} />} path={ROUTER_PATH.profile}></Route>
+        <Route element={<MyCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.myCourses}></Route>
+        <Route element={<PostCourse currentUser={currentUser} />} path={ROUTER_PATH.postCourse}></Route>
+        <Route element={<Enroll currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.enroll}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

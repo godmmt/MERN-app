@@ -10,9 +10,11 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/Button';
 import './allCourses.scss';
 
-const AllCourses = () => {
+const AllCourses = ({ currentUser, setIsModalOpen }) => {
   const navigate = useNavigate();
-
+  const handleTakeToLogin = () => {
+    setIsModalOpen(true);
+  };
   // state 用來儲存從API當中所獲得的Course Data
   const [courseData, setCourseData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -49,9 +51,15 @@ const AllCourses = () => {
   };
 
   const handleTakeToEnroll = (course) => {
-    navigate(ROUTER_PATH.enroll, {
-      state: course,
-    });
+    if (currentUser?.user.role === 'student') {
+      navigate(ROUTER_PATH.enroll, {
+        state: course,
+      });
+    } else if (currentUser?.user.role === 'instructor') {
+      window.alert('Only students can enroll in courses. Please use student account to login.');
+    } else {
+      handleTakeToLogin();
+    }
   };
 
   // 網頁組件渲染完後就執行effect

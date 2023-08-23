@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import CourseService from 'services/course.service';
-import { ROUTER_PATH } from 'App';
 import './myCourse.scss';
 
-const MyCourses = ({ currentUser }) => {
-  const navigate = useNavigate();
+const MyCourses = ({ currentUser, setIsModalOpen }) => {
   const handleTakeToLogin = () => {
-    navigate(ROUTER_PATH);
+    setIsModalOpen(true);
   };
   // state 用來儲存從API當中所獲得的Course Data
   const [courseData, setCourseData] = useState([]);

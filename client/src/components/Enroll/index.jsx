@@ -5,11 +5,13 @@ import Button from 'components/Button';
 import { ROUTER_PATH } from 'App';
 import './enroll.scss';
 
-const Enroll = ({ currentUser }) => {
+const Enroll = ({ currentUser, setIsModalOpen }) => {
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
-
+  const handleTakeToLogin = () => {
+    setIsModalOpen(true);
+  };
   const handleEnroll = async () => {
     try {
       const res = await CourseService.enroll(course._id, currentUser.user._id);
@@ -26,6 +28,7 @@ const Enroll = ({ currentUser }) => {
       {!currentUser && (
         <div>
           <h1>You must login first before searching for courses.</h1>
+          <Button onClick={handleTakeToLogin}>Login</Button>
         </div>
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
