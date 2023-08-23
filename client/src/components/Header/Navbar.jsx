@@ -3,20 +3,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
 
-const Navbar = ({
-  type,
-  currentUser,
-  setCurrentUser,
-  setIsModalOpen,
-  setIsMenuOpen,
-}) => {
+const Navbar = ({ type, currentUser, setCurrentUser, setIsModalOpen, setIsMenuOpen }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     AuthService.logout();
     window.alert('Logout successfully, now you are redirect to the homepage.');
-    setCurrentUser(null); // 也可以寫setCurrentUser(AuthService.getCurrentUser());
-    navigate('/');
+    setCurrentUser(AuthService.getCurrentUser()); // 也可以寫null
+    navigate(ROUTER_PATH.home);
   };
 
   const handleOpenLoginModal = () => {
@@ -53,19 +47,10 @@ const Navbar = ({
                 <Link to={ROUTER_PATH.postCourse}>Post Course</Link>
               </li>
             )}
-            {currentUser.user.role === 'student' && (
-              <li>
-                <Link to={ROUTER_PATH.enroll}>Enroll</Link>
-              </li>
-            )}
           </>
         )}
 
-        {currentUser ? (
-          <li onClick={handleLogout}>Logout</li>
-        ) : (
-          <li onClick={handleOpenLoginModal}>Login</li>
-        )}
+        {currentUser ? <li onClick={handleLogout}>Logout</li> : <li onClick={handleOpenLoginModal}>Login</li>}
       </ul>
     </nav>
   );
