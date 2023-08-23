@@ -21,7 +21,7 @@ export const ROUTER_PATH = {
   myCourses: '/my-courses',
   profile: '/profile',
   postCourse: '/postCourse',
-  enroll: '/enroll',
+  courseContent: '/course-content',
 };
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         <Route element={<Profile currentUser={currentUser} />} path={ROUTER_PATH.profile}></Route>
         <Route element={<MyCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.myCourses}></Route>
         <Route element={<PostCourse currentUser={currentUser} />} path={ROUTER_PATH.postCourse}></Route>
-        <Route element={<Enroll currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.enroll}></Route>
+        <Route element={<Enroll currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.courseContent}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

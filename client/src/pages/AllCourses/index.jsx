@@ -52,7 +52,7 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
 
   const handleTakeToEnroll = (course) => {
     if (currentUser?.user.role === 'student') {
-      navigate(ROUTER_PATH.enroll, {
+      navigate(ROUTER_PATH.courseContent, {
         state: course,
       });
     } else if (currentUser?.user.role === 'instructor') {
