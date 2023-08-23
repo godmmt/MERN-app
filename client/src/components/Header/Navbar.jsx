@@ -40,7 +40,7 @@ const Navbar = ({ type, currentUser, setCurrentUser, setIsModalOpen, setIsMenuOp
               <Link to={ROUTER_PATH.profile}>Profile</Link>
             </li>
             <li>
-              <Link to={ROUTER_PATH.myCourses}>Course</Link>
+              <Link to={ROUTER_PATH.myCourses}>My Courses</Link>
             </li>
             {currentUser.user.role === 'instructor' && (
               <li>
