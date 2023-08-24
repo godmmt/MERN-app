@@ -11,8 +11,8 @@ import burgerMenu from 'assets/images/burger-menu.svg';
 import close from 'assets/images/close.svg';
 import './header.scss';
 
-const Header = ({ currentUser, setCurrentUser }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const Header = ({ currentUser, setCurrentUser, isModalOpen, setIsModalOpen }) => {
+  // const [isModalOpen, setIsModalOpen] = useState(false); 移至App.jsx
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAccount, setHasAccount] = useState(true);
 
@@ -37,13 +37,7 @@ const Header = ({ currentUser, setCurrentUser }) => {
         <img src={logo} alt='logo' />
       </div>
 
-      <Navbar
-        type='web'
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-        setIsModalOpen={setIsModalOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+      <Navbar type='web' currentUser={currentUser} setCurrentUser={setCurrentUser} setIsModalOpen={setIsModalOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <div className='hamburger-menu' onClick={handleToggleMenu}>
         <img src={isMenuOpen ? close : burgerMenu} alt='hamburger-menu' />
@@ -63,16 +57,9 @@ const Header = ({ currentUser, setCurrentUser }) => {
         createPortal(
           <Modal onClose={handleCloseLoginModal}>
             {hasAccount ? (
-              <Login
-                setCurrentUser={setCurrentUser}
-                handleCloseLoginModal={handleCloseLoginModal}
-                setHasAccount={setHasAccount}
-              />
+              <Login setCurrentUser={setCurrentUser} handleCloseLoginModal={handleCloseLoginModal} setHasAccount={setHasAccount} />
             ) : (
-              <Register
-                setHasAccount={setHasAccount}
-                handleCloseLoginModal={handleCloseLoginModal}
-              />
+              <Register setHasAccount={setHasAccount} handleCloseLoginModal={handleCloseLoginModal} />
             )}
           </Modal>,
           document.body

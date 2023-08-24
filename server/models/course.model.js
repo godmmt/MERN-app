@@ -6,6 +6,10 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  subtitle: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -21,6 +25,9 @@ const courseSchema = new mongoose.Schema({
   students: {
     type: [String], // an array of String
     default: [],
+  },
+  img: {
+    type: String,
   },
 });
 

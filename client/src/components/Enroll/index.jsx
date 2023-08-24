@@ -1,61 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
+import Button from 'components/Button';
+import { ROUTER_PATH } from 'App';
+import './enroll.scss';
 
-const Enroll = (props) => {
-  let { currentUser } = props;
+const Enroll = ({ currentUser, setIsModalOpen }) => {
+  const location = useLocation();
+  const course = location.state;
   const navigate = useNavigate();
-  const [searchInput, setSearchInput] = useState('');
-  const [searchResult, setSearchResult] = useState(null);
   const handleTakeToLogin = () => {
-    navigate('/login');
+    setIsModalOpen(true);
   };
-  const handleChangeInput = (e) => {
-    setSearchInput(e.target.value);
-  };
-  const handleSearch = () => {
-    CourseService.getCourseByName(searchInput)
-      .then((data) => {
-        console.log(data);
-        if (Array.isArray(data.data)) {
-          setSearchResult(data.data);
-        } else {
-          setSearchResult(null);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const handleEnroll = (e) => {
-    CourseService.enroll(e.target.id, currentUser.user._id)
-      .then(() => {
-        window.alert('Done Enrollment');
-        navigate('/my-courses');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    if (searchResult) {
-      // 在這裡可以對 searchResult 進行其他操作或處理
-      console.log('searchResult是: ', searchResult, typeof searchResult);
+  const handleEnroll = async () => {
+    try {
+      const res = await CourseService.enroll(course._id, currentUser.user._id);
+      window.alert(res.data);
+      console.log({ res });
+      navigate(ROUTER_PATH.myCourses);
+    } catch (err) {
+      console.log(err);
     }
-  }, [searchResult]);
+  };
+  const handleToMyCourses = () => {
+    navigate(ROUTER_PATH.myCourses);
+  };
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <main className='enroll'>
       {!currentUser && (
         <div>
-          <p>You must login first before searching for courses.</p>
-          <button
-            className='btn btn-primary btn-lg'
-            onClick={handleTakeToLogin}
-          >
-            Take me to login page.
-          </button>
+          <h1>You must login first before searching for courses.</h1>
+          <Button onClick={handleTakeToLogin}>Login</Button>
         </div>
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
@@ -63,53 +39,35 @@ const Enroll = (props) => {
           <h1>Only students can enroll in courses.</h1>
         </div>
       )}
-      {currentUser && currentUser.user.role === 'student' && (
-        <div className='search input-group mb-3'>
-          <input
-            onChange={handleChangeInput}
-            type='text'
-            className='form-control'
-          />
-          <button onClick={handleSearch} className='btn btn-primary'>
-            Search
-          </button>
+      {currentUser && currentUser.user.role === 'student' && course && (
+        <div className='course' key={course._id}>
+          <div>
+            <img src={course.img} alt='course-img' />
+          </div>
+          <div className='intro'>
+            <h2>{course.title}</h2>
+            <p>{course.description}</p>
+            <p>{course.students}</p>
+          </div>
+          <div className='instructor'>{course.instructor.username}</div>
+          <div className='course-price'>
+            <span>$ </span>
+            <span>{course.price}</span>
+          </div>
+
+          {course.students.some((item) => item === currentUser.user._id) ? (
+            <div>
+              <h6>You already own this course. Click the CHECK button to view it.</h6>
+              <Button onClick={handleToMyCourses}>CHECK</Button>
+            </div>
+          ) : (
+            <Button cx='enroll-btn' onClick={handleEnroll}>
+              Enroll
+            </Button>
+          )}
         </div>
       )}
-      {currentUser && searchResult && searchResult.length > 0 && (
-        <div>
-          <p>以下為查詢結果:</p>
-          {searchResult.map((course) => {
-            return (
-              <div key={course._id} className='card' style={{ width: '18rem' }}>
-                <div className='card-body'>
-                  <h5 className='card-title'>{course.title}</h5>
-                  <p className='card-text'>{course.description}</p>
-                  <p>Price: {course.price}</p>
-                  <p>Student: {course.students.length}</p>
-                  <button
-                    onClick={handleEnroll}
-                    className='card-text btn btn-primary'
-                    id={course._id}
-                  >
-                    Enroll
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-      {currentUser && searchResult && searchResult.length === 0 && (
-        <div>
-          <h1>查無相關課程，請重新輸入欲查詢的課程名稱</h1>
-        </div>
-      )}
-      {currentUser && !searchResult && (
-        <div>
-          <h1>請輸入欲查詢的課程名稱</h1>
-        </div>
-      )}
-    </div>
+    </main>
   );
 };
 

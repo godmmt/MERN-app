@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
+import { ROUTER_PATH } from 'App';
+import Button from 'components/Button';
+import './postCourse.scss';
 
 const PostCourse = (props) => {
-  let { currentUser, setCurrentUser } = props;
+  const { currentUser, setIsModalOpen } = props;
   const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
+  const [img, setImg] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const handleTakeToLogin = () => {
-    navigate('/login');
+    setIsModalOpen(true);
   };
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
+  };
+  const handleChangeSubtitle = (e) => {
+    setSubtitle(e.target.value);
   };
   const handleChangeDescription = (e) => {
     setDescription(e.target.value);
@@ -22,11 +30,14 @@ const PostCourse = (props) => {
   const handleChangePrice = (e) => {
     setPrice(e.target.value);
   };
+  const handleChangeImg = (e) => {
+    setImg(e.target.value);
+  };
   const postCourse = () => {
-    CourseService.post(title, description, price)
+    CourseService.post({ title, subtitle, description, price, img })
       .then(() => {
         window.alert('New course has been created.');
-        navigate('/my-courses');
+        navigate(ROUTER_PATH.myCourses);
       })
       .catch((error) => {
         console.log(error.response);
@@ -35,16 +46,11 @@ const PostCourse = (props) => {
   };
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <main className='post-course'>
       {!currentUser && (
         <div>
           <p>You must login first before seeing posts.</p>
-          <button
-            className='btn btn-primary btn-lg'
-            onClick={handleTakeToLogin}
-          >
-            Take me to login page.
-          </button>
+          <button onClick={handleTakeToLogin}>Take me to login page.</button>
         </div>
       )}
       {currentUser && currentUser.user.role !== 'instructor' && (
@@ -53,47 +59,28 @@ const PostCourse = (props) => {
         </div>
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
-        <div className='form-group'>
-          <label for='exampleForTitle'>Title</label>
-          <input
-            name='title'
-            type='text'
-            className='form-control'
-            id='exampleForTitle'
-            onChange={handleChangeTitle}
-          />
+        <div>
+          <label htmlFor='title'>Title:</label>
+          <input type='text' id='title' onChange={handleChangeTitle} />
           <br />
-          <label for='exampleForContent'>Content</label>
-          <textarea
-            className='form-control'
-            id='exampleForContent'
-            aria-describedby='emailHelp'
-            name='content'
-            onChange={handleChangeDescription}
-          ></textarea>
+          <label htmlFor='subtitle'>Subtitle:</label>
+          <input type='text' id='subtitle' onChange={handleChangeSubtitle} />
           <br />
-          <label for='exampleForPrice'>Price</label>
-          <input
-            name='price'
-            type='number'
-            className='form-control'
-            id='exampleForPrice'
-            onChange={handleChangePrice}
-          />
+          <label htmlFor='description'>Description:</label>
+          <textarea id='description' onChange={handleChangeDescription}></textarea>
           <br />
-          <button className='btn btn-primary' onClick={postCourse}>
-            Submit
-          </button>
+          <label htmlFor='price'>Price:</label>
+          <input type='number' id='price' onChange={handleChangePrice} />
           <br />
+          <label htmlFor='img'>Your course's img:</label>
+          <input type='text' id='img' onChange={handleChangeImg} />
           <br />
-          {message && (
-            <div className='alert alert-warning' role='alert'>
-              {message}
-            </div>
-          )}
+          <Button onClick={postCourse}>Submit</Button>
+          <br />
+          {message && <div role='alert'>{message}</div>}
         </div>
       )}
-    </div>
+    </main>
   );
 };
 
