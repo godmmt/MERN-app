@@ -32,10 +32,10 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
 
     if (searchInput.trim() !== '') {
       CourseService.getCourseByName(searchInput.trim())
-        .then((data) => {
-          console.log({ data });
-          if (data.data.length !== 0) {
-            setSearchResult(data.data); // 取得資料
+        .then((res) => {
+          console.log({ res });
+          if (res.data.length !== 0) {
+            setSearchResult(res.data); // 取得資料
           } else {
             setShowNotFoundMsg(true); // 打開查無資料提示
           }
@@ -94,29 +94,27 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
           )}
           {showMessage && <div className='message'>Please enter the course name you want to search.</div>}
           {searchResult &&
-            searchResult.map((course) => {
-              return (
-                <div className='course' key={course._id}>
-                  <div className='intro'>
-                    <h2>{course.title}</h2>
-                    <p>{course.subtitle}</p>
-                  </div>
-                  <div className='instructor'>{course.instructor.username}</div>
-                  <div className='course-price'>
-                    <span>$ </span>
-                    <span>{course.price}</span>
-                  </div>
-                  <Button
-                    cx='see-more-btn'
-                    onClick={() => {
-                      handleTakeToEnroll(course);
-                    }}
-                  >
-                    See More...
-                  </Button>
+            searchResult.map((course) => (
+              <div className='course' key={course._id}>
+                <div className='intro'>
+                  <h2>{course.title}</h2>
+                  <p>{course.subtitle}</p>
                 </div>
-              );
-            })}
+                <div className='instructor'>{course.instructor.username}</div>
+                <div className='course-price'>
+                  <span>$ </span>
+                  <span>{course.price}</span>
+                </div>
+                <Button
+                  cx='see-more-btn'
+                  onClick={() => {
+                    handleTakeToEnroll(course);
+                  }}
+                >
+                  See More...
+                </Button>
+              </div>
+            ))}
         </div>
         {searchResult && searchResult.length > 0 && <div className='dividing-line'></div>}
 

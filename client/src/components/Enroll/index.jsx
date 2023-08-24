@@ -55,16 +55,15 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
             <span>{course.price}</span>
           </div>
 
-          {!course.students.some((item) => item === currentUser.user._id) && (
-            <Button cx='enroll-btn' onClick={handleEnroll}>
-              Enroll
-            </Button>
-          )}
-          {course.students.some((item) => item === currentUser.user._id) && (
+          {course.students.some((item) => item === currentUser.user._id) ? (
             <div>
               <h6>You already own this course. Click the CHECK button to view it.</h6>
               <Button onClick={handleToMyCourses}>CHECK</Button>
             </div>
+          ) : (
+            <Button cx='enroll-btn' onClick={handleEnroll}>
+              Enroll
+            </Button>
           )}
         </div>
       )}
