@@ -26,6 +26,9 @@ const courseSchema = new mongoose.Schema({
     type: [String], // an array of String
     default: [],
   },
+  img: {
+    type: String,
+  },
 });
 
 const CourseModel = mongoose.model('Course', courseSchema);

@@ -74,7 +74,7 @@ class CourseController {
     if (error) return res.status(400).send(error.details[0].message);
 
     // 確認input沒問題後就檢查他的身分->必須是老師
-    let { title, subtitle, description, price } = req.body;
+    let { title, subtitle, description, price, img } = req.body;
     if (req.user.isStudent()) {
       return res.status(400).send('Only instructor can post a new course.');
     } // return的話後面都不管
@@ -85,6 +85,7 @@ class CourseController {
       description,
       price,
       instructor: req.user._id,
+      img,
     });
 
     try {

@@ -27,6 +27,7 @@ export const courseValidation = (data) => {
     subtitle: Joi.string().min(6).max(50).required(),
     description: Joi.string().required(),
     price: Joi.number().min(10).max(9999).required(),
+    img: Joi.string().required(),
   });
   return schema.validate(data);
 };

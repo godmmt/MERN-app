@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
+import { ROUTER_PATH } from 'App';
+import Button from 'components/Button';
 import './postCourse.scss';
 
 const PostCourse = (props) => {
-  const { currentUser } = props;
+  const { currentUser, setIsModalOpen } = props;
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
+  const [img, setImg] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const handleTakeToLogin = () => {
-    navigate('/login');
+    setIsModalOpen(true);
   };
 
   const handleChangeTitle = (e) => {
@@ -27,11 +30,14 @@ const PostCourse = (props) => {
   const handleChangePrice = (e) => {
     setPrice(e.target.value);
   };
+  const handleChangeImg = (e) => {
+    setImg(e.target.value);
+  };
   const postCourse = () => {
-    CourseService.post({ title, subtitle, description, price })
+    CourseService.post({ title, subtitle, description, price, img })
       .then(() => {
         window.alert('New course has been created.');
-        navigate('/my-courses');
+        navigate(ROUTER_PATH.myCourses);
       })
       .catch((error) => {
         console.log(error.response);
@@ -54,20 +60,22 @@ const PostCourse = (props) => {
       )}
       {currentUser && currentUser.user.role === 'instructor' && (
         <div>
-          <label htmlFor='exampleForTitle'>Title</label>
-          <input name='title' type='text' id='exampleForTitle' onChange={handleChangeTitle} />
+          <label htmlFor='title'>Title:</label>
+          <input type='text' id='title' onChange={handleChangeTitle} />
           <br />
-          <label htmlFor='exampleForSubtitle'>Subtitle</label>
-          <input name='subtitle' type='text' id='exampleForSubtitle' onChange={handleChangeSubtitle} />
+          <label htmlFor='subtitle'>Subtitle:</label>
+          <input type='text' id='subtitle' onChange={handleChangeSubtitle} />
           <br />
-          <label htmlFor='exampleForContent'>Content</label>
-          <textarea id='exampleForContent' aria-describedby='emailHelp' name='content' onChange={handleChangeDescription}></textarea>
+          <label htmlFor='description'>Description:</label>
+          <textarea id='description' onChange={handleChangeDescription}></textarea>
           <br />
-          <label htmlFor='exampleForPrice'>Price</label>
-          <input name='price' type='number' id='exampleForPrice' onChange={handleChangePrice} />
+          <label htmlFor='price'>Price:</label>
+          <input type='number' id='price' onChange={handleChangePrice} />
           <br />
-          <button onClick={postCourse}>Submit</button>
+          <label htmlFor='img'>Your course's img:</label>
+          <input type='text' id='img' onChange={handleChangeImg} />
           <br />
+          <Button onClick={postCourse}>Submit</Button>
           <br />
           {message && <div role='alert'>{message}</div>}
         </div>

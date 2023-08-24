@@ -41,6 +41,9 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
       )}
       {currentUser && currentUser.user.role === 'student' && course && (
         <div className='course' key={course._id}>
+          <div>
+            <img src={course.img} alt='course-img' />
+          </div>
           <div className='intro'>
             <h2>{course.title}</h2>
             <p>{course.description}</p>

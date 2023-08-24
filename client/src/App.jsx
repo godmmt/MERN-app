@@ -40,7 +40,7 @@ function App() {
         <Route element={<Contact />} path={ROUTER_PATH.contact}></Route>
         <Route element={<Profile currentUser={currentUser} />} path={ROUTER_PATH.profile}></Route>
         <Route element={<MyCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.myCourses}></Route>
-        <Route element={<PostCourse currentUser={currentUser} />} path={ROUTER_PATH.postCourse}></Route>
+        <Route element={<PostCourse currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.postCourse}></Route>
         <Route element={<Enroll currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.courseContent}></Route>
       </Routes>
       <Footer />

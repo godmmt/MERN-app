@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:8080/api/courses';
 
 class CourseService {
   // method-創立新課程
-  static post({ title, subtitle, description, price }) {
+  static post({ title, subtitle, description, price, img }) {
     let token;
     if (localStorage.getItem('user')) {
       token = JSON.parse(localStorage.getItem('user')).token;
@@ -12,7 +12,7 @@ class CourseService {
     }
     return axios.post(
       API_URL,
-      { title, subtitle, description, price },
+      { title, subtitle, description, price, img },
       {
         headers: {
           Authorization: token, // 從localStorage提出JWT,將JWT跟著axios一起送至server
