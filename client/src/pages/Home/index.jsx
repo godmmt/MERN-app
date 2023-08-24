@@ -8,18 +8,12 @@ import 'slick-carousel/slick/slick-theme.css';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // solid-svg-icons
-import {
-  faCircle,
-  faCircleCheck,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faCircleCheck, faUser } from '@fortawesome/free-solid-svg-icons';
 // regular-svg-icons
-import {
-  faHourglassHalf,
-  faCircleRight,
-} from '@fortawesome/free-regular-svg-icons';
+import { faHourglassHalf, faCircleRight } from '@fortawesome/free-regular-svg-icons';
 
 import Button from 'components/Button';
+import Subscription from 'components/Subscription';
 import { ROUTER_PATH } from 'App';
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
@@ -29,9 +23,7 @@ import computer from 'assets/images/computer.jpg';
 import { gallery, courseCards, userTestimonials } from 'config/home.config';
 import './home.scss';
 
-const circleCheckIcon = (
-  <FontAwesomeIcon icon={faCircleCheck} className='circle-check-icon' />
-);
+const circleCheckIcon = <FontAwesomeIcon icon={faCircleCheck} className='circle-check-icon' />;
 
 const Home = () => {
   const navigate = useNavigate();
@@ -50,10 +42,8 @@ const Home = () => {
           <div className='slogan'>
             <h1>Transform Your Life through Online Learning and Education!</h1>
             <p>
-              Welcome to our online platform for learning programming courses!
-              We are dedicated to providing a high-quality, flexible, and
-              inspiring learning experience that allows you to unleash your
-              coding potential.
+              Welcome to our online platform for learning programming courses! We are dedicated to providing a high-quality, flexible, and inspiring
+              learning experience that allows you to unleash your coding potential.
             </p>
             <div className='action'>
               <Button onClick={handleClickToTop}>Start Course</Button>
@@ -86,13 +76,9 @@ const Home = () => {
           <div className='feedback-content'>
             <h6>WHAT OUR HAPPY STUDENT SAY</h6>
             <h5>
-              I found this tutorial website to be very user-friendly and it has
-              been incredibly helpful for me. The step-by-step instructions and
-              clear explanations have made it easy for me to grasp complex
-              concepts. I appreciate the variety of topics covered, which has
-              allowed me to learn and explore different areas of interest.
-              Overall, this website has been an invaluable resource for my
-              learning journey.
+              I found this tutorial website to be very user-friendly and it has been incredibly helpful for me. The step-by-step instructions and
+              clear explanations have made it easy for me to grasp complex concepts. I appreciate the variety of topics covered, which has allowed me
+              to learn and explore different areas of interest. Overall, this website has been an invaluable resource for my learning journey.
             </h5>
             <div className='feedback-content-footer'>
               <div className='left'>
@@ -102,10 +88,7 @@ const Home = () => {
               <div className='right' onClick={handleClickToTop}>
                 <div>Read All Reviews</div>
                 <div>
-                  <FontAwesomeIcon
-                    icon={faCircleRight}
-                    className='right-arrow-icon'
-                  />
+                  <FontAwesomeIcon icon={faCircleRight} className='right-arrow-icon' />
                 </div>
               </div>
             </div>
@@ -122,10 +105,7 @@ const Home = () => {
               FEATURED COURSE
             </h6>
             <h2>Getting Started With Python 3 for Beginner</h2>
-            <p>
-              Jumpstart your Python journey with our beginner-friendly course,
-              "Getting Started With Python 3"!
-            </p>
+            <p>Jumpstart your Python journey with our beginner-friendly course, "Getting Started With Python 3"!</p>
             <div className='list'>
               <div className='list-left'>
                 <p>{circleCheckIcon}Fundamental</p>
@@ -155,10 +135,7 @@ const Home = () => {
                     {courseCard.level}
                   </div>
                   <div className='duration'>
-                    <FontAwesomeIcon
-                      icon={faHourglassHalf}
-                      className='hourglass-icon'
-                    />
+                    <FontAwesomeIcon icon={faHourglassHalf} className='hourglass-icon' />
                     {courseCard.duration}
                   </div>
                 </div>
@@ -199,15 +176,9 @@ const Home = () => {
             ]}
           >
             {userTestimonials.map((userTestimonial, index) => (
-              <div
-                className='testimonial-card'
-                key={`${userTestimonial.username}-${index}`}
-              >
+              <div className='testimonial-card' key={`${userTestimonial.username}-${index}`}>
                 <div className='testimonial-card-img'>
-                  <img
-                    src={userTestimonial.imgSrc}
-                    alt={userTestimonial.imgAlt}
-                  />
+                  <img src={userTestimonial.imgSrc} alt={userTestimonial.imgAlt} />
                 </div>
                 <p>{userTestimonial.testimonial}</p>
                 <div>{userTestimonial.username}</div>
@@ -216,14 +187,7 @@ const Home = () => {
           </Slider>
         </section>
       </div>
-
-      <section className='subscription'>
-        <div>SUBSCRIBE</div>
-        <h3>All Access Membership</h3>
-        <p>Unleash the Secrets of Knowledge, Subscribe to our Newsletter!</p>
-        <input type='text' placeholder='Please enter your email' />
-        <Button>Subscribe & Save</Button>
-      </section>
+      <Subscription />
     </main>
   );
 };

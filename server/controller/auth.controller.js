@@ -3,60 +3,104 @@ import { loginValidation, registerValidation } from '../validation.js';
 import { UserModel } from '../models/index.js';
 
 class AuthController {
+  static generateAccessToken = (tokenObj) => {
+    return jwt.sign(tokenObj, process.env.PASSPORT_SECRET, { expiresIn: '15s' });
+  };
+
+  static generateRefreshToken = (tokenObj) => {
+    return jwt.sign(tokenObj, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '60s' });
+  };
+
   /*-------註冊-------*/
   static register = async (req, res) => {
-    // check the validation of data 檢查輸入的數據是否通過驗證器
-    const { error } = registerValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    // 檢查輸入的數據是否通過驗證器
+    const { error, value } = registerValidation(req.body);
+    if (error) {
+      return res.status(400).send({
+        success: false,
+        message: error.details[0].message,
+      });
+    }
 
-    // check if the user exists 檢查使用者信箱是否已被註冊
-    const emailExist = await UserModel.findOne({ email: req.body.email });
-    if (emailExist) return res.status(400).send('Email has already been registered.');
+    // 檢查使用者信箱是否已被註冊
+    const { email, username, password, role } = value;
+    const emailExist = await UserModel.findOne({ email });
+    if (emailExist) {
+      return res.status(400).send({
+        success: false,
+        message: 'Email has already been registered.',
+      });
+    }
 
-    // register the user 通過以上的檢查都OK後就幫使用者註冊
-    const newUser = new UserModel({
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      role: req.body.role,
-    });
+    // 通過以上的檢查都OK後就幫使用者註冊
     try {
+      const newUser = new UserModel({ email, username, password, role });
       const savedUser = await newUser.save();
-      res.status(200).send({
-        msg: 'success',
+      return res.status(200).send({
+        success: true,
         saveObject: savedUser,
       });
     } catch (err) {
-      res.status(400).send('User not saved.');
+      res.status(400).send(err);
     }
   };
 
   /*-------登入-------*/
   static login = async (req, res) => {
-    // check the validation of data 檢查輸入的數據是否通過驗證器
-    const { error } = loginValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    // 檢查輸入的數據是否通過驗證器
+    const { error, value } = loginValidation(req.body);
+    if (error) {
+      return res.status(400).send({
+        success: false,
+        message: error.details[0].message,
+      });
+    }
 
+    // 檢查資料庫是否有該使用者
+    const { email, password } = value;
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(400).send({
+        success: false,
+        message: 'User not found.',
+      });
+    }
+
+    // 有的話就產生JWT
     try {
-      const user = await UserModel.findOne({ email: req.body.email });
-      if (!user) return res.status(401).send('User not found.'); // user不存在
+      user.comparePassword(password, (err, isMatch) => {
+        if (err) {
+          return res.status(400).send(err);
+        }
 
-      user.comparePassword(req.body.password, (err, isMatch) => {
-        if (err) return res.status(400).send(err);
         if (isMatch) {
           // 製作JWT
-          const tokenObject = { _id: user._id, email: user.email };
-          const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
-          res.send({ success: true, token: 'JWT ' + token, user });
+          const accessToken = AuthController.generateAccessToken({ email, password });
+          const refreshToken = AuthController.generateRefreshToken({ email, password });
           // 伺服器回傳物件包含屬性success & token & 物件user
+          res.status(200).send({
+            success: true,
+            token: 'JWT ' + accessToken,
+            refreshToken,
+            user,
+          });
         } else {
-          res.status(401).send('Wrong password');
+          res.status(400).send({
+            success: false,
+            message: 'Wrong password.',
+          });
         }
       });
     } catch (err) {
       res.status(400).send(err);
     }
   };
+
+  /*-----刷新token----*/
+  static refreshToken = async (req, res) => {};
+
+  /*-----撤銷token----*/
+  static revokeToken = async (req, res) => {};
 }
 
 export default AuthController;

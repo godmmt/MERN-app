@@ -97,6 +97,7 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
             searchResult.map((course) => (
               <div className='course' key={course._id}>
                 <div className='intro'>
+                  <img src={course.img.replace('.png', 'l.png')} alt={`${course.title}-img`} />
                   <h2>{course.title}</h2>
                   <p>{course.subtitle}</p>
                 </div>
@@ -123,6 +124,7 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
             return (
               <div className='course' key={course._id}>
                 <div className='intro'>
+                  <img src={course.img.replace('.png', 'l.png')} alt={`${course.title}-img`} />
                   <h2>{course.title}</h2>
                   <p>{course.subtitle}</p>
                 </div>

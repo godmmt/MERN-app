@@ -1,19 +1,11 @@
 import React from 'react';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faLocationDot,
-  faPhone,
-  faEnvelope,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faYoutube,
-  faInstagram,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faYoutube, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import Button from 'components/Button';
+import Subscription from 'components/Subscription';
 import './contact.scss';
 
 const Contact = () => {
@@ -25,17 +17,12 @@ const Contact = () => {
             <div className='head'>
               <h1>Contact Us</h1>
               <p>
-                Feel free to reach out to us anytime. We value professionalism
-                and a friendly approach. Contact us directly or fill out the
-                form, and our dedicated team will promptly assist you.
+                Feel free to reach out to us anytime. We value professionalism and a friendly approach. Contact us directly or fill out the form, and
+                our dedicated team will promptly assist you.
               </p>
             </div>
             <div className='address column'>
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                fixedWidth
-                className='contact-icon'
-              />
+              <FontAwesomeIcon icon={faLocationDot} fixedWidth className='contact-icon' />
               <div>
                 <div>Address</div>
                 <p>123 Fifth Avenue, NY 126004, New York, USA.</p>
@@ -43,11 +30,7 @@ const Contact = () => {
             </div>
             <hr />
             <div className='phone-number column'>
-              <FontAwesomeIcon
-                icon={faPhone}
-                fixedWidth
-                className='contact-icon'
-              />
+              <FontAwesomeIcon icon={faPhone} fixedWidth className='contact-icon' />
               <div>
                 <div>Call Us</div>
                 <p>+1 123 456 78 90</p>
@@ -55,11 +38,7 @@ const Contact = () => {
             </div>
             <hr />
             <div className='email column'>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                fixedWidth
-                className='contact-icon'
-              />
+              <FontAwesomeIcon icon={faEnvelope} fixedWidth className='contact-icon' />
               <div>
                 <div>Email Us</div>
                 <p>hello@example.com</p>
@@ -68,26 +47,10 @@ const Contact = () => {
             <hr />
             <div className='sns'>
               <div>Follow us</div>
-              <FontAwesomeIcon
-                icon={faTwitter}
-                fixedWidth
-                className='sns-icon'
-              />
-              <FontAwesomeIcon
-                icon={faInstagram}
-                fixedWidth
-                className='sns-icon'
-              />
-              <FontAwesomeIcon
-                icon={faFacebook}
-                fixedWidth
-                className='sns-icon'
-              />
-              <FontAwesomeIcon
-                icon={faYoutube}
-                fixedWidth
-                className='sns-icon'
-              />
+              <FontAwesomeIcon icon={faTwitter} fixedWidth className='sns-icon' />
+              <FontAwesomeIcon icon={faInstagram} fixedWidth className='sns-icon' />
+              <FontAwesomeIcon icon={faFacebook} fixedWidth className='sns-icon' />
+              <FontAwesomeIcon icon={faYoutube} fixedWidth className='sns-icon' />
             </div>
           </div>
           <div className='form'>
@@ -113,12 +76,7 @@ const Contact = () => {
               <label htmlFor='guest-message'>
                 Message <span>*</span>
               </label>
-              <textarea
-                name='guest-message'
-                id='guest-message'
-                rows='10'
-                placeholder='Please fill out any questions or suggestions.'
-              ></textarea>
+              <textarea name='guest-message' id='guest-message' rows='10' placeholder='Please fill out any questions or suggestions.'></textarea>
             </div>
             <Button cx='submit-btn'>Send Message</Button>
           </div>
@@ -132,13 +90,7 @@ const Contact = () => {
           referrerPolicy='no-referrer-when-downgrade'
         ></iframe>
       </section>
-      <section className='subscription'>
-        <div>SUBSCRIBE</div>
-        <h3>All Access Membership</h3>
-        <p>Unleash the Secrets of Knowledge, Subscribe to our Newsletter!</p>
-        <input type='text' placeholder='Please enter your email' />
-        <Button>Subscribe & Save</Button>
-      </section>
+      <Subscription />
     </main>
   );
 };

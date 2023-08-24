@@ -111,27 +111,6 @@
       }
     }
   }
-  .subscription {
-    @include flex-center;
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    background-image: url('../../assets/images/subscribe-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 15rem;
-    width: 100%;
-    color: $primary-white;
-
-    input {
-      border: none;
-      outline: none;
-      border-radius: 1rem;
-      height: 2rem;
-      padding: 0 1rem;
-      width: min(70%, 25rem);
-    }
-  }
 }
 
 @media (max-width: 767px) {

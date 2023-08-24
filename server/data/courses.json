@@ -1,0 +1,379 @@
+[
+  {
+    "title": "React + TypeScript",
+    "subtitle": "Learn how to build modern web applications using React and TypeScript.",
+    "description": "Unveil the potential of React and TypeScript synergy in crafting cutting-edge web applications. Embark on a journey that delves deep into building dynamic user interfaces with React's component-driven approach, coupled with TypeScript's static type checking. Gain the ability to manage application states efficiently and construct highly maintainable codebases. By combining React's flexibility and TypeScript's reliability, you'll create modern web experiences that elevate user interactions.",
+    "img": "https://imgur.com/NqEmjny.png",
+    "price": 2715,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Althea24@gmail.com",
+      "Jonathan.Langosh29@yahoo.com",
+      "Gisselle_Dare90@hotmail.com",
+      "Virgil_Swaniawski11@yahoo.com",
+      "Jonathan.Langosh29@yahoo.com",
+      "Cornell_Torphy@gmail.com",
+      "Jonathan.Langosh29@yahoo.com",
+      "Gisselle_Dare90@hotmail.com",
+      "Erin26@yahoo.com",
+      "Arthur_McGlynn@gmail.com",
+      "Kirsten.Hudson75@gmail.com",
+      "Keven.Adams@yahoo.com",
+      "Darryl_Dietrich@yahoo.com",
+      "oliveoil@gmail.com"
+    ]
+  },
+  {
+    "title": "React Rookie",
+    "subtitle": "A beginner's guide to getting started with React development.",
+    "description": "Embark on your React journey with the React Rookie course, designed to equip beginners with the essential skills to kickstart their front-end development odyssey. Learn the art of crafting interactive and responsive user interfaces using React's component architecture. Delve into the fundamentals of JSX syntax, props, state management, and event handling. By the end of this course, you'll possess the prowess to create your own React applications and set a strong foundation for further exploration in the world of web development.",
+    "img": "https://imgur.com/GeLAv4U.png",
+    "price": 1579,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Meta_Rath44@yahoo.com",
+      "oliveoil@gmail.com",
+      "Helga36@hotmail.com",
+      "Alec.Botsford-Jerde80@hotmail.com",
+      "Helga36@hotmail.com",
+      "Travis.Morissette30@yahoo.com",
+      "Pasquale.Wolf@hotmail.com",
+      "Amos.Wuckert@hotmail.com"
+    ]
+  },
+  {
+    "title": "Java 2023",
+    "subtitle": "Stay up-to-date with the latest Java features and developments.",
+    "description": "Embrace the evolving landscape of Java in 2023 and stay ahead of the curve. This course offers an immersive experience into the latest enhancements and features of Java, ensuring you're well-equipped to harness its power for building robust and scalable applications. Navigate through advanced topics such as modularization, pattern matching, and asynchronous programming. With real-world examples and hands-on exercises, you'll solidify your Java expertise and contribute effectively to modern software development.",
+    "img": "https://imgur.com/T7cdjPc.png",
+    "price": 2410,
+    "instructor": "twicegogo@gmail.com",
+    "students": ["Graciela79@gmail.com", "Vilma_Orn@hotmail.com", "Verlie15@gmail.com", "Verlie15@gmail.com", "Macy.Raynor@yahoo.com"]
+  },
+  {
+    "title": "Website Design",
+    "subtitle": "Learn how to create beautiful and user-friendly websites.",
+    "description": "Immerse yourself in the art of website design, where creativity meets functionality. Discover the intricacies of creating visually appealing and user-friendly websites that captivate audiences. From fundamental design principles to responsive layouts, typography, and color theory, this course guides you through the process of designing websites that not only look stunning but also provide seamless navigation and optimal user experiences.",
+    "img": "https://imgur.com/dSOaSB0.png",
+    "price": 1496,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Ethelyn.Simonis@gmail.com",
+      "Meta_Rath44@yahoo.com",
+      "Arthur_McGlynn@gmail.com",
+      "Taya.Schumm@yahoo.com",
+      "Verlie15@gmail.com",
+      "Alec.Botsford-Jerde80@hotmail.com",
+      "Josiane_Hauck60@gmail.com",
+      "Gertrude_Gleichner79@hotmail.com",
+      "Graciela79@gmail.com",
+      "Arthur_McGlynn@gmail.com"
+    ]
+  },
+  {
+    "title": "Python Masterclass",
+    "subtitle": "Become a proficient Python programmer and develop versatile applications.",
+    "description": "Embark on a transformative Python journey that transcends novice to master. Navigate the realms of Python programming, mastering its syntax, data structures, and object-oriented principles. Unlock the potential of libraries and frameworks to create versatile applications for web development, data analysis, and automation. With hands-on projects and comprehensive instruction, you'll emerge as a proficient Python programmer ready to tackle diverse challenges.",
+    "img": "https://imgur.com/1r2uhQF.png",
+    "price": 1819,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Erin26@yahoo.com",
+      "Albin_Barton63@yahoo.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Amos.Wuckert@hotmail.com",
+      "oliveoil@gmail.com",
+      "Larue_Donnelly48@yahoo.com",
+      "Kirsten.Hudson75@gmail.com",
+      "Ismael_Homenick58@hotmail.com",
+      "Douglas_Rippin@gmail.com"
+    ]
+  },
+  {
+    "title": "Machine Learning Fundamentals",
+    "subtitle": "Learn the basics of machine learning and its practical applications.",
+    "description": "Uncover the foundations of machine learning and unleash its potential in various domains. This course demystifies machine learning concepts, algorithms, and techniques. Dive into data preprocessing, model training, and evaluation methods. Explore practical applications such as classification, regression, and clustering. By mastering the essentials of machine learning, you'll be prepared to leverage its capabilities in solving real-world problems.",
+    "img": "https://imgur.com/EIMd59w.png",
+    "price": 1615,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Ethelyn.Simonis@gmail.com",
+      "Peter.Hilpert@hotmail.com",
+      "Mariah16@gmail.com",
+      "Macy.Raynor@yahoo.com",
+      "Macy.Raynor@yahoo.com",
+      "Cornell_Torphy@gmail.com",
+      "Taya.Schumm@yahoo.com",
+      "oliveoil@gmail.com",
+      "Peter.Hilpert@hotmail.com",
+      "Gertrude_Gleichner79@hotmail.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Jameson_Schmeler@hotmail.com",
+      "Alec.Botsford-Jerde80@hotmail.com",
+      "Khalid_Dickinson@gmail.com"
+    ]
+  },
+  {
+    "title": "Data Science Essentials",
+    "subtitle": "Explore the essential concepts of data science and analysis.",
+    "description": "Embark on a data-driven journey that empowers you with the skills to extract insights from raw data. From data collection to visualization, this course covers the entire data science lifecycle. Learn to analyze data, identify patterns, and make informed decisions through hands-on projects. By mastering data manipulation libraries and statistical analysis techniques, you'll be equipped to uncover valuable insights and contribute to data-informed strategies.",
+    "img": "https://imgur.com/e9n7YHh.png",
+    "price": 1657,
+    "instructor": "amyisgood@gmail.com",
+    "students": [
+      "Gisselle_Dare90@hotmail.com",
+      "Savion_Hamill@yahoo.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Mariah16@gmail.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Helga36@hotmail.com",
+      "Khalid_Dickinson@gmail.com",
+      "Khalid_Dickinson@gmail.com",
+      "Meta_Rath44@yahoo.com",
+      "Kara.Feest48@gmail.com",
+      "Peter.Hilpert@hotmail.com"
+    ]
+  },
+  {
+    "title": "Mobile App Development",
+    "subtitle": "Create mobile apps for both Android and iOS platforms.",
+    "description": "Navigate the dynamic landscape of mobile app development and craft engaging experiences for users on both Android and iOS platforms. Learn the fundamentals of app architecture, user interface design, and data management. Develop practical skills in coding and debugging to create functional and intuitive mobile applications. By the end of this course, you'll have the expertise to bring your app ideas to life and cater to the mobile-centric world.",
+    "img": "https://imgur.com/EAv8Llg.png",
+    "price": 1100,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Peter.Hilpert@hotmail.com",
+      "Virgil_Swaniawski11@yahoo.com",
+      "Kirsten.Hudson75@gmail.com",
+      "Cornell_Torphy@gmail.com",
+      "Khalid_Dickinson@gmail.com",
+      "Kara.Feest48@gmail.com"
+    ]
+  },
+  {
+    "title": "Web Development Bootcamp",
+    "subtitle": "Intensive web development training covering front-end and back-end.",
+    "description": "Immerse yourself in an intensive web development bootcamp that equips you with the tools and techniques to create captivating web experiences. From mastering HTML, CSS, and JavaScript to exploring advanced frameworks and libraries, this comprehensive journey covers both front-end and back-end development. Gain hands-on experience in building responsive layouts, interactive components, and seamless user interactions.",
+    "img": "https://imgur.com/juHko2a.png",
+    "price": 1763,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Meta_Rath44@yahoo.com",
+      "Juliana99@hotmail.com",
+      "Vesta12@yahoo.com",
+      "Peter.Hilpert@hotmail.com",
+      "Loyce.Daugherty@gmail.com",
+      "Darryl_Dietrich@yahoo.com",
+      "Gust.Lesch76@yahoo.com"
+    ]
+  },
+  {
+    "title": "UI/UX Design",
+    "subtitle": "Master the art of creating visually appealing user interfaces and experiences.",
+    "description": "Dive into the world of UI/UX design, where aesthetics meet user-centric functionality. Explore the art of crafting visually appealing interfaces that offer seamless and intuitive user experiences. From wireframing to prototyping, learn the design principles that drive user engagement and satisfaction. Through practical projects and case studies, you'll develop the skills to create designs that strike a harmonious balance between form and function.",
+    "img": "https://imgur.com/8srqeU8.png",
+    "price": 2018,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Mariah16@gmail.com",
+      "Kara.Feest48@gmail.com",
+      "Cornell_Torphy@gmail.com",
+      "Althea24@gmail.com",
+      "Gust.Lesch76@yahoo.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Darryl_Dietrich@yahoo.com",
+      "Althea24@gmail.com",
+      "Juliana99@hotmail.com",
+      "Virgil_Swaniawski11@yahoo.com",
+      "Dedric.Fritsch92@yahoo.com",
+      "hello_world@gmail.com"
+    ]
+  },
+  {
+    "title": "JavaScript for Beginners",
+    "subtitle": "Start your programming journey with JavaScript.",
+    "description": "Embark on your coding journey with JavaScript as your guide. This course introduces you to the fundamentals of programming using JavaScript, covering topics such as variables, control structures, functions, and data types. Delve into web development by manipulating the Document Object Model (DOM) to create dynamic and interactive web pages. With hands-on exercises, you'll build a solid foundation in coding logic and gain the skills to craft interactive web content.",
+    "img": "https://imgur.com/B666f9k.png",
+    "price": 2394,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Vilma_Orn@hotmail.com",
+      "Khalid_Dickinson@gmail.com",
+      "Larue_Donnelly48@yahoo.com",
+      "Savion_Hamill@yahoo.com",
+      "Loyce.Daugherty@gmail.com",
+      "Alec.Botsford-Jerde80@hotmail.com",
+      "Marquis11@hotmail.com"
+    ]
+  },
+  {
+    "title": "Advanced CSS Techniques",
+    "subtitle": "Dive deep into advanced CSS techniques for modern web design.",
+    "description": "Elevate your web design skills by mastering advanced CSS techniques. Dive into the world of animations, transitions, and responsive design strategies. Learn how to implement complex layouts, grid systems, and flexbox for creating modern and visually stunning web pages. Through practical examples and hands-on projects, you'll gain the expertise to transform your designs into interactive and captivating user experiences.",
+    "img": "https://imgur.com/0TRncio.png",
+    "price": 2610,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Jameson_Schmeler@hotmail.com",
+      "Josiane_Hauck60@gmail.com",
+      "Douglas_Rippin@gmail.com",
+      "Amos.Wuckert@hotmail.com",
+      "Amos.Wuckert@hotmail.com",
+      "Helga36@hotmail.com"
+    ]
+  },
+  {
+    "title": "Node.js Crash Course",
+    "subtitle": "Get hands-on experience with Node.js and server-side JavaScript.",
+    "description": "Embark on a crash course in Node.js and explore the realm of server-side JavaScript. Learn to build scalable and efficient server applications using Node.js's event-driven architecture. Dive into asynchronous programming, handle HTTP requests, and interact with databases. Through practical projects, you'll develop a strong foundation in creating backend systems and gain the skills to construct powerful and dynamic web applications.",
+    "img": "https://imgur.com/W60pMMd.png",
+    "price": 2812,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Rachel77@yahoo.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Juliana99@hotmail.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Dedric.Fritsch92@yahoo.com",
+      "Gisselle_Dare90@hotmail.com"
+    ]
+  },
+  {
+    "title": "Database Management",
+    "subtitle": "Learn about various database systems and their management.",
+    "description": "Journey into the world of database management and master the art of data organization. Understand the principles of relational databases, data modeling, and SQL queries. Dive into advanced topics such as indexing, normalization, and database security. By the end of this course, you'll be equipped with the knowledge to design efficient and secure databases that meet the demands of modern applications.",
+    "img": "https://imgur.com/QrHx6gY.png",
+    "price": 1706,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Vilma_Orn@hotmail.com",
+      "Vilma_Orn@hotmail.com",
+      "Pasquale.Wolf@hotmail.com",
+      "Cornell_Torphy@gmail.com",
+      "Savion_Hamill@yahoo.com",
+      "Cornell_Torphy@gmail.com",
+      "meme1234@gmail.com",
+      "Dayana_Jenkins@yahoo.com",
+      "Macy.Raynor@yahoo.com",
+      "Pasquale.Wolf@hotmail.com"
+    ]
+  },
+  {
+    "title": "Cloud Computing Basics",
+    "subtitle": "Understand the fundamentals of cloud computing and services.",
+    "description": "Embark on a journey through the fundamentals of cloud computing and explore the services that power modern digital infrastructure. From understanding cloud models to provisioning resources, this course provides insights into cloud platforms such as AWS, Azure, and Google Cloud. Learn to deploy applications, manage storage, and ensure scalability in a cloud environment. With hands-on exercises, you'll gain the skills to harness the potential of cloud technology.",
+    "img": "https://imgur.com/gXkcYjZ.png",
+    "price": 2285,
+    "instructor": "twicegogo@gmail.com",
+    "students": [
+      "Antwon.Cremin@hotmail.com",
+      "hello_world@gmail.com",
+      "Gisselle_Dare90@hotmail.com",
+      "Taya.Schumm@yahoo.com",
+      "Marquis11@hotmail.com",
+      "Helga36@hotmail.com",
+      "Vesta12@yahoo.com",
+      "Ismael_Homenick58@hotmail.com",
+      "oliveoil@gmail.com",
+      "Gisselle_Dare90@hotmail.com",
+      "oliveoil@gmail.com",
+      "oliveoil@gmail.com",
+      "Miles.Halvorson@hotmail.com"
+    ]
+  },
+  {
+    "title": "Networking Fundamentals",
+    "subtitle": "Discover the basics of networking in the digital world.",
+    "description": "Explore the core principles of networking and unravel the complexities of interconnected systems. Dive into network protocols, IP addressing, and routing mechanisms. Understand the layers of the OSI model and explore concepts of network security and troubleshooting. By the end of this course, you'll have a solid understanding of networking fundamentals, empowering you to design, configure, and manage network infrastructures.",
+    "img": "https://imgur.com/qAoOqkl.png",
+    "price": 1298,
+    "instructor": "alan1234@gmail.com",
+    "students": [
+      "Sandy70@gmail.com",
+      "Pasquale.Wolf@hotmail.com",
+      "Douglas_Rippin@gmail.com",
+      "Kara.Feest48@gmail.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Amos.Wuckert@hotmail.com",
+      "Erin26@yahoo.com",
+      "Douglas_Rippin@gmail.com",
+      "Gust.Lesch76@yahoo.com",
+      "Kirsten.Hudson75@gmail.com",
+      "Peter.Hilpert@hotmail.com"
+    ]
+  },
+  {
+    "title": "Artificial Intelligence",
+    "subtitle": "Explore the realm of artificial intelligence and its applications.",
+    "description": "Embark on an exploration of the limitless possibilities of artificial intelligence. Discover the building blocks of AI, including machine learning, neural networks, and natural language processing. Dive into real-world applications, such as image recognition and language translation. Through practical projects, you'll gain hands-on experience in developing AI models and understand how AI is reshaping industries and driving innovation.",
+    "img": "https://imgur.com/yHpySU4.png",
+    "price": 1850,
+    "instructor": "amyisgood@gmail.com",
+    "students": [
+      "Graciela79@gmail.com",
+      "raymii@gmail.com",
+      "Jonathan.Langosh29@yahoo.com",
+      "Halie.Casper@hotmail.com",
+      "Gust.Lesch76@yahoo.com",
+      "Gertrude_Gleichner79@hotmail.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Mariah16@gmail.com",
+      "Albin_Barton63@yahoo.com"
+    ]
+  },
+  {
+    "title": "Ethical Hacking",
+    "subtitle": "Learn ethical hacking techniques to secure digital systems.",
+    "description": "Immerse yourself in the world of ethical hacking and cybersecurity. Learn to think like a hacker and uncover vulnerabilities within digital systems. Explore penetration testing, vulnerability assessment, and risk mitigation strategies. Understand the importance of ethical hacking in maintaining digital security and learn techniques to safeguard sensitive information from cyber threats.",
+    "img": "https://imgur.com/E8BtHfF.png",
+    "price": 1593,
+    "instructor": "amyisgood@gmail.com",
+    "students": [
+      "Gisselle_Dare90@hotmail.com",
+      "Miles.Halvorson@hotmail.com",
+      "meme1234@gmail.com",
+      "Kacie_Rohan51@hotmail.com",
+      "Ethelyn.Simonis@gmail.com",
+      "Lilly.OKeefe@hotmail.com",
+      "Cornell_Torphy@gmail.com",
+      "Miles.Halvorson@hotmail.com",
+      "Gertrude_Gleichner79@hotmail.com"
+    ]
+  },
+  {
+    "title": "Digital Marketing Strategies",
+    "subtitle": "Strategies and tactics for effective digital marketing.",
+    "description": "Navigate the dynamic landscape of digital marketing and explore strategies that drive engagement and growth. From content creation to social media marketing, this course covers a range of tactics for reaching and connecting with target audiences. Learn to analyze data, optimize campaigns, and leverage emerging trends to create impactful digital marketing strategies.",
+    "img": "https://imgur.com/j91atXh.png",
+    "price": 2129,
+    "instructor": "alan1234@gmail.com",
+    "students": [
+      "Pasquale.Wolf@hotmail.com",
+      "Savion_Hamill@yahoo.com",
+      "oliveoil@gmail.com",
+      "Loyce.Daugherty@gmail.com",
+      "Albin_Barton63@yahoo.com"
+    ]
+  },
+  {
+    "title": "Content Creation Mastery",
+    "subtitle": "Master the art of creating compelling and engaging content.",
+    "description": "Unveil the art and science of content creation, where creativity meets strategy. Explore storytelling techniques, content optimization, and distribution channels that captivate and resonate with audiences. Dive into the world of multimedia content, from articles to videos and social media posts. Through hands-on projects, you'll refine your skills in crafting compelling content that leaves a lasting impression.",
+    "img": "https://imgur.com/q8MLfZ6.png",
+    "price": 1722,
+    "instructor": "summer1234@gmail.com",
+    "students": [
+      "Travis.Morissette30@yahoo.com",
+      "oliveoil@gmail.com",
+      "Keven.Adams@yahoo.com",
+      "Jackie62@gmail.com",
+      "hello_world@gmail.com",
+      "Sandy70@gmail.com",
+      "hello_world@gmail.com",
+      "Erin26@yahoo.com",
+      "hello_world@gmail.com",
+      "Pasquale.Wolf@hotmail.com"
+    ]
+  }
+]

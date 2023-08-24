@@ -5,21 +5,16 @@ import { UserModel } from '../models/index.js';
 passport.use(
   new Strategy(
     {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: process.env.PASSPORT_SECRET,
     },
-    function (jwt_payload, done) {
-      UserModel.findOne({ _id: jwt_payload._id })
-        .then((user) => {
-          if (user) {
-            done(null, user);
-          } else {
-            done(null, false);
-          }
-        })
-        .catch((err) => {
-          return done(err, false);
-        });
+    async (jwt_payload, done) => {
+      try {
+        const user = await UserModel.findOne({ _id: jwt_payload._id });
+        return done(null, user ?? false);
+      } catch (error) {
+        return done(err, false);
+      }
     }
   )
 );
