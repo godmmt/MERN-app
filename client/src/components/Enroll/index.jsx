@@ -22,6 +22,9 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
       console.log(err);
     }
   };
+  const handleToMyCourses = () => {
+    navigate(ROUTER_PATH.myCourses);
+  };
 
   return (
     <main className='enroll'>
@@ -41,15 +44,25 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
           <div className='intro'>
             <h2>{course.title}</h2>
             <p>{course.description}</p>
+            <p>{course.students}</p>
           </div>
           <div className='instructor'>{course.instructor.username}</div>
           <div className='course-price'>
             <span>$ </span>
             <span>{course.price}</span>
           </div>
-          <Button cx='enroll-btn' onClick={handleEnroll}>
-            Enroll
-          </Button>
+
+          {!course.students.some((item) => item === currentUser.user._id) && (
+            <Button cx='enroll-btn' onClick={handleEnroll}>
+              Enroll
+            </Button>
+          )}
+          {course.students.some((item) => item === currentUser.user._id) && (
+            <div>
+              <h6>You already own this course. Click the CHECK button to view it.</h6>
+              <Button onClick={handleToMyCourses}>CHECK</Button>
+            </div>
+          )}
         </div>
       )}
     </main>
