@@ -1,5 +1,4 @@
-import axios from 'axios';
-const API_URL = 'http://localhost:8080/api/courses';
+import axios from '../config/axios.config.js';
 
 class CourseService {
   // method-創立新課程
@@ -11,7 +10,7 @@ class CourseService {
       token = '';
     }
     return axios.post(
-      API_URL,
+      'courses',
       { title, subtitle, description, price, img },
       {
         headers: {
@@ -23,12 +22,12 @@ class CourseService {
 
   // method-尋找所有課程
   static getAllCourses() {
-    return axios.get(API_URL);
+    return axios.get('courses');
   }
 
   // method-根據名字尋找課程
   static getCourseByName(name) {
-    return axios.get(API_URL + '/findByName/' + name);
+    return axios.get(`courses/findByName/${name}`);
   }
 
   // method-根據講師ID找到課程
@@ -40,7 +39,7 @@ class CourseService {
       token = '';
     }
 
-    return axios.get(API_URL + '/instructor/' + _id, {
+    return axios.get(`courses/instructor/${_id}`, {
       headers: {
         Authorization: token,
         // 從localStorage提出JWT,將JWT跟著axios一起送至server
@@ -57,7 +56,7 @@ class CourseService {
       token = '';
     }
 
-    return axios.get(API_URL + '/student/' + _id, {
+    return axios.get(`courses/student/${_id}`, {
       headers: {
         Authorization: token,
       },
@@ -74,7 +73,7 @@ class CourseService {
     }
 
     return axios.post(
-      API_URL + '/enroll/' + course_id, // 第一個參數:URL
+      `/courses/enroll/${course_id}`, // 第一個參數:URL
       { user_id }, // 第二個參數:req.body
       {
         headers: {

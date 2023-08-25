@@ -18,9 +18,11 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
+    setMessage('');
   };
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
+    setMessage('');
   };
 
   const handleLogin = async () => {
@@ -32,7 +34,7 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
       // navigate(ROUTER_PATH.profile);
       handleCloseLoginModal();
     } catch (error) {
-      setMessage(error.response.data);
+      setMessage(error.data.message);
     }
   };
 

@@ -2,14 +2,10 @@ import React from 'react';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faYoutube,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import aboutVideo1 from 'assets/video/about-video1.mp4';
-import Button from 'components/Button';
+import Subscription from 'components/Subscription';
 import { instructorCards } from 'config/about.config';
 import './about.scss';
 
@@ -20,10 +16,8 @@ const About = () => {
         <div className='introduction'>
           <h1>About Us</h1>
           <p>
-            Unlock the world of programming with our wide array of online
-            courses, catering to your programming needs. Explore diverse
-            programming languages and master your coding skills with our expert
-            instructors.
+            Unlock the world of programming with our wide array of online courses, catering to your programming needs. Explore diverse programming
+            languages and master your coding skills with our expert instructors.
           </p>
           <div className='video-container'>
             <video autoPlay muted loop preload='true'>
@@ -35,15 +29,11 @@ const About = () => {
       <section className='founder-content'>
         <FontAwesomeIcon icon={faQuoteLeft} className='quote-icon' />
         <p>
-          As the founder of this programming language course website, my vision
-          was to create a platform that empowers learners to master diverse
-          coding skills. Witnessing the growth of aspiring developers, honing
-          their craft through our courses, brings immense joy. It's inspiring to
-          see learners from all backgrounds unlocking their potential and
-          embarking on exciting coding journeys. Our commitment is to continue
-          providing top-notch courses, cultivating a vibrant community of
-          learners, and making coding education accessible to all. Together, we
-          thrive in the world of programming possibilities.
+          As the founder of this programming language course website, my vision was to create a platform that empowers learners to master diverse
+          coding skills. Witnessing the growth of aspiring developers, honing their craft through our courses, brings immense joy. It's inspiring to
+          see learners from all backgrounds unlocking their potential and embarking on exciting coding journeys. Our commitment is to continue
+          providing top-notch courses, cultivating a vibrant community of learners, and making coding education accessible to all. Together, we thrive
+          in the world of programming possibilities.
         </p>
         <div className='divider'>
           <hr />
@@ -68,11 +58,7 @@ const About = () => {
                 <p>{instructorCard.category}</p>
               </div>
               <div className='instructor-contact'>
-                <FontAwesomeIcon
-                  icon={faFacebook}
-                  fixedWidth
-                  className='icon'
-                />
+                <FontAwesomeIcon icon={faFacebook} fixedWidth className='icon' />
                 <FontAwesomeIcon icon={faYoutube} fixedWidth className='icon' />
                 <FontAwesomeIcon icon={faGithub} fixedWidth className='icon' />
               </div>
@@ -80,13 +66,7 @@ const About = () => {
           ))}
         </div>
       </section>
-      <section className='subscription'>
-        <div>SUBSCRIBE</div>
-        <h3>All Access Membership</h3>
-        <p>Unleash the Secrets of Knowledge, Subscribe to our Newsletter!</p>
-        <input type='text' placeholder='Please enter your email' />
-        <Button>Subscribe & Save</Button>
-      </section>
+      <Subscription />
     </main>
   );
 };

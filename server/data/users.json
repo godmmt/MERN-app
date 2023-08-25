@@ -1,0 +1,356 @@
+[
+  {
+    "username": "Alan",
+    "email": "alan1234@gmail.com",
+    "password": "alan1234",
+    "role": "instructor"
+  },
+  {
+    "username": "twicegogo",
+    "email": "twicegogo@gmail.com",
+    "password": "twicegogo1234",
+    "role": "instructor"
+  },
+  {
+    "username": "summer",
+    "email": "summer1234@gmail.com",
+    "password": "summer1234",
+    "role": "instructor"
+  },
+  {
+    "username": "amyisgood",
+    "email": "amyisgood@gmail.com",
+    "password": "amyisgood1234",
+    "role": "instructor"
+  },
+  {
+    "username": "meme",
+    "email": "meme1234@gmail.com",
+    "password": "meme1234",
+    "role": "student"
+  },
+  {
+    "username": "golive",
+    "email": "golive@fake.com",
+    "password": "golive1234",
+    "role": "student"
+  },
+  {
+    "username": "raymii",
+    "email": "raymii@gmail.com",
+    "password": "raymii1234",
+    "role": "student"
+  },
+  {
+    "username": "OliveOil",
+    "email": "oliveoil@gmail.com",
+    "password": "oliveoil1234",
+    "role": "student"
+  },
+  {
+    "username": "HelloWorld",
+    "email": "hello_world@gmail.com",
+    "password": "hello_world1234",
+    "role": "student"
+  },
+  {
+    "username": "Hadley76",
+    "email": "Pasquale.Wolf@hotmail.com",
+    "password": "qW5NNNjrlquhCMq",
+    "role": "student"
+  },
+  {
+    "username": "Laurianne41",
+    "email": "Jonathan.Langosh29@yahoo.com",
+    "password": "sTP8O8uE_CHEFDQ",
+    "role": "student"
+  },
+  {
+    "username": "Jude_Mayert",
+    "email": "Albin_Barton63@yahoo.com",
+    "password": "GzCsAXqYq7YEKE0",
+    "role": "student"
+  },
+  {
+    "username": "Hiram7",
+    "email": "Lilly.OKeefe@hotmail.com",
+    "password": "_LOefYo4W0yM5z2",
+    "role": "student"
+  },
+  {
+    "username": "Kamryn76",
+    "email": "Sandy70@gmail.com",
+    "password": "xCrdho288THTgPx",
+    "role": "student"
+  },
+  {
+    "username": "Stone_Paucek45",
+    "email": "Darryl_Dietrich@yahoo.com",
+    "password": "LYlxG4ClqMmLkVr",
+    "role": "student"
+  },
+  {
+    "username": "Princess_Ernser98",
+    "email": "Virgil_Swaniawski11@yahoo.com",
+    "password": "53PgZUwPRP8tevx",
+    "role": "student"
+  },
+  {
+    "username": "Kurtis53",
+    "email": "Juliana99@hotmail.com",
+    "password": "DrvYJNG3WLlpWxH",
+    "role": "student"
+  },
+  {
+    "username": "Rogers66",
+    "email": "Ethelyn.Simonis@gmail.com",
+    "password": "pTLCgYlKyGAyhXS",
+    "role": "student"
+  },
+  {
+    "username": "Josiah80",
+    "email": "Vilma_Orn@hotmail.com",
+    "password": "aWYzVyUP4LjTFLZ",
+    "role": "student"
+  },
+  {
+    "username": "Ed_Nicolas3",
+    "email": "Kirsten.Hudson75@gmail.com",
+    "password": "xps2guU0p0KmrgE",
+    "role": "student"
+  },
+  {
+    "username": "Madelynn_Rath-Romaguera13",
+    "email": "Khalid_Dickinson@gmail.com",
+    "password": "psEy2daA9tgxUMk",
+    "role": "student"
+  },
+  {
+    "username": "Ewald64",
+    "email": "Vesta12@yahoo.com",
+    "password": "5eO9Ugp6rmPRAnj",
+    "role": "student"
+  },
+  {
+    "username": "Luigi_Douglas72",
+    "email": "Helga36@hotmail.com",
+    "password": "CxaxzRozyoTGR8U",
+    "role": "student"
+  },
+  {
+    "username": "Barton.Lebsack-Johnston97",
+    "email": "Marquis11@hotmail.com",
+    "password": "Z8ECg4YIygZIicy",
+    "role": "student"
+  },
+  {
+    "username": "Moshe_Keebler",
+    "email": "Amos.Wuckert@hotmail.com",
+    "password": "z5vPgAa6ABL0mqY",
+    "role": "student"
+  },
+  {
+    "username": "Sherman.Grady",
+    "email": "Larue_Donnelly48@yahoo.com",
+    "password": "ZBSeTEohURZ2nIH",
+    "role": "student"
+  },
+  {
+    "username": "Mack.Emmerich",
+    "email": "Verlie15@gmail.com",
+    "password": "Y9rami9qJDYLMEQ",
+    "role": "student"
+  },
+  {
+    "username": "Mckenna59",
+    "email": "Gertrude_Gleichner79@hotmail.com",
+    "password": "OkjOW6AbWzImUJb",
+    "role": "student"
+  },
+  {
+    "username": "Izabella.Walsh-Pollich",
+    "email": "Cornell_Torphy@gmail.com",
+    "password": "2A2vPyQ635VtIx3",
+    "role": "student"
+  },
+  {
+    "username": "Fern75",
+    "email": "Alec.Botsford-Jerde80@hotmail.com",
+    "password": "oRIcuRQOu2ofDGR",
+    "role": "student"
+  },
+  {
+    "username": "Earnest49",
+    "email": "Ismael_Homenick58@hotmail.com",
+    "password": "RgtDh692uaUlM4v",
+    "role": "student"
+  },
+  {
+    "username": "Gabriella_Will-Runolfsdottir",
+    "email": "Travis.Morissette30@yahoo.com",
+    "password": "uZZfOmvQGSVjLoY",
+    "role": "student"
+  },
+  {
+    "username": "Catherine.Kuphal51",
+    "email": "Wanda93@gmail.com",
+    "password": "cMq_hD8y2L9iZkK",
+    "role": "student"
+  },
+  {
+    "username": "Kamron.Kling",
+    "email": "Graciela79@gmail.com",
+    "password": "QCvXqNS2wjFKyLt",
+    "role": "student"
+  },
+  {
+    "username": "Nyasia_Beahan73",
+    "email": "Jackie62@gmail.com",
+    "password": "YvTikOJc4WZN_y7",
+    "role": "student"
+  },
+  {
+    "username": "Johnpaul18",
+    "email": "Jameson_Schmeler@hotmail.com",
+    "password": "8IQGFlkQTFu6H4T",
+    "role": "student"
+  },
+  {
+    "username": "Jeffry12",
+    "email": "Gisselle_Dare90@hotmail.com",
+    "password": "XZWdnxsFQ3iaq8o",
+    "role": "student"
+  },
+  {
+    "username": "Lorena.Schamberger",
+    "email": "Macy.Raynor@yahoo.com",
+    "password": "6NHFwcvvKCVduIV",
+    "role": "student"
+  },
+  {
+    "username": "Lucious_Runolfsdottir",
+    "email": "Rachel77@yahoo.com",
+    "password": "JXiP7QNTWLWLBZg",
+    "role": "student"
+  },
+  {
+    "username": "Tristin_Berge",
+    "email": "Antwon.Cremin@hotmail.com",
+    "password": "G31BDAcufcyckLD",
+    "role": "student"
+  },
+  {
+    "username": "Jaquan47",
+    "email": "Dayana_Jenkins@yahoo.com",
+    "password": "r9_DEBZ0FTKmj2F",
+    "role": "student"
+  },
+  {
+    "username": "Eladio41",
+    "email": "Savion_Hamill@yahoo.com",
+    "password": "sf2qGZ5Ko6KmD8b",
+    "role": "student"
+  },
+  {
+    "username": "Ashton_Hettinger",
+    "email": "Kara.Feest48@gmail.com",
+    "password": "JWuewWZkRz8yLNN",
+    "role": "student"
+  },
+  {
+    "username": "Rigoberto82",
+    "email": "Meta_Rath44@yahoo.com",
+    "password": "kYjRKZmsxTL2CVY",
+    "role": "student"
+  },
+  {
+    "username": "Rachael81",
+    "email": "Arthur_McGlynn@gmail.com",
+    "password": "WmkxDDP_oJ3iJwU",
+    "role": "student"
+  },
+  {
+    "username": "Brendon_Wyman",
+    "email": "Kacie_Rohan51@hotmail.com",
+    "password": "Udmg5Yfr5aez843",
+    "role": "student"
+  },
+  {
+    "username": "Christ.Yundt",
+    "email": "Keven.Adams@yahoo.com",
+    "password": "uLFi0u8xHmZRz2j",
+    "role": "student"
+  },
+  {
+    "username": "Wade_Kilback-Huels",
+    "email": "Miles.Halvorson@hotmail.com",
+    "password": "ZAD2jtsQapMrPqc",
+    "role": "student"
+  },
+  {
+    "username": "Burley.Gottlieb76",
+    "email": "Dedric.Fritsch92@yahoo.com",
+    "password": "MQpeCEC5aVY96E8",
+    "role": "student"
+  },
+  {
+    "username": "Rhea_Rosenbaum",
+    "email": "Douglas_Rippin@gmail.com",
+    "password": "I3wMHocKxYjpbq4",
+    "role": "student"
+  },
+  {
+    "username": "Damaris39",
+    "email": "Erin26@yahoo.com",
+    "password": "IfPKbJaaUIPcNfa",
+    "role": "student"
+  },
+  {
+    "username": "Buford_Howe10",
+    "email": "Loyce.Daugherty@gmail.com",
+    "password": "clqzYEyqoeT6AfI",
+    "role": "student"
+  },
+  {
+    "username": "Keyshawn_Jakubowski51",
+    "email": "Gust.Lesch76@yahoo.com",
+    "password": "Urc2XMb_RVLdVd7",
+    "role": "student"
+  },
+  {
+    "username": "Hortense_Feeney",
+    "email": "Halie.Casper@hotmail.com",
+    "password": "o1HMab5KFoL1pqn",
+    "role": "student"
+  },
+  {
+    "username": "Kari74",
+    "email": "Althea24@gmail.com",
+    "password": "JvSGU77ayCIaTNo",
+    "role": "student"
+  },
+  {
+    "username": "Penelope93",
+    "email": "Taya.Schumm@yahoo.com",
+    "password": "Fzc8SA_N3pZu3NV",
+    "role": "student"
+  },
+  {
+    "username": "Myriam79",
+    "email": "Peter.Hilpert@hotmail.com",
+    "password": "rfgVSKUE9XtHmCw",
+    "role": "student"
+  },
+  {
+    "username": "Kurtis52",
+    "email": "Mariah16@gmail.com",
+    "password": "tCpWGyBlTRNonRZ",
+    "role": "student"
+  },
+  {
+    "username": "Kaci89",
+    "email": "Josiane_Hauck60@gmail.com",
+    "password": "0ThnP15ZKMAvGq1",
+    "role": "student"
+  }
+]
