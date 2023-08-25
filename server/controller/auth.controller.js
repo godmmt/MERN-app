@@ -1,8 +1,13 @@
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import { loginValidation, registerValidation } from '../validation.js';
 import { UserModel } from '../models/index.js';
 
 class AuthController {
+  static hashPassword = (password) => {
+    return bcrypt.hash(password, 10);
+  };
+
   static generateAccessToken = (tokenObj) => {
     return jwt.sign(tokenObj, process.env.PASSPORT_SECRET, { expiresIn: '15s' });
   };
@@ -36,7 +41,7 @@ class AuthController {
     try {
       const newUser = new UserModel({ email, username, password, role });
       const savedUser = await newUser.save();
-      return res.status(200).send({
+      res.status(200).send({
         success: true,
         saveObject: savedUser,
       });
@@ -56,18 +61,18 @@ class AuthController {
       });
     }
 
-    // 檢查資料庫是否有該使用者
-    const { email, password } = value;
-    const user = await UserModel.findOne({ email });
-    if (!user) {
-      return res.status(400).send({
-        success: false,
-        message: 'User not found.',
-      });
-    }
-
-    // 有的話就產生JWT
     try {
+      // 檢查資料庫是否有該使用者
+      const { email, password } = value;
+      const user = await UserModel.findOne({ email });
+      if (!user) {
+        return res.status(400).send({
+          success: false,
+          message: 'User not found.',
+        });
+      }
+
+      // 有的話就產生JWT
       user.comparePassword(password, (err, isMatch) => {
         if (err) {
           return res.status(400).send(err);
@@ -80,7 +85,7 @@ class AuthController {
           // 伺服器回傳物件包含屬性success & token & 物件user
           res.status(200).send({
             success: true,
-            token: 'JWT ' + accessToken,
+            token: 'Bearer' + accessToken,
             refreshToken,
             user,
           });

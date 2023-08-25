@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import AuthController from '../controller/auth.controller.js';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -46,7 +47,7 @@ userSchema.methods.isAdmin = function () {
 // mongoose schema middleware
 userSchema.pre('save', async function (next) {
   if (this.isModified('password') || this.isNew) {
-    const hash = await bcrypt.hash(this.password, 10);
+    const hash = await AuthController.hashPassword(this.password);
     this.password = hash;
     next();
   } else {

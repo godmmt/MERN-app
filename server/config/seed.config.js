@@ -1,8 +1,8 @@
 import 'dotenv/config';
-import bcrypt from 'bcrypt';
 import { UserModel, CourseModel } from '../models/index.js';
 import connectToDB from './db.config.js';
 import { courses, users } from '../data/index.js';
+import AuthController from '../controller/auth.controller.js';
 
 async function seedData() {
   connectToDB();
@@ -10,22 +10,23 @@ async function seedData() {
     await UserModel.deleteMany();
     await CourseModel.deleteMany();
 
-    const insertUsers = await Promise.all(users.map(async (user) => ({ ...user, password: await bcrypt.hash(user.password, 10) })));
+    // users data
+    const hashPasswordUsers = users.map(async (user) => ({ ...user, password: await AuthController.hashPassword(user.password) }));
+    const insertUsers = await Promise.all(hashPasswordUsers);
     await UserModel.insertMany(insertUsers);
 
-    const insertCourses = await Promise.all(
-      courses.map(async (course) => {
-        const instructor = await UserModel.findOne({ email: course.instructor }, { select: '_id' });
-        const students = await UserModel.find({ email: { $in: course.students } });
-        const studentsID = students.map((student) => student._id);
-        return {
-          ...course,
-          instructor,
-          students: studentsID,
-        };
-      })
-    );
-    console.log('insertCourses', insertCourses);
+    // courses data
+    const changeStudentsEmailToID = courses.map(async (course) => {
+      const instructorID = await UserModel.findOne({ email: course.instructor }, { select: '_id' });
+      const students = await UserModel.find({ email: { $in: course.students } });
+      const studentsID = students.map((student) => student._id);
+      return {
+        ...course,
+        instructor: instructorID,
+        students: studentsID,
+      };
+    });
+    const insertCourses = await Promise.all(changeStudentsEmailToID);
     await CourseModel.insertMany(insertCourses);
 
     console.log('Seeded data successfully.');
