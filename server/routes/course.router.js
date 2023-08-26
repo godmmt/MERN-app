@@ -7,7 +7,7 @@ const courseRouter = Router();
 courseRouter.get('/', CourseController.getCourses); // 訪客可使用
 courseRouter.get('/findByName/:name', CourseController.getCoursesByCourseName); // 訪客可使用
 
-courseRouter.use(passport.authenticate('bearer', { session: false }));
+courseRouter.use(passport.authenticate('jwt', { session: false }));
 
 // fetch Course
 courseRouter.get('/instructor/:_instructor_id', CourseController.getCoursesByInstructorID);

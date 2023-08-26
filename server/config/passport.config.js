@@ -9,8 +9,9 @@ passport.use(
       secretOrKey: process.env.PASSPORT_SECRET,
     },
     async (jwt_payload, done) => {
+      const { email } = jwt_payload;
       try {
-        const user = await UserModel.findOne({ _id: jwt_payload._id });
+        const user = await UserModel.findOne({ email });
         return done(null, user ?? false);
       } catch (error) {
         return done(err, false);

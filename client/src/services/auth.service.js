@@ -7,7 +7,7 @@ class AuthService {
 
   static logout() {
     localStorage.removeItem('user');
-    return axios.post('user/revoke-token');
+    // return axios.post('user/revoke-token');
   }
 
   static register(username, email, password, role) {
