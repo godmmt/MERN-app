@@ -1,5 +1,5 @@
 import _axios from 'axios';
-import AuthService from 'services/auth.service';
+// import AuthService from 'services/auth.service';
 
 // axios 實例
 const axios = _axios.create({
@@ -14,7 +14,7 @@ axios.interceptors.request.use(
     if (user) {
       token = JSON.parse(localStorage.getItem('user')).token;
     }
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = token;
     return config;
   },
   (error) => {
@@ -32,13 +32,13 @@ axios.interceptors.response.use(
       // Unauthorized
       case 401: {
         // call refresh token
-        if (!error.config.url.include('user/refresh-token')) {
-          // 原本的 request 資訊
-          // const originialRequest = error.config;
+        // if (!error.config.url.include('user/refresh-token')) {
+        // 原本的 request 資訊
+        // const originialRequest = error.config;
 
-          // 依據 refreshToken 刷新 accessToken 並重發 request
-          return AuthService.refreshToken();
-        }
+        // 依據 refreshToken 刷新 accessToken 並重發 request
+        // return AuthService.refreshToken();
+        // }
         break;
       }
       case 403: // Forbidden

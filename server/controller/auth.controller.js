@@ -9,11 +9,11 @@ class AuthController {
   };
 
   static generateAccessToken = (tokenObj) => {
-    return jwt.sign(tokenObj, process.env.PASSPORT_SECRET, { expiresIn: '15s' });
+    return jwt.sign(tokenObj, process.env.PASSPORT_SECRET);
   };
 
   static generateRefreshToken = (tokenObj) => {
-    return jwt.sign(tokenObj, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '60s' });
+    return jwt.sign(tokenObj, process.env.REFRESH_TOKEN_SECRET);
   };
 
   /*-------註冊-------*/
@@ -85,7 +85,7 @@ class AuthController {
           // 伺服器回傳物件包含屬性success & token & 物件user
           res.status(200).send({
             success: true,
-            token: 'Bearer' + accessToken,
+            token: `bearer ${accessToken}`,
             refreshToken,
             user,
           });
