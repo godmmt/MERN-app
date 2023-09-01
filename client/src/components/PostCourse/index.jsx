@@ -13,6 +13,7 @@ const PostCourse = (props) => {
   const [price, setPrice] = useState(0);
   const [img, setImg] = useState('');
   const [message, setMessage] = useState('');
+
   const navigate = useNavigate();
   const handleTakeToLogin = () => {
     setIsModalOpen(true);
@@ -33,15 +34,17 @@ const PostCourse = (props) => {
   const handleChangeImg = (e) => {
     setImg(e.target.value);
   };
+
   const postCourse = () => {
     CourseService.post({ title, subtitle, description, price, img })
-      .then(() => {
-        window.alert('New course has been created.');
+      .then((res) => {
+        console.log({ res });
+        window.alert('New course has been created. Now redirect to My Course page.');
         navigate(ROUTER_PATH.myCourses);
       })
       .catch((error) => {
-        console.log(error.response);
-        setMessage(error.response.data);
+        console.log({ error });
+        setMessage(error.data);
       });
   };
 

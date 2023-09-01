@@ -13,10 +13,10 @@ const app = express();
 connectToDB();
 
 // middleware
-app.use(morgan('tiny'));
-app.use(cors(corsOptionsDelegate));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(morgan('tiny')); // 印出請求的資訊(http methods, url)
+app.use(cors(corsOptionsDelegate)); // 是否符合同源政策(domain)
+app.use(express.json()); // parse JSON to object
+app.use(express.urlencoded({ extended: true })); // parse URL
 
 // routers
 app.use('/api', apiRouter);
