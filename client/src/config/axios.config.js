@@ -4,6 +4,7 @@ import _axios from 'axios';
 // axios 實例
 const axios = _axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_HOST}/api`,
+  withCredentials: true,
 });
 
 // request 攔截器（發request前）

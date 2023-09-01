@@ -83,11 +83,12 @@ class AuthController {
           const accessToken = AuthController.generateAccessToken({ email, password });
           const refreshToken = AuthController.generateRefreshToken({ email, password });
           // 伺服器回傳物件包含屬性success & token & 物件user
+          const { username, role, _id } = user;
           res.status(200).send({
             success: true,
             token: `bearer ${accessToken}`,
             refreshToken,
-            user,
+            user: { username, email, role, _id },
           });
         } else {
           res.status(400).send({
