@@ -7,7 +7,7 @@ async function connectToDB() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('Connect to Mongo Atlas.');
+    console.log('Connect to DB successfully!');
   } catch (error) {
     console.log('Something went wrong with Database connection');
     console.log(error);

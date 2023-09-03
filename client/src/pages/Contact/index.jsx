@@ -76,7 +76,7 @@ const Contact = () => {
               <label htmlFor='guest-message'>
                 Message <span>*</span>
               </label>
-              <textarea name='guest-message' id='guest-message' rows='10' placeholder='Please fill out any questions or suggestions.'></textarea>
+              <textarea name='guest-message' id='guest-message' placeholder='Please fill out any questions or suggestions.'></textarea>
             </div>
             <Button cx='submit-btn'>Send Message</Button>
           </div>

@@ -1,5 +1,108 @@
 @import '../../styles';
 
 .post-course {
-  padding: 10rem 2rem;
+  padding: 5rem 2%;
+  min-height: 90vh;
+  background-image: url('../../assets/images/banner-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .alert-msg {
+    background-color: $background-white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    p {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $primary-red;
+      letter-spacing: 0.1rem;
+      line-height: 1.5;
+      @media (max-width: 45rem) {
+        font-size: 1.5rem;
+      }
+    }
+    .login-btn {
+      color: $primary-red;
+      letter-spacing: 0.05rem;
+      font-weight: 600;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      &:hover {
+        color: $primary-black;
+      }
+    }
+  }
+
+  .form {
+    background-color: $primary-white;
+    padding: 3rem;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    letter-spacing: 0.05rem;
+
+    .form-header {
+      line-height: 1.5;
+    }
+
+    .form-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        input,
+        textarea {
+          padding: 0.5rem;
+          outline: none;
+          border: none;
+          border-radius: 0.25rem;
+          background-color: $background-gray;
+          font-size: 1.5rem;
+          letter-spacing: 0.05rem;
+
+          &:focus {
+            background-color: white;
+            outline: 0.1rem solid $background-gray;
+          }
+          &::placeholder {
+            color: $font-color-light;
+          }
+        }
+        textarea {
+          height: 20rem;
+        }
+      }
+    }
+
+    .submit-btn {
+      box-shadow: none;
+      font-size: 1.5rem;
+      border-radius: 0.25rem;
+      background-color: $primary-blue;
+      color: $primary-white;
+      letter-spacing: 0.05rem;
+      &:hover {
+        background-color: $primary-green;
+      }
+    }
+    .error-msg {
+      color: $primary-red;
+      font-size: 1.75rem;
+    }
+  }
 }
