@@ -12,7 +12,6 @@ import close from 'assets/images/close.svg';
 import './header.scss';
 
 const Header = ({ currentUser, setCurrentUser, isModalOpen, setIsModalOpen }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false); 移至App.jsx
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAccount, setHasAccount] = useState(true);
 
