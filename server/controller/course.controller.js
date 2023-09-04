@@ -14,7 +14,7 @@ class CourseController {
       });
   };
 
-  // method - 搜尋課程名稱
+  // method - 以課程名稱搜尋課程
   static getCoursesByCourseName = (req, res) => {
     let { name } = req.params;
     console.log('進來findByName了');
@@ -73,7 +73,7 @@ class CourseController {
     const { error } = courseValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    // 確認input沒問題後就檢查他的身分->必須是老師
+    // 檢查身分是否為講師
     let { title, subtitle, description, price, img } = req.body;
     if (req.user.isStudent()) {
       return res.status(400).send('Only instructor can post a new course.');
@@ -112,6 +112,7 @@ class CourseController {
       });
     }
 
+    // 檢查身分是否為講師
     if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
       CourseModel.findOneAndUpdate({ _id }, req.body, {
         new: true,
@@ -146,7 +147,8 @@ class CourseController {
         message: 'Course not found.',
       });
     }
-    // 只有課程講師本人或系統管理者可以刪除課程
+
+    // 檢查身分是否為講師
     if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
       CourseModel.deleteOne({ _id })
         .then(() => {
