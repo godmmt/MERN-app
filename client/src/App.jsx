@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Profile from './components/Profile';
 import MyCourses from './pages/MyCourses';
 import PostCourse from './components/PostCourse';
-import Enroll from './components/Enroll';
+import CourseContent from './components/CourseContent';
 import AuthService from './services/auth.service';
 import AllCourses from 'pages/AllCourses';
 import About from 'pages/About';
@@ -44,7 +44,7 @@ function App() {
           <Route element={<Profile currentUser={currentUser} />} path={ROUTER_PATH.profile}></Route>
           <Route element={<MyCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.myCourses}></Route>
           <Route element={<PostCourse currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.postCourse}></Route>
-          <Route element={<Enroll currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.courseContent}></Route>
+          <Route element={<CourseContent currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.courseContent}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
