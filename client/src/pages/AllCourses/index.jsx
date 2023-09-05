@@ -3,7 +3,7 @@ import CourseService from 'services/course.service';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import Card from 'components/Card';
+import CourseCard from 'components/CourseCard';
 import './allCourses.scss';
 
 const AllCourses = ({ currentUser, setIsModalOpen }) => {
@@ -74,13 +74,15 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
           )}
           {showMessage && <div className='message'>Please enter the course name you want to search.</div>}
           {searchResult &&
-            searchResult.map((course) => <Card key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>)}
+            searchResult.map((course) => (
+              <CourseCard key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCard>
+            ))}
         </div>
         {searchResult && searchResult.length > 0 && <div className='dividing-line'></div>}
 
         <div className='all-courses'>
           {courseData.map((course) => {
-            return <Card key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>;
+            return <CourseCard key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCard>;
           })}
         </div>
       </section>

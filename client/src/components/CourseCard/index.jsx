@@ -2,9 +2,9 @@ import React from 'react';
 import Button from 'components/Button';
 import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
-import './card.scss';
+import './courseCard.scss';
 
-const Card = (props) => {
+const CourseCard = (props) => {
   const { course, currentUser, setIsModalOpen, ...rest } = props;
   const navigate = useNavigate();
   const handleTakeToEnroll = (course) => {
@@ -47,4 +47,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default CourseCard;
