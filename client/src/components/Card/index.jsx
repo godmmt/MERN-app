@@ -24,7 +24,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className='course-card' key={course._id} {...rest}>
+    <div className='course-card' {...rest}>
       <div className='intro'>
         <img src={course.img.replace('.png', 'l.png')} alt={`${course.title}-img`} />
         <h2>{course.title}</h2>

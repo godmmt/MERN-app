@@ -73,13 +73,14 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
             </div>
           )}
           {showMessage && <div className='message'>Please enter the course name you want to search.</div>}
-          {searchResult && searchResult.map((course) => <Card course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>)}
+          {searchResult &&
+            searchResult.map((course) => <Card key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>)}
         </div>
         {searchResult && searchResult.length > 0 && <div className='dividing-line'></div>}
 
         <div className='all-courses'>
           {courseData.map((course) => {
-            return <Card course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>;
+            return <Card key={course._id} course={course} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></Card>;
           })}
         </div>
       </section>
