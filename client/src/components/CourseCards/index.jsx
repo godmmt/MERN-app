@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import './courseCards.scss';
 
-const CourseCard = (props) => {
+const CourseCards = (props) => {
   const { courses, currentUser, setIsModalOpen } = props;
   const navigate = useNavigate();
   const handleTakeToEnroll = (course) => {
@@ -55,4 +55,4 @@ const CourseCard = (props) => {
   );
 };
 
-export default CourseCard;
+export default CourseCards;
