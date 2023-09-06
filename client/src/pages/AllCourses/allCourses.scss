@@ -36,10 +36,6 @@
     }
 
     .search-result {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
       .message {
         color: $primary-white;
         font-size: 1.75rem;
@@ -53,13 +49,6 @@
       background-color: $primary-white;
       border-radius: 0.25rem;
       box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    }
-
-    .all-courses {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
     }
   }
 }
