@@ -28,8 +28,10 @@ const CourseCard = (props) => {
       {courses.map((course) => {
         return (
           <div key={course._id} className='course-card'>
-            <div className='intro'>
+            <div className='course-img'>
               <img src={course.img.replace('.png', 'l.png')} alt={`${course.title}-img`} />
+            </div>
+            <div className='course-intro'>
               <h2>{course.title}</h2>
               <p>{course.subtitle}</p>
             </div>
