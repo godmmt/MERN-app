@@ -8,6 +8,7 @@
   padding: 10rem 2%;
   display: flex;
   flex-direction: column;
+  gap: 3rem;
 
   .alert-msg {
     background-color: $background-white;
@@ -33,38 +34,66 @@
       font-weight: 600;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
       &:hover {
-        color: $primary-black;
+        color: $primary-blue;
       }
     }
   }
 
-  .my-courses-header {
-    font-size: 2.25rem;
-    font-weight: 400;
-    letter-spacing: 0.01rem;
-    color: $primary-white;
-    margin: 0 0 3.5rem 0;
-    text-align: center;
+  .user-information {
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: $background-gray;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    h1 {
+      margin: 1rem 0 2rem 0;
+      letter-spacing: 0.01rem;
+    }
+
+    .user-info-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      .column {
+        display: flex;
+        gap: 1rem;
+
+        p {
+          font-size: 1.25rem;
+          letter-spacing: 0.025rem;
+          font-weight: 600;
+        }
+        div {
+          font-size: 1.25rem;
+          letter-spacing: 0.025rem;
+        }
+      }
+    }
   }
 
-  .msg-for-no-course {
-    display: flex;
-    justify-content: center;
-    p {
-      box-shadow: rgba(0, 0, 0, 0.15) 0.122rem 0.122rem 0.163rem;
-      width: fit-content;
-      padding: 1rem 2rem;
-      background-color: $background-white;
-      color: $primary-black;
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0.025rem;
-      line-height: 1.35;
-      span {
+  .my-courses {
+    padding: 2rem 2rem 3rem 2rem;
+    border-radius: 2rem;
+    background-color: $background-gray;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    h1 {
+      margin: 1rem 0 2rem 0;
+      letter-spacing: 0.01rem;
+    }
+
+    .msg-for-no-course {
+      p {
         font-size: 1.25rem;
-        color: $primary-blue;
-        &:hover {
-          cursor: pointer;
+        font-weight: 600;
+        letter-spacing: 0.025rem;
+        line-height: 1.35;
+        span {
+          font-size: 1.25rem;
+          color: $primary-blue;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
