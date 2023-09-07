@@ -2,9 +2,10 @@
 
 .about {
   .banner {
-    background-image: url('../../assets/images/banner-bg.png');
+    background-image: url('../../assets/images/banner-bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: left center;
     padding: 8.5rem 2.5rem 0 2.5rem;
 
     .introduction {

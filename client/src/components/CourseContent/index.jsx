@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
 import { ROUTER_PATH } from 'App';
-import './enroll.scss';
+import './courseContent.scss';
 
-const Enroll = ({ currentUser, setIsModalOpen }) => {
+const CourseContent = ({ currentUser, setIsModalOpen }) => {
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
@@ -17,17 +17,14 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
       const res = await CourseService.enroll(course._id, currentUser.user._id);
       window.alert(res.data);
       console.log({ res });
-      navigate(ROUTER_PATH.myCourses);
+      navigate(ROUTER_PATH.profile);
     } catch (err) {
       console.log(err);
     }
   };
-  const handleToMyCourses = () => {
-    navigate(ROUTER_PATH.myCourses);
-  };
 
   return (
-    <main className='enroll'>
+    <main className='course-content'>
       {!currentUser && (
         <div>
           <h1>You must login first before searching for courses.</h1>
@@ -57,8 +54,8 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
 
           {course.students.some((item) => item === currentUser.user._id) ? (
             <div>
-              <h6>You already own this course. Click the CHECK button to view it.</h6>
-              <Button onClick={handleToMyCourses}>CHECK</Button>
+              <h6>You already own this course. Click the button to start it.</h6>
+              <Button>Start Lesson</Button>
             </div>
           ) : (
             <Button cx='enroll-btn' onClick={handleEnroll}>
@@ -71,4 +68,4 @@ const Enroll = ({ currentUser, setIsModalOpen }) => {
   );
 };
 
-export default Enroll;
+export default CourseContent;
