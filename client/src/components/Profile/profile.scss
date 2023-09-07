@@ -1,15 +1,13 @@
 @import '../../styles';
 
-.my-courses {
+.profile {
   background-image: url('../../assets/images/banner-bg.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
   padding: 10rem 2%;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   .alert-msg {
     background-color: $background-white;
@@ -40,21 +38,24 @@
     }
   }
 
-  .greeting {
+  .my-courses-header {
     font-size: 2.25rem;
     font-weight: 400;
     letter-spacing: 0.01rem;
     color: $primary-white;
-    padding: 0 0 3.5rem 0;
-    // text-align: center;
+    margin: 0 0 3.5rem 0;
+    text-align: center;
   }
 
   .msg-for-no-course {
-    color: $primary-green;
-    background-color: $background-white;
-    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
     p {
-      // text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.15) 0.122rem 0.122rem 0.163rem;
+      width: fit-content;
+      padding: 1rem 2rem;
+      background-color: $background-white;
+      color: $primary-black;
       font-size: 1.25rem;
       font-weight: 600;
       letter-spacing: 0.025rem;

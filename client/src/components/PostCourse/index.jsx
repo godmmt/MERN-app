@@ -40,7 +40,7 @@ const PostCourse = (props) => {
       .then((res) => {
         console.log({ res });
         window.alert('New course has been created. Now redirect to My Course page.');
-        navigate(ROUTER_PATH.myCourses);
+        navigate(ROUTER_PATH.profile);
       })
       .catch((error) => {
         console.log({ error });

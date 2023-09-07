@@ -17,7 +17,7 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
       const res = await CourseService.enroll(course._id, currentUser.user._id);
       window.alert(res.data);
       console.log({ res });
-      navigate(ROUTER_PATH.myCourses);
+      navigate(ROUTER_PATH.profile);
     } catch (err) {
       console.log(err);
     }
