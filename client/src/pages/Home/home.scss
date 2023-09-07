@@ -93,7 +93,7 @@
       align-items: center;
       gap: 1rem;
       background-image: url('../../assets/images/dot-bg.png');
-      background-position: top left;
+      background-position: left top;
       background-repeat: no-repeat;
 
       .feedback-photo {
@@ -190,7 +190,7 @@
     }
     .courses-cards {
       background-image: url('../../assets/images/dot-bg.png');
-      background-position: top right;
+      background-position: right top;
       background-repeat: no-repeat;
       padding: 5rem 0 0 0;
       display: flex;
