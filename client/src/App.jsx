@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Profile from './components/Profile';
-import PostCourse from './components/PostCourse';
+import Profile from './pages/Profile';
+import PostCourse from './pages/PostCourse';
 import CourseContent from './components/CourseContent';
 import AuthService from './services/auth.service';
 import AllCourses from 'pages/AllCourses';

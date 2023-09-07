@@ -51,13 +51,6 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='profile'>
-      {currentUser && (
-        <section>
-          <p>{currentUser.user.username}</p>
-          <p>ID: {currentUser.user._id}</p>
-          <p>email: {currentUser.user.email}</p>
-        </section>
-      )}
       {!currentUser && (
         <section className='alert-msg'>
           <p>You must login before seeing your Profile.</p>
@@ -66,25 +59,51 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
           </Button>
         </section>
       )}
-
-      {currentUser?.user.role === 'instructor' && <section className='my-courses-header'>Courses You've Created :</section>}
-      {currentUser?.user.role === 'instructor' && courseData && courseData.length === 0 && (
-        <section className='msg-for-no-course'>
-          <p>
-            You haven't created any courses yet. Please go to <span>Post Course</span> to create a course.
-          </p>
+      {currentUser && (
+        <section className='user-information'>
+          <h1>Your Personal Information</h1>
+          <div className='user-info-content'>
+            <div className='column'>
+              <p>Name</p>
+              <div>{currentUser.user.username}</div>
+            </div>
+            <div className='column'>
+              <p>Email</p>
+              <div>{currentUser.user.email}</div>
+            </div>
+            <div className='column'>
+              <p>Role</p>
+              <div>{currentUser.user.role}</div>
+            </div>
+            <d className='column'>
+              <p>The date you registered on our website</p>
+              <div>{currentUser.user.date.substring(0, 10)}</div>
+            </d>
+          </div>
         </section>
       )}
-      {currentUser?.user.role === 'student' && <section className='my-courses-header'>Your Purchased Courses :</section>}
-      {currentUser?.user.role === 'student' && courseData && courseData.length === 0 && (
-        <section className='msg-for-no-course'>
-          <p>
-            You haven't purchased any courses yet. Go to <span onClick={handleTakeToAllCourses}>All Courses</span> to search for courses that interest
-            you.
-          </p>
+      {currentUser && (
+        <section className='my-courses'>
+          {currentUser.user.role === 'instructor' && <h1>Courses You've Created</h1>}
+          {currentUser.user.role === 'instructor' && courseData && courseData.length === 0 && (
+            <div className='msg-for-no-course'>
+              <p>
+                You haven't created any courses yet. Please go to <span>Post Course</span> to create a course.
+              </p>
+            </div>
+          )}
+          {currentUser.user.role === 'student' && <h1>Your Purchased Courses</h1>}
+          {currentUser.user.role === 'student' && courseData && courseData.length === 0 && (
+            <div className='msg-for-no-course'>
+              <p>
+                You haven't purchased any courses yet. Go to <span onClick={handleTakeToAllCourses}>All Courses</span> to search for courses that
+                interest you.
+              </p>
+            </div>
+          )}
+          {courseData && courseData.length !== 0 && <CourseCards courses={courseData} currentUser={currentUser}></CourseCards>}
         </section>
       )}
-      {currentUser && courseData && courseData.length !== 0 && <CourseCards courses={courseData} currentUser={currentUser}></CourseCards>}
     </main>
   );
 };
