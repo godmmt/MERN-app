@@ -1,6 +1,8 @@
 @import '../../styles';
 
 .all-courses {
+  min-height: 100vh;
+
   .banner {
     background-image: url('../../assets/images/banner-bg.svg');
     background-repeat: no-repeat;

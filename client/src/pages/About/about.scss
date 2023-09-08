@@ -1,18 +1,24 @@
 @import '../../styles';
 
 .about {
+  min-height: 100vh;
+
   .banner {
     background-image: url('../../assets/images/banner-bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left center;
     padding: 8.5rem 2.5rem 0 2.5rem;
-
+    @media (max-width: 767px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
     .introduction {
       display: flex;
       flex-direction: column;
       text-align: center;
       color: $primary-white;
+
       h1 {
         padding: 0 0 2.5rem 0;
         letter-spacing: 0.1rem;
@@ -21,6 +27,9 @@
         padding: 0 7.5rem;
         line-height: 1.75rem;
         letter-spacing: 0.05rem;
+        @media (max-width: 767px) {
+          padding: 0;
+        }
       }
       .video-container {
         position: relative;
@@ -108,20 +117,6 @@
             padding: 0 0.75rem;
             cursor: pointer;
           }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .about {
-    .banner {
-      padding-left: 1rem;
-      padding-right: 1rem;
-      .introduction {
-        p {
-          padding: 0;
         }
       }
     }
