@@ -1,25 +1,5 @@
 @import '../../styles';
 
-.circle-icon {
-  color: $primary-yellow;
-  margin: 0 0.5rem 0 0;
-}
-.circle-check-icon {
-  color: $primary-blue;
-  margin: 0 0.5rem 0 0;
-}
-.user-icon {
-  color: $primary-yellow;
-  margin: 0 0.5rem 0 0;
-}
-.hourglass-icon {
-  color: $font-color;
-  margin: 0 0.5rem 0 0;
-}
-.right-arrow-icon {
-  color: $primary-black;
-}
-
 .home {
   display: flex;
   flex-direction: column;
@@ -296,6 +276,27 @@
         }
       }
     }
+  }
+
+  // icon styles
+  .circle-icon {
+    color: $primary-yellow;
+    margin: 0 0.5rem 0 0;
+  }
+  .circle-check-icon {
+    color: $primary-blue;
+    margin: 0 0.5rem 0 0;
+  }
+  .user-icon {
+    color: $primary-yellow;
+    margin: 0 0.5rem 0 0;
+  }
+  .hourglass-icon {
+    color: $font-color;
+    margin: 0 0.5rem 0 0;
+  }
+  .right-arrow-icon {
+    color: $primary-black;
   }
 }
 
