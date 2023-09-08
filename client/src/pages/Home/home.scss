@@ -197,6 +197,12 @@
       flex-wrap: wrap;
       gap: 1rem;
 
+      @media (max-width: 900px) {
+        .courses-cards {
+          flex-direction: column;
+        }
+      }
+
       .card {
         background-color: #fff;
         border-radius: 1rem;
@@ -304,11 +310,5 @@
   }
   100% {
     border-right-color: transparent;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .courses-cards {
-    flex-direction: column;
   }
 }
