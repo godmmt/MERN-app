@@ -2,17 +2,22 @@
 
 .all-courses {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .banner {
-    background-image: url('../../assets/images/banner-bg.svg');
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: cover;
+  background-image: url('../../assets/images/banner-bg.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+
+  .main-content {
     min-height: 100vh;
-    padding: 10rem 5%;
+    width: min(98%, 1200px);
+    padding: 6rem 0;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 3rem;
 
     .search-bar {
       background-color: $primary-white;
