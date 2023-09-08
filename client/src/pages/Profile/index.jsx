@@ -3,13 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
-import Button from 'components/Button';
+import LoginWarning from 'components/LoginWarning';
 import './profile.scss';
 
 const Profile = ({ currentUser, setIsModalOpen }) => {
-  const handleTakeToLogin = () => {
-    setIsModalOpen(true);
-  };
   const navigate = useNavigate();
   const handleTakeToAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
@@ -51,14 +48,8 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='profile'>
-      {!currentUser && (
-        <section className='alert-msg'>
-          <p>You must login before seeing your Profile.</p>
-          <Button cx='login-btn' onClick={handleTakeToLogin}>
-            Take me to login page
-          </Button>
-        </section>
-      )}
+      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
+
       {currentUser && (
         <section className='user-information'>
           <h1>Your Personal Information</h1>
@@ -82,6 +73,7 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
           </div>
         </section>
       )}
+
       {currentUser && (
         <section className='my-courses'>
           {currentUser.user.role === 'instructor' && <h1>Courses You've Created</h1>}
@@ -92,6 +84,7 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
               </p>
             </div>
           )}
+
           {currentUser.user.role === 'student' && <h1>Your Purchased Courses</h1>}
           {currentUser.user.role === 'student' && courseData && courseData.length === 0 && (
             <div className='msg-for-no-course'>

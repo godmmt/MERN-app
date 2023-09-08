@@ -2,16 +2,19 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
+import LoginWarning from 'components/LoginWarning';
 import { ROUTER_PATH } from 'App';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// solid-svg-icons
+import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import './courseContent.scss';
 
 const CourseContent = ({ currentUser, setIsModalOpen }) => {
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
-  const handleTakeToLogin = () => {
-    setIsModalOpen(true);
-  };
+
   const handleEnroll = async () => {
     try {
       const res = await CourseService.enroll(course._id, currentUser.user._id);
@@ -25,35 +28,30 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='course-content'>
-      {!currentUser && (
-        <div>
-          <h1>You must login first before searching for courses.</h1>
-          <Button onClick={handleTakeToLogin}>Login</Button>
-        </div>
-      )}
-      {currentUser && currentUser.user.role === 'instructor' && (
-        <div>
-          <h1>Only students can enroll in courses.</h1>
-        </div>
-      )}
-      {currentUser && currentUser.user.role === 'student' && course && (
-        <div className='course' key={course._id}>
-          <div>
+      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
+
+      {currentUser && course && (
+        <section className='main-content'>
+          <div className='course-img'>
             <img src={course.img} alt='course-img' />
           </div>
-          <div className='intro'>
-            <h2>{course.title}</h2>
-            <p>{course.description}</p>
-            <p>{course.students}</p>
-          </div>
-          <div className='instructor'>{course.instructor.username}</div>
-          <div className='course-price'>
-            <span>$ </span>
-            <span>{course.price}</span>
+          <div className='course-intro'>
+            <h1>{course.title}</h1>
+            <div className='price-and-instructor'>
+              <div className='instructor'>
+                <FontAwesomeIcon icon={faUserTie} fixedWidth />
+                <h6>{course.instructor.username}</h6>
+              </div>
+              <div className='price'>
+                <FontAwesomeIcon icon={faDollarSign} fixedWidth />
+                <h6>{course.price}</h6>
+              </div>
+            </div>
+            <p className='description'>{course.description}</p>
           </div>
 
-          {course.students.some((item) => item === currentUser.user._id) ? (
-            <div>
+          {currentUser.user.role === 'student' && course.students.some((item) => item === currentUser.user._id) ? (
+            <div className='msg-for-owned'>
               <h6>You already own this course. Click the button to start it.</h6>
               <Button>Start Lesson</Button>
             </div>
@@ -62,7 +60,7 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
               Enroll
             </Button>
           )}
-        </div>
+        </section>
       )}
     </main>
   );

@@ -4,23 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import './courseCards.scss';
 
-const CourseCards = (props) => {
-  const { courses, currentUser, setIsModalOpen } = props;
+const CourseCards = ({ courses }) => {
   const navigate = useNavigate();
-  const handleTakeToEnroll = (course) => {
-    if (currentUser?.user.role === 'student') {
-      navigate(ROUTER_PATH.courseContent, {
-        state: course,
-      });
-    } else if (currentUser?.user.role === 'instructor') {
-      window.alert('Only students can enroll in courses. Please use student account to login.');
-    } else {
-      handleTakeToLogin();
-    }
-  };
-
-  const handleTakeToLogin = () => {
-    setIsModalOpen(true);
+  const goToCourseContent = (course) => {
+    navigate(ROUTER_PATH.courseContent, {
+      state: course,
+    });
   };
 
   return (
@@ -43,7 +32,7 @@ const CourseCards = (props) => {
             <Button
               cx='see-more-btn'
               onClick={() => {
-                handleTakeToEnroll(course);
+                goToCourseContent(course);
               }}
             >
               See More...
