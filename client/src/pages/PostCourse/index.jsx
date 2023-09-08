@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import { ROUTER_PATH } from 'App';
 import Button from 'components/Button';
+import LoginWarning from 'components/LoginWarning';
 import './postCourse.scss';
 
 const PostCourse = (props) => {
@@ -15,9 +16,6 @@ const PostCourse = (props) => {
   const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
-  const handleTakeToLogin = () => {
-    setIsModalOpen(true);
-  };
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -50,14 +48,8 @@ const PostCourse = (props) => {
 
   return (
     <main className='post-course'>
-      {!currentUser && (
-        <div className='alert-msg'>
-          <p>You must login first before seeing posts.</p>
-          <Button cx='login-btn' onClick={handleTakeToLogin}>
-            Click me to login
-          </Button>
-        </div>
-      )}
+      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
+
       {currentUser && currentUser.user.role !== 'instructor' && (
         <div className='alert-msg'>
           <p>Only instructors can post new courses.</p>
