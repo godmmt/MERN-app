@@ -1,5 +1,66 @@
 @import '../../styles';
 
 .course-content {
-  padding: 10rem 2rem;
+  min-height: 100vh;
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .main-content {
+    width: min(80%, 1200px);
+    min-height: 100vh;
+    padding: 5rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .course-img {
+      text-align: center;
+      img {
+        width: 60%;
+        @media (max-width: 1024px) {
+          width: 100%;
+        }
+      }
+    }
+
+    .course-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .price-and-instructor {
+        display: flex;
+        justify-content: space-between;
+        .instructor,
+        .price {
+          display: flex;
+          gap: 0.5rem;
+        }
+        .instructor {
+          color: $primary-blue;
+        }
+        .price {
+          color: $primary-red;
+        }
+      }
+      .description {
+        line-height: 1.5;
+      }
+    }
+
+    .msg-for-owned {
+      color: $primary-green;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    .enroll-btn {
+      align-self: flex-end;
+    }
+  }
+
+  // icon styles
 }
