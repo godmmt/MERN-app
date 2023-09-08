@@ -198,9 +198,7 @@
       gap: 1rem;
 
       @media (max-width: 900px) {
-        .courses-cards {
-          flex-direction: column;
-        }
+        flex-direction: column;
       }
 
       .card {
