@@ -30,17 +30,29 @@
         object-fit: cover;
       }
     }
+
     .course-intro {
       h2 {
         padding: 0 0 0.75rem 0;
       }
     }
-    .instructor {
-      font-weight: 600;
+
+    .price-and-instructor {
+      display: flex;
+      justify-content: space-between;
+      .instructor,
+      .price {
+        display: flex;
+        gap: 0.25rem;
+      }
+      .instructor {
+        color: $font-color-light;
+      }
+      .price {
+        color: $primary-blue;
+      }
     }
-    .course-price {
-      color: $primary-yellow;
-    }
+
     .see-more-btn {
       box-shadow: none;
       background-color: $background-gray;
