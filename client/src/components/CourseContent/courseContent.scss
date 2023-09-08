@@ -16,7 +16,6 @@
     gap: 1rem;
 
     .course-img {
-      text-align: center;
       img {
         width: 60%;
         @media (max-width: 1024px) {
@@ -36,15 +35,16 @@
         .instructor,
         .price {
           display: flex;
-          gap: 0.5rem;
+          gap: 0.25rem;
         }
         .instructor {
-          color: $primary-blue;
+          color: $font-color-light;
         }
         .price {
-          color: $primary-red;
+          color: $primary-blue;
         }
       }
+
       .description {
         line-height: 1.5;
       }
