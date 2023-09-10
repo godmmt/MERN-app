@@ -51,44 +51,46 @@ const PostCourse = (props) => {
       <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
 
       {currentUser && currentUser.user.role !== 'instructor' && (
-        <div className='alert-msg'>
+        <section className='alert-msg'>
           <p>Only instructors can post new courses.</p>
-        </div>
+        </section>
       )}
-      {currentUser && currentUser.user.role === 'instructor' && (
-        <div className='form'>
-          <div className='form-header'>
-            <h2>Enter the information for the course you want to teach.</h2>
-          </div>
-          <div className='form-content'>
-            <div>
-              <label htmlFor='title'>Title</label>
-              <input type='text' id='title' onChange={handleChangeTitle} />
-            </div>
-            <div>
-              <label htmlFor='subtitle'>Subtitle</label>
-              <input type='text' id='subtitle' onChange={handleChangeSubtitle} />
-            </div>
 
-            <div>
-              <label htmlFor='price'>Price</label>
-              <input type='number' id='price' onChange={handleChangePrice} />
+      <section className='main-content'>
+        {currentUser && currentUser.user.role === 'instructor' && (
+          <div className='form'>
+            <div className='form-header'>
+              <h2>Enter the information for the course you want to teach.</h2>
             </div>
-            <div>
-              <label htmlFor='img'>Your course's image</label>
-              <input type='text' id='img' onChange={handleChangeImg} placeholder='url only' />
+            <div className='form-content'>
+              <div className='input-field'>
+                <label htmlFor='title'>Title</label>
+                <input type='text' id='title' onChange={handleChangeTitle} />
+              </div>
+              <div className='input-field'>
+                <label htmlFor='subtitle'>Subtitle</label>
+                <input type='text' id='subtitle' onChange={handleChangeSubtitle} />
+              </div>
+              <div className='input-field'>
+                <label htmlFor='price'>Price</label>
+                <input type='number' id='price' onChange={handleChangePrice} />
+              </div>
+              <div className='input-field'>
+                <label htmlFor='img'>Your course's image</label>
+                <input type='text' id='img' onChange={handleChangeImg} placeholder='url only' />
+              </div>
+              <div className='input-field'>
+                <label htmlFor='description'>Description</label>
+                <textarea id='description' onChange={handleChangeDescription}></textarea>
+              </div>
             </div>
-            <div>
-              <label htmlFor='description'>Description</label>
-              <textarea id='description' onChange={handleChangeDescription}></textarea>
-            </div>
+            {message && <div className='error-msg'>{message}</div>}
+            <Button cx='submit-btn' onClick={postCourse}>
+              Submit
+            </Button>
           </div>
-          {message && <div className='error-msg'>{message}</div>}
-          <Button cx='submit-btn' onClick={postCourse}>
-            Submit
-          </Button>
-        </div>
-      )}
+        )}
+      </section>
     </main>
   );
 };
