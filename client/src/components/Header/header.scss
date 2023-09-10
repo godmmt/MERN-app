@@ -3,9 +3,11 @@
 header {
   @include flex-center;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
-  background-color: $background-black;
+  background-color: $primary-white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 0 1rem;
   z-index: 1;
 
@@ -22,7 +24,7 @@ header {
     li {
       list-style-type: none;
       cursor: pointer;
-      color: $primary-white;
+      color: $primary-blue;
       font-weight: bold;
       padding: 0 1rem;
       font-size: $font-size-h4;
@@ -33,7 +35,7 @@ header {
 
       a {
         display: block;
-        color: $primary-white;
+        color: $primary-blue;
         text-decoration: none;
         font-size: $font-size-h4;
 
@@ -47,8 +49,7 @@ header {
   .web {
     display: block;
     ul {
-      @include flex-center;
-      align-items: normal;
+      display: flex;
     }
   }
 
@@ -57,22 +58,15 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: $background-black;
+    background-color: $primary-white;
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     ul {
-      flex-direction: column;
       li {
-        display: flex;
-        height: 3rem;
         line-height: 3rem;
-        align-items: center;
         &:hover {
-          background-color: $primary-black;
-        }
-
-        a {
-          width: 100%;
+          background-color: $background-white;
         }
       }
     }
@@ -81,14 +75,15 @@ header {
   .hamburger-menu {
     display: none;
     cursor: pointer;
-    img {
-      width: 3rem;
+    color: $primary-blue;
+    .icon {
+      font-size: 2rem;
     }
   }
 
   @media (max-width: 1000px) {
     .hamburger-menu {
-      display: block;
+      display: flex;
     }
 
     .web {
