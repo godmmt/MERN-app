@@ -12,35 +12,38 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left center;
-    padding: 8.5rem 2.5rem 0 2.5rem;
+    padding: 0 4rem;
     @media (max-width: 414px) {
-      padding: 8.5rem 0.5rem 0 0.5rem;
+      padding: 0 0.5rem;
     }
 
     .introduction {
+      padding: 2.5rem 0 0 0;
       display: flex;
       flex-direction: column;
-      text-align: center;
-      color: $primary-white;
+      align-items: center;
       gap: 1rem;
+      color: $primary-white;
 
       h1 {
         letter-spacing: 0.1rem;
       }
       p {
+        text-align: center;
         line-height: 1.75rem;
         letter-spacing: 0.05rem;
       }
       .video-container {
         position: relative;
         bottom: -3rem;
+        max-width: 25rem;
+        @media (max-width: 414px) {
+          max-width: 20.5rem;
+        }
         video {
-          width: 50%;
+          width: 100%;
           border-radius: 1rem;
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-          @media (max-width: 414px) {
-            width: 90%;
-          }
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         }
       }
     }
