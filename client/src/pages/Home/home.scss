@@ -1,9 +1,11 @@
 @import '../../styles';
 
 .home {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .banner {
     background-image: url('../../assets/images/banner-bg.svg');
     background-repeat: no-repeat;

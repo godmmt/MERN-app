@@ -7,8 +7,9 @@ import Register from 'components/Register';
 import Navbar from './Navbar';
 import { ROUTER_PATH } from 'App';
 import logo from 'assets/images/logo.png';
-import burgerMenu from 'assets/images/burger-menu.svg';
-import close from 'assets/images/close.svg';
+/* Font Awesome */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import './header.scss';
 
 const Header = ({ currentUser, setCurrentUser, isModalOpen, setIsModalOpen }) => {
@@ -39,7 +40,7 @@ const Header = ({ currentUser, setCurrentUser, isModalOpen, setIsModalOpen }) =>
       <Navbar type='web' currentUser={currentUser} setCurrentUser={setCurrentUser} setIsModalOpen={setIsModalOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <div className='hamburger-menu' onClick={handleToggleMenu}>
-        <img src={isMenuOpen ? close : burgerMenu} alt='hamburger-menu' />
+        <FontAwesomeIcon icon={isMenuOpen ? faSquareXmark : faBars} fixedWidth className='icon' />
       </div>
 
       {isMenuOpen && (

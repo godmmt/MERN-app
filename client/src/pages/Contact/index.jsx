@@ -11,8 +11,8 @@ import './contact.scss';
 const Contact = () => {
   return (
     <main className='contact'>
-      <section className='banner'>
-        <div className='content'>
+      <section className='main-content'>
+        <div className='information-and-form'>
           <div className='information'>
             <div className='head'>
               <h1>Contact Us</h1>
@@ -54,25 +54,25 @@ const Contact = () => {
             </div>
           </div>
           <div className='form'>
-            <div>
+            <div className='input-field'>
               <label htmlFor='guest-name'>
                 Name <span>*</span>
               </label>
               <input type='text' id='guest-name' />
             </div>
-            <div>
+            <div className='input-field'>
               <label htmlFor='guest-email'>
                 Email <span>*</span>
               </label>
               <input type='email' id='guest-email' />
             </div>
-            <div>
+            <div className='input-field'>
               <label htmlFor='title'>
                 Title <span>*</span>
               </label>
               <input type='text' id='title' />
             </div>
-            <div>
+            <div className='input-field'>
               <label htmlFor='guest-message'>
                 Message <span>*</span>
               </label>

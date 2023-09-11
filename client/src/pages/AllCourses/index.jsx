@@ -56,7 +56,7 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='all-courses'>
-      <section className='banner'>
+      <section className='main-content'>
         <div className='search-bar'>
           <input type='text' value={searchInput} placeholder='Search...' onChange={handleChangeInput} />
           <div>
