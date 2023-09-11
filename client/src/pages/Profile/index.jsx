@@ -50,53 +50,55 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
     <main className='profile'>
       <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
 
-      {currentUser && (
-        <section className='user-information'>
-          <h1>Your Personal Information</h1>
-          <div className='user-info-content'>
-            <div className='column'>
-              <p>Name</p>
-              <div>{currentUser.user.username}</div>
+      <section className='main-content'>
+        {currentUser && (
+          <div className='card-layout'>
+            <h1>Your Personal Information</h1>
+            <div className='user-information'>
+              <div className='column'>
+                <p>Name :</p>
+                <div>{currentUser.user.username}</div>
+              </div>
+              <div className='column'>
+                <p>Email :</p>
+                <div>{currentUser.user.email}</div>
+              </div>
+              <div className='column'>
+                <p>Role :</p>
+                <div>{currentUser.user.role}</div>
+              </div>
+              <d className='column'>
+                <p>The date you registered on our website :</p>
+                <div>{currentUser.user.date.substring(0, 10)}</div>
+              </d>
             </div>
-            <div className='column'>
-              <p>Email</p>
-              <div>{currentUser.user.email}</div>
-            </div>
-            <div className='column'>
-              <p>Role</p>
-              <div>{currentUser.user.role}</div>
-            </div>
-            <d className='column'>
-              <p>The date you registered on our website</p>
-              <div>{currentUser.user.date.substring(0, 10)}</div>
-            </d>
           </div>
-        </section>
-      )}
+        )}
 
-      {currentUser && (
-        <section className='my-courses'>
-          {currentUser.user.role === 'instructor' && <h1>Courses You've Created</h1>}
-          {currentUser.user.role === 'instructor' && courseData && courseData.length === 0 && (
-            <div className='msg-for-no-course'>
-              <p>
-                You haven't created any courses yet. Please go to <span>Post Course</span> to create a course.
-              </p>
-            </div>
-          )}
+        {currentUser && (
+          <div className='card-layout'>
+            {currentUser.user.role === 'instructor' && <h1>Courses You've Created</h1>}
+            {currentUser.user.role === 'instructor' && courseData && courseData.length === 0 && (
+              <div className='msg-for-no-course'>
+                <p>
+                  You haven't created any courses yet. Please go to <span>Post Course</span> to create a course.
+                </p>
+              </div>
+            )}
 
-          {currentUser.user.role === 'student' && <h1>Your Purchased Courses</h1>}
-          {currentUser.user.role === 'student' && courseData && courseData.length === 0 && (
-            <div className='msg-for-no-course'>
-              <p>
-                You haven't purchased any courses yet. Go to <span onClick={handleTakeToAllCourses}>All Courses</span> to search for courses that
-                interest you.
-              </p>
-            </div>
-          )}
-          {courseData && courseData.length !== 0 && <CourseCards courses={courseData} currentUser={currentUser}></CourseCards>}
-        </section>
-      )}
+            {currentUser.user.role === 'student' && <h1>Your Purchased Courses</h1>}
+            {currentUser.user.role === 'student' && courseData && courseData.length === 0 && (
+              <div className='msg-for-no-course'>
+                <p>
+                  You haven't purchased any courses yet. Go to <span onClick={handleTakeToAllCourses}>All Courses</span> to search for courses that
+                  interest you.
+                </p>
+              </div>
+            )}
+            {courseData && courseData.length !== 0 && <CourseCards courses={courseData} currentUser={currentUser}></CourseCards>}
+          </div>
+        )}
+      </section>
     </main>
   );
 };

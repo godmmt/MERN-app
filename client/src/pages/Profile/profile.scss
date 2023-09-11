@@ -2,69 +2,72 @@
 
 .profile {
   min-height: 100vh;
-  background-image: url('../../assets/images/banner-bg.svg');
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: cover;
-  padding: 10rem 2%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
 
-  .user-information {
-    padding: 2rem;
-    border-radius: 2rem;
-    background-color: $background-gray;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-image: url('../../assets/images/banner-bg.svg');
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
 
-    h1 {
-      margin: 1rem 0 2rem 0;
-      letter-spacing: 0.01rem;
-    }
+  .main-content {
+    width: min(85%, 1200px);
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
-    .user-info-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      .column {
+    .card-layout {
+      padding: 2rem;
+      border-radius: 2rem;
+      background-color: $background-gray;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      @media (max-width: 414px) {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+      }
+      h1 {
+        margin: 1rem 0 2rem 0;
+        letter-spacing: 0.01rem;
+      }
+
+      .user-information {
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        gap: 1.5rem;
 
-        p {
-          font-size: 1.25rem;
-          letter-spacing: 0.025rem;
-          font-weight: 600;
-        }
-        div {
-          font-size: 1.25rem;
-          letter-spacing: 0.025rem;
+        .column {
+          display: flex;
+          gap: 1rem;
+          @media (max-width: 414px) {
+            flex-direction: column;
+            gap: 0.25rem;
+          }
+          p {
+            font-size: 1.25rem;
+            letter-spacing: 0.025rem;
+            font-weight: 600;
+          }
+          div {
+            font-size: 1.25rem;
+            letter-spacing: 0.025rem;
+          }
         }
       }
-    }
-  }
 
-  .my-courses {
-    padding: 2rem 2rem 3rem 2rem;
-    border-radius: 2rem;
-    background-color: $background-gray;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
-    h1 {
-      margin: 1rem 0 2rem 0;
-      letter-spacing: 0.01rem;
-    }
-
-    .msg-for-no-course {
-      p {
-        font-size: 1.25rem;
-        font-weight: 600;
-        letter-spacing: 0.025rem;
-        line-height: 1.35;
-        span {
+      .msg-for-no-course {
+        p {
           font-size: 1.25rem;
-          color: $primary-blue;
-          &:hover {
-            cursor: pointer;
+          font-weight: 600;
+          letter-spacing: 0.025rem;
+          line-height: 1.35;
+          span {
+            font-size: 1.25rem;
+            color: $primary-blue;
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }
