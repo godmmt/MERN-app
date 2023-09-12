@@ -2,7 +2,6 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
-import LoginWarning from 'components/LoginWarning';
 import { ROUTER_PATH } from 'App';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import './courseContent.scss';
 
-const CourseContent = ({ currentUser, setIsModalOpen }) => {
+const CourseContent = ({ currentUser }) => {
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
@@ -28,8 +27,6 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='course-content'>
-      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
-
       {currentUser && course && (
         <section className='main-content'>
           <div className='course-img'>
