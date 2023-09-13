@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
 
-const Register = ({ setHasAccount, handleCloseLoginModal }) => {
+const Register = ({ setHasAccount, handleCloseLoginModal, hideCloseIcon }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,8 +38,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
       window.alert('Registration succeeds. You are now redirected to the login page.');
       setHasAccount(true);
     } catch (error) {
-      console.log(error.response);
-      setMessage(error.response.data);
+      setMessage(error.data.message);
     }
   };
 
@@ -47,7 +46,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal }) => {
     <div className='register-content'>
       <h1>Register</h1>
 
-      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className='close-icon' />
+      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className={`close-icon ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
       <main>
         <div className='inputs'>
