@@ -40,6 +40,7 @@ function App() {
           <Route element={<AllCourses currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.allCourses}></Route>
           <Route element={<About />} path={ROUTER_PATH.about}></Route>
           <Route element={<Contact />} path={ROUTER_PATH.contact}></Route>
+          <Route element={<CourseContent currentUser={currentUser} setIsModalOpen={setIsModalOpen} />} path={ROUTER_PATH.courseContent}></Route>
           <Route
             element={
               <PrivateRoutes currentUser={currentUser} setCurrentUser={setCurrentUser} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
@@ -47,7 +48,6 @@ function App() {
           >
             <Route element={<Profile currentUser={currentUser} />} path={ROUTER_PATH.profile}></Route>
             <Route element={<PostCourse currentUser={currentUser} />} path={ROUTER_PATH.postCourse}></Route>
-            <Route element={<CourseContent currentUser={currentUser} />} path={ROUTER_PATH.courseContent}></Route>
           </Route>
         </Route>
       </Routes>
