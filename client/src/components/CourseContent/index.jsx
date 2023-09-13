@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import './courseContent.scss';
 
-const CourseContent = ({ currentUser }) => {
+const CourseContent = ({ currentUser, setIsModalOpen }) => {
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
@@ -23,6 +23,10 @@ const CourseContent = ({ currentUser }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleLogin = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -47,11 +51,17 @@ const CourseContent = ({ currentUser }) => {
             <p className='description'>{course.description}</p>
           </div>
 
+          {!currentUser && (
+            <Button cx='submit-btn' onClick={handleLogin}>
+              Enroll
+            </Button>
+          )}
+
           {currentUser?.user.role === 'student' &&
             (course.students.some((item) => item === currentUser.user._id) ? (
-              <Button cx='enroll-btn'>Start Lesson</Button>
+              <Button cx='submit-btn'>Start Lesson</Button>
             ) : (
-              <Button cx='enroll-btn' onClick={handleEnroll}>
+              <Button cx='submit-btn' onClick={handleEnroll}>
                 Enroll
               </Button>
             ))}
