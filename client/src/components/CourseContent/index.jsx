@@ -27,7 +27,7 @@ const CourseContent = ({ currentUser }) => {
 
   return (
     <main className='course-content'>
-      {currentUser && course && (
+      {course && (
         <section className='main-content'>
           <div className='course-img'>
             <img src={course.img} alt='course-img' />
@@ -47,16 +47,14 @@ const CourseContent = ({ currentUser }) => {
             <p className='description'>{course.description}</p>
           </div>
 
-          {currentUser.user.role === 'student' && course.students.some((item) => item === currentUser.user._id) ? (
-            <div className='msg-for-owned'>
-              <h6>You already own this course. Click the button to start it.</h6>
-              <Button>Start Lesson</Button>
-            </div>
-          ) : (
-            <Button cx='enroll-btn' onClick={handleEnroll}>
-              Enroll
-            </Button>
-          )}
+          {currentUser?.user.role === 'student' &&
+            (course.students.some((item) => item === currentUser.user._id) ? (
+              <Button cx='enroll-btn'>Start Lesson</Button>
+            ) : (
+              <Button cx='enroll-btn' onClick={handleEnroll}>
+                Enroll
+              </Button>
+            ))}
         </section>
       )}
     </main>
