@@ -7,7 +7,7 @@
   z-index: z-index('modal');
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: $background-black;
 
   .modal-content {
     width: max(30%, 25rem);
@@ -15,4 +15,8 @@
     border-radius: 1rem;
     background-color: $background-gray;
   }
+}
+
+.covered {
+  background-color: $primary-white;
 }
