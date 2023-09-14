@@ -38,6 +38,7 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
           </div>
           <div className='course-intro'>
             <h1>{course.title}</h1>
+            <h5>{course.subtitle}</h5>
             <div className='price-and-instructor'>
               <div className='instructor'>
                 <FontAwesomeIcon icon={faUserTie} fixedWidth />
