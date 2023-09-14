@@ -10,30 +10,33 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
   // state 用來儲存從API當中所獲得的Course Data
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [searchCourseName, setSearchCourseName] = useState('');
   const [searchCourseData, setSearchCourseData] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [showNotFoundMsg, setShowNotFoundMsg] = useState(false);
 
-  const handleChangeInput = (e) => {
-    setSearchInput(e.target.value);
+  const handleChangeInput = (event) => {
+    const value = event.target.value;
+    setSearchInput(value);
+    setSearchCourseName(value.trim());
   };
 
   const handleSearch = () => {
     setSearchCourseData([]); // 清空搜尋結果
     setShowMessage(false); // 清空提示
     setShowNotFoundMsg(false); // 清空查無資料提示
-    if (searchInput.trim() !== '') {
-      CourseService.getCourseByName(searchInput.trim())
-        .then((res) => {
-          console.log({ res });
-          if (res.data.length !== 0) {
-            setSearchCourseData(res.data); // 取得資料
+    if (searchCourseName) {
+      CourseService.getCourseByName(searchCourseName)
+        .then((response) => {
+          console.log({ response });
+          if (Array.isArray(response.data) && response.data.length !== 0) {
+            setSearchCourseData(response.data); // 取得資料
           } else {
             setShowNotFoundMsg(true); // 打開查無資料提示
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.log({ err });
         });
     } else {
       setShowMessage(true); // 打開提示
