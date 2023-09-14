@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
-import LoginWarning from 'components/LoginWarning';
 import './profile.scss';
 
-const Profile = ({ currentUser, setIsModalOpen }) => {
+const Profile = ({ currentUser }) => {
   const navigate = useNavigate();
   const handleTakeToAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
@@ -48,8 +47,6 @@ const Profile = ({ currentUser, setIsModalOpen }) => {
 
   return (
     <main className='profile'>
-      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
-
       <section className='main-content'>
         {currentUser && (
           <div className='card-layout'>

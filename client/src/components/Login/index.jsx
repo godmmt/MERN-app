@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './login.scss';
 
-const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
+const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -31,7 +31,6 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
       localStorage.setItem('user', JSON.stringify(res.data));
       window.alert('Login successfully.');
       setCurrentUser(res.data);
-      // navigate(ROUTER_PATH.profile);
       handleCloseLoginModal();
     } catch (error) {
       setMessage(error.data.message);
@@ -41,7 +40,7 @@ const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount }) => {
   return (
     <div className='login-content'>
       <h1>Login</h1>
-      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className='close-icon' />
+      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className={`close-icon  ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
       <main>
         <div className='inputs'>

@@ -2,7 +2,6 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
-import LoginWarning from 'components/LoginWarning';
 import { ROUTER_PATH } from 'App';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,11 +25,13 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
     }
   };
 
+  const handleLogin = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <main className='course-content'>
-      <LoginWarning currentUser={currentUser} setIsModalOpen={setIsModalOpen}></LoginWarning>
-
-      {currentUser && course && (
+      {course && (
         <section className='main-content'>
           <div className='course-img'>
             <img src={course.img} alt='course-img' />
@@ -50,16 +51,20 @@ const CourseContent = ({ currentUser, setIsModalOpen }) => {
             <p className='description'>{course.description}</p>
           </div>
 
-          {currentUser.user.role === 'student' && course.students.some((item) => item === currentUser.user._id) ? (
-            <div className='msg-for-owned'>
-              <h6>You already own this course. Click the button to start it.</h6>
-              <Button>Start Lesson</Button>
-            </div>
-          ) : (
-            <Button cx='enroll-btn' onClick={handleEnroll}>
+          {!currentUser && (
+            <Button cx='submit-btn' onClick={handleLogin}>
               Enroll
             </Button>
           )}
+
+          {currentUser?.user.role === 'student' &&
+            (course.students.some((item) => item === currentUser.user._id) ? (
+              <Button cx='submit-btn'>Start Lesson</Button>
+            ) : (
+              <Button cx='submit-btn' onClick={handleEnroll}>
+                Enroll
+              </Button>
+            ))}
         </section>
       )}
     </main>
