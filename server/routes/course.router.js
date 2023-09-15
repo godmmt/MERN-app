@@ -5,7 +5,7 @@ import passport from '../config/passport.config.js';
 const courseRouter = Router();
 
 courseRouter.get('/', CourseController.getCourses); // 訪客可使用
-courseRouter.get('/findByName/:name', CourseController.getCoursesByCourseName); // 訪客可使用
+courseRouter.get('/findByName/:name?', CourseController.getCoursesByCourseName); // 訪客可使用
 
 courseRouter.use(passport.authenticate('jwt', { session: false }));
 

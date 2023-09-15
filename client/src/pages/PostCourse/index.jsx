@@ -17,19 +17,23 @@ const PostCourse = (props) => {
   const navigate = useNavigate();
 
   const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
+    const value = e.target.value.trim();
+    setTitle(value);
   };
   const handleChangeSubtitle = (e) => {
-    setSubtitle(e.target.value);
+    const value = e.target.value.trim();
+    setSubtitle(value);
   };
   const handleChangeDescription = (e) => {
-    setDescription(e.target.value);
+    const value = e.target.value.trim();
+    setDescription(value);
   };
   const handleChangePrice = (e) => {
     setPrice(e.target.value);
   };
   const handleChangeImg = (e) => {
-    setImg(e.target.value);
+    const value = e.target.value.trim();
+    setImg(value);
   };
 
   const postCourse = () => {
