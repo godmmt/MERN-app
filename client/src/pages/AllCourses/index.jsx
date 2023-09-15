@@ -10,50 +10,38 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
   // state 用來儲存從API當中所獲得的Course Data
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  const [searchCourseName, setSearchCourseName] = useState('');
   const [searchCourseData, setSearchCourseData] = useState([]);
-  const [showMessage, setShowMessage] = useState(false);
   const [showNotFoundMsg, setShowNotFoundMsg] = useState(false);
 
   const handleChangeInput = (event) => {
     const value = event.target.value;
     setSearchInput(value);
-    setSearchCourseName(value.trim());
+    setShowNotFoundMsg(false); // 清空查無資料提示
   };
 
   const handleSearch = () => {
-    setSearchCourseData([]); // 清空搜尋結果
-    setShowMessage(false); // 清空提示
-    setShowNotFoundMsg(false); // 清空查無資料提示
-    if (searchCourseName) {
-      CourseService.getCourseByName(searchCourseName)
-        .then((response) => {
-          console.log({ response });
-          if (Array.isArray(response.data) && response.data.length !== 0) {
-            setSearchCourseData(response.data); // 取得資料
-          } else {
-            setShowNotFoundMsg(true); // 打開查無資料提示
-          }
-        })
-        .catch((err) => {
-          console.log({ err });
-        });
-    } else {
-      setShowMessage(true); // 打開提示
-    }
+    const courseName = searchInput.trim();
+    CourseService.getCourseByName(courseName)
+      .then((response) => {
+        setSearchCourseData(response.data); // 取得資料
+        setShowNotFoundMsg(!response.data.length); // 打開查無資料提示
+      })
+      .catch((err) => {
+        console.log({ err });
+        setSearchCourseData([]); // 清空搜尋結果
+        setShowNotFoundMsg(false); // 清空查無資料提示
+      });
     setSearchInput(''); // 清空搜尋欄位的值
   };
 
   // 網頁組件渲染完後就執行effect
   useEffect(() => {
-    // console.log('Using effect!');
     CourseService.getAllCourses()
       .then((res) => {
-        console.log({ res });
         setAllCoursesData(res.data); // Array
       })
       .catch((error) => {
-        console.log(error);
+        console.log({ error });
       });
   }, []);
 
@@ -74,10 +62,13 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
               Please enter the course name you want to search again.
             </div>
           )}
-          {showMessage && <div className='message'>Please enter the course name you want to search.</div>}
-          {searchCourseData && <CourseCards courses={searchCourseData} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCards>}
+          {searchCourseData.length > 0 && (
+            <>
+              <CourseCards courses={searchCourseData} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCards>
+              <div className='dividing-line'></div>
+            </>
+          )}
         </div>
-        {searchCourseData && searchCourseData.length > 0 && <div className='dividing-line'></div>}
 
         <CourseCards courses={allCoursesData} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCards>
       </section>

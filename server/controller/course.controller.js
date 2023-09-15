@@ -16,8 +16,8 @@ class CourseController {
 
   // method - 以課程名稱搜尋課程
   static getCoursesByCourseName = (req, res) => {
-    let { name } = req.params;
-    console.log('進來findByName了');
+    const { name } = req.params;
+    console.log('進來findByName了', name);
     CourseModel.find({ title: name })
       .populate('instructor', ['username', 'email'])
       .then((course) => {
