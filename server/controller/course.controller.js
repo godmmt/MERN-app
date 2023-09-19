@@ -1,8 +1,7 @@
 import { CourseModel } from '../models/index.js';
-import { courseValidation } from '../validation.js';
 
 class CourseController {
-  // method - 搜尋所有課程
+  // 搜尋所有課程
   static getCourses = (req, res) => {
     CourseModel.find({})
       .populate('instructor', ['username', 'email'])
@@ -14,7 +13,7 @@ class CourseController {
       });
   };
 
-  // method - 以課程名稱搜尋課程
+  // 以課程名稱搜尋課程
   static getCoursesByCourseName = (req, res) => {
     const { name } = req.params;
     console.log('進來findByName了', name);
@@ -28,9 +27,9 @@ class CourseController {
       });
   };
 
-  // method - 根據講師ID獲得課程內容
+  // 根據講師ID獲得課程內容
   static getCoursesByInstructorID = (req, res) => {
-    let { _instructor_id } = req.params;
+    const { _instructor_id } = req.params;
     CourseModel.find({ instructor: _instructor_id })
       .populate('instructor', ['username', 'email'])
       .then((data) => {
@@ -41,9 +40,9 @@ class CourseController {
       });
   };
 
-  // method - 根據學生ID獲得課程內容
+  // 根據學生ID獲得課程內容
   static getCoursesByStudentID = (req, res) => {
-    let { _student_id } = req.params;
+    const { _student_id } = req.params;
     CourseModel.find({ students: _student_id })
       .populate('instructor', ['username', 'email'])
       .then((courses) => {
@@ -54,9 +53,9 @@ class CourseController {
       });
   };
 
-  // method - 根據課程ID來找到課程內容
+  // 根據課程ID來找到課程內容
   static getCourse = (req, res) => {
-    let { _id } = req.params;
+    const { _id } = req.params;
     CourseModel.findOne({ _id })
       .populate('instructor', ['email'])
       .then((course) => {
@@ -67,28 +66,19 @@ class CourseController {
       });
   };
 
-  // method - 新增課程
+  // 新增課程
   static createCourse = async (req, res) => {
-    // validate the inputs before making a new course
-    const { error } = courseValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-
-    // 檢查身分是否為講師
-    let { title, subtitle, description, price, img } = req.body;
-    if (req.user.isStudent()) {
-      return res.status(400).send('Only instructor can post a new course.');
-    } // return的話後面都不管
-
-    let newCourse = new CourseModel({
-      title,
-      subtitle,
-      description,
-      price,
-      instructor: req.user._id,
-      img,
-    });
-
+    const { title, subtitle, description, price } = req.body;
+    // 儲存課程到DB
     try {
+      const newCourse = new CourseModel({
+        title,
+        subtitle,
+        description,
+        price,
+        instructor: req.user._id,
+        img: req.imgURL,
+      });
       await newCourse.save();
       res.status(200).send('New course has been saved.');
     } catch (err) {
@@ -96,14 +86,12 @@ class CourseController {
     }
   };
 
-  // method - 編輯課程
+  // 編輯課程
   static editCourse = async (req, res) => {
-    // validate the inputs before making a new course
-    const { error } = courseValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    const { _id } = req.params;
 
-    let { _id } = req.params;
-    let course = await CourseModel.findOne({ _id });
+    // 檢查是否有該課程存在
+    const course = await CourseModel.findOne({ _id });
     if (!course) {
       res.status(404);
       return res.json({
@@ -112,9 +100,11 @@ class CourseController {
       });
     }
 
-    // 檢查身分是否為講師
+    const newCourseInfo = { ...req.body, img: req.imgURL };
+
+    // 檢查身分是否為該開課講師
     if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
-      CourseModel.findOneAndUpdate({ _id }, req.body, {
+      CourseModel.findOneAndUpdate({ _id }, newCourseInfo, {
         new: true,
         runValidators: true,
       })
@@ -136,10 +126,12 @@ class CourseController {
     }
   };
 
-  // method - 刪除課程
+  // 刪除課程
   static deleteCourse = async (req, res) => {
-    let { _id } = req.params;
-    let course = await CourseModel.findOne({ _id });
+    const { _id } = req.params;
+
+    // 檢查是否有該課程存在
+    const course = await CourseModel.findOne({ _id });
     if (!course) {
       res.status(404);
       return res.json({
@@ -148,7 +140,7 @@ class CourseController {
       });
     }
 
-    // 檢查身分是否為講師
+    // 檢查身分是否為該開課講師
     if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
       CourseModel.deleteOne({ _id })
         .then(() => {
@@ -169,12 +161,12 @@ class CourseController {
     }
   };
 
-  // method - 學生註冊課程
+  // 學生註冊課程
   static enrollCourse = async (req, res) => {
-    let { course_id } = req.params;
-    let { user_id } = req.body;
+    const { course_id } = req.params;
+    const { user_id } = req.body;
     try {
-      let course = await CourseModel.findOne({ _id: course_id });
+      const course = await CourseModel.findOne({ _id: course_id });
       course.students.push(user_id);
       await course.save();
       res.send('Done Enrollment.');

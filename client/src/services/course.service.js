@@ -2,8 +2,8 @@ import axios from '../config/axios.config.js';
 
 class CourseService {
   // method-創立新課程
-  static post({ title, subtitle, description, price, img }) {
-    return axios.post('courses', { title, subtitle, description, price, img });
+  static post(formData) {
+    return axios.post('courses', formData);
   }
 
   // method-尋找所有課程

@@ -1,43 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { joiResolver } from '@hookform/resolvers/joi';
+import Joi from 'joi';
 import CourseService from '../../services/course.service';
 import { ROUTER_PATH } from 'App';
 import Button from 'components/Button';
 import './postCourse.scss';
 
+const postCourseSchema = Joi.object({
+  title: Joi.string().min(6).max(50).required(),
+  subtitle: Joi.string().min(6).max(50).required(),
+  description: Joi.string().required(),
+  price: Joi.number().min(10).max(9999).required(),
+  image: Joi.object().required(),
+});
+
+const Field = (props) => {
+  const { errors, fieldKey, children } = props;
+  return (
+    <div className={`input-field ${errors[fieldKey] ? 'not-validated' : ''}`}>
+      <label htmlFor={fieldKey}>{fieldKey.charAt(0).toUpperCase() + fieldKey.slice(1)}</label>
+      {children}
+      {errors[fieldKey] && <p className='error-msg'>{errors[fieldKey]?.message}</p>}
+    </div>
+  );
+};
+
 const PostCourse = (props) => {
   const { currentUser } = props;
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
-  const [img, setImg] = useState('');
-  const [message, setMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: joiResolver(postCourseSchema),
+  });
 
   const navigate = useNavigate();
 
-  const handleChangeTitle = (e) => {
-    const value = e.target.value.trim();
-    setTitle(value);
-  };
-  const handleChangeSubtitle = (e) => {
-    const value = e.target.value.trim();
-    setSubtitle(value);
-  };
-  const handleChangeDescription = (e) => {
-    const value = e.target.value.trim();
-    setDescription(value);
-  };
-  const handleChangePrice = (e) => {
-    setPrice(e.target.value);
-  };
-  const handleChangeImg = (e) => {
-    const value = e.target.value.trim();
-    setImg(value);
+  const [imgPreview, setImgPreview] = useState(null);
+
+  const handleImgPreview = (e) => {
+    const newImgPreview = e.target.files.length > 0 ? URL.createObjectURL(e.target.files[0]) : null;
+    setImgPreview(newImgPreview);
   };
 
-  const postCourse = () => {
-    CourseService.post({ title, subtitle, description, price, img })
+  useEffect(() => {
+    return () => {
+      if (imgPreview) {
+        URL.revokeObjectURL(imgPreview);
+      }
+    };
+  }, [imgPreview]);
+
+  const postCourse = (data) => {
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(data)) {
+      if (key === 'image') {
+        formData.append(key, value[0]);
+      } else {
+        formData.append(key, value);
+      }
+    }
+
+    CourseService.post(formData)
       .then((res) => {
         console.log({ res });
         window.alert('New course has been created. Now redirect to My Course page.');
@@ -45,7 +73,6 @@ const PostCourse = (props) => {
       })
       .catch((error) => {
         console.log({ error });
-        setMessage(error.data);
       });
   };
 
@@ -59,37 +86,62 @@ const PostCourse = (props) => {
 
       <section className='main-content'>
         {currentUser && currentUser.user.role === 'instructor' && (
-          <div className='form'>
+          <form className='form' onSubmit={handleSubmit(postCourse)}>
             <div className='form-header'>
               <h2>Enter the information for the course you want to teach.</h2>
             </div>
             <div className='form-content'>
-              <div className='input-field'>
-                <label htmlFor='title'>Title</label>
-                <input type='text' id='title' onChange={handleChangeTitle} />
-              </div>
-              <div className='input-field'>
-                <label htmlFor='subtitle'>Subtitle</label>
-                <input type='text' id='subtitle' onChange={handleChangeSubtitle} />
-              </div>
-              <div className='input-field'>
-                <label htmlFor='price'>Price</label>
-                <input type='number' id='price' onChange={handleChangePrice} />
-              </div>
-              <div className='input-field'>
-                <label htmlFor='img'>Your course's image</label>
-                <input type='text' id='img' onChange={handleChangeImg} placeholder='url only' />
-              </div>
-              <div className='input-field'>
-                <label htmlFor='description'>Description</label>
-                <textarea id='description' onChange={handleChangeDescription}></textarea>
-              </div>
+              <Field errors={errors} fieldKey='title'>
+                <input
+                  type='text'
+                  id='title'
+                  name='title'
+                  placeholder='JavaScript Zero to Hero 2023'
+                  {...register('title', { required: true, minLength: 6, maxLength: 50 })}
+                />
+              </Field>
+              <Field errors={errors} fieldKey='subtitle'>
+                <input
+                  type='text'
+                  id='subtitle'
+                  name='subtitle'
+                  placeholder='Learn How to Program in JavaScript and its frameworks.'
+                  {...register('subtitle', { required: true, minLength: 6, maxLength: 50 })}
+                />
+              </Field>
+              <Field errors={errors} fieldKey='price'>
+                <input
+                  type='number'
+                  id='price'
+                  name='price'
+                  placeholder='Enter your ideal course price.'
+                  {...register('price', { required: true, min: 10, max: 9999 })}
+                />
+              </Field>
+              <Field errors={errors} fieldKey='image'>
+                <input
+                  type='file'
+                  id='image'
+                  name='image'
+                  accept='image/png, image/jpeg, image/jpg'
+                  {...register('image')}
+                  onChange={handleImgPreview}
+                />
+                {imgPreview && <img src={imgPreview} alt='course-img-preview' className='preview-img' />}
+              </Field>
+              <Field errors={errors} fieldKey='description'>
+                <textarea
+                  id='description'
+                  name='description'
+                  placeholder='Become an expert using HTML, CSS, Bootstrap, JavaScript, React and So Much More!'
+                  {...register('description', { required: true })}
+                ></textarea>
+              </Field>
             </div>
-            {message && <div className='error-msg'>{message}</div>}
-            <Button cx='submit-btn' onClick={postCourse}>
+            <Button type='submit' cx='submit-btn'>
               Submit
             </Button>
-          </div>
+          </form>
         )}
       </section>
     </main>
