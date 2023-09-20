@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { loginValidation, registerValidation } from '../validation.js';
 import { UserModel } from '../models/index.js';
 
 class AuthController {
@@ -18,15 +17,6 @@ class AuthController {
 
   /*-------註冊-------*/
   static register = async (req, res) => {
-    // 檢查輸入的數據是否通過驗證器
-    const { error, value } = registerValidation(req.body);
-    if (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.details[0].message,
-      });
-    }
-
     // 檢查使用者信箱是否已被註冊
     const { email, username, password, role } = value;
     const emailExist = await UserModel.findOne({ email });
@@ -52,15 +42,6 @@ class AuthController {
 
   /*-------登入-------*/
   static login = async (req, res) => {
-    // 檢查輸入的數據是否通過驗證器
-    const { error, value } = loginValidation(req.body);
-    if (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.details[0].message,
-      });
-    }
-
     try {
       // 檢查資料庫是否有該使用者
       const { email, password } = value;

@@ -94,6 +94,19 @@
             resize: vertical;
           }
         }
+
+        .preview-img {
+          max-width: 30rem;
+        }
+
+        .not-validated {
+          input {
+            border: 1px solid $primary-red;
+          }
+          label {
+            color: $primary-red;
+          }
+        }
       }
 
       .submit-btn {
@@ -109,7 +122,6 @@
       }
       .error-msg {
         color: $primary-red;
-        font-size: 1.75rem;
       }
     }
   }

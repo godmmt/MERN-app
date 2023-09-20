@@ -33,15 +33,15 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.isStudent = function () {
-  return this.role == 'student';
+  return this.role === 'student';
 };
 
 userSchema.methods.isInstructor = function () {
-  return this.role == 'instructor';
+  return this.role === 'instructor';
 };
 
 userSchema.methods.isAdmin = function () {
-  return this.role == 'admin';
+  return this.role === 'admin';
 };
 
 // mongoose schema middleware
