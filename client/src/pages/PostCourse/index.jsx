@@ -13,7 +13,9 @@ const postCourseSchema = Joi.object({
   subtitle: Joi.string().min(6).max(50).required(),
   description: Joi.string().required(),
   price: Joi.number().min(10).max(9999).required(),
-  image: Joi.object().required(),
+  image: Joi.object({
+    0: Joi.required(),
+  }).required(),
 });
 
 const Field = (props) => {
@@ -67,7 +69,6 @@ const PostCourse = (props) => {
 
     CourseService.post(formData)
       .then((res) => {
-        console.log({ res });
         window.alert('New course has been created. Now redirect to My Course page.');
         navigate(ROUTER_PATH.profile);
       })
