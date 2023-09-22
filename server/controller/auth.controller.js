@@ -18,7 +18,7 @@ class AuthController {
   /*-------註冊-------*/
   static register = async (req, res) => {
     // 檢查使用者信箱是否已被註冊
-    const { email, username, password, role } = value;
+    const { email, username, password, role } = req.body;
     const emailExist = await UserModel.findOne({ email });
     if (emailExist) {
       return res.status(400).send({
@@ -44,7 +44,7 @@ class AuthController {
   static login = async (req, res) => {
     try {
       // 檢查資料庫是否有該使用者
-      const { email, password } = value;
+      const { email, password } = req.body;
       const user = await UserModel.findOne({ email });
       if (!user) {
         return res.status(400).send({
@@ -78,15 +78,22 @@ class AuthController {
         }
       });
     } catch (err) {
+      console.log(err);
       res.status(400).send(err);
     }
   };
 
-  /*-----刷新token----*/
-  static refreshToken = async (req, res) => {};
+  static resetPassword = async (req, res) => {
+    const { email } = req.body;
+    const user = await UserModel.findOne({ email });
 
-  /*-----撤銷token----*/
-  static revokeToken = async (req, res) => {};
+    try {
+    } catch (error) {}
+  };
+
+  // static refreshToken = async (req, res) => {};
+
+  // static revokeToken = async (req, res) => {};
 }
 
 export default AuthController;
