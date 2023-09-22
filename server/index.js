@@ -3,7 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import apiRouter from './routes/index.js';
-import corsOptionsDelegate from './helpers/cors.helper.js';
+import corsOptionsDelegate from './config/cors.config.js';
 import connectToDB from './config/db.config.js';
 
 // server app

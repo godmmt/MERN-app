@@ -3,7 +3,7 @@ import { MailerController } from '../controller/index.js';
 
 const mailerRouter = Router();
 
-mailerRouter.post('/forgetPassword', MailerController.forgetPassword);
-mailerRouter.post('/subscribeNewsLetter', MailerController.subscribeNewsLetter);
+mailerRouter.post('/forget-password', MailerController.forgetPassword);
+mailerRouter.post('/subscribe-newsletter', MailerController.subscribeNewsLetter);
 
 export default mailerRouter;

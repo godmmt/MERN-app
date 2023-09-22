@@ -100,11 +100,9 @@
         }
 
         .not-validated {
-          input {
+          input,
+          textarea {
             border: 1px solid $primary-red;
-          }
-          label {
-            color: $primary-red;
           }
         }
       }
