@@ -4,9 +4,12 @@ import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { useCurrentUser } from 'hooks';
 import './login.scss';
 
-const Login = ({ setCurrentUser, handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
+const Login = ({ handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
+  const { setCurrentUser } = useCurrentUser();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');

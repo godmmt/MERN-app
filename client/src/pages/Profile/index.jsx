@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
+import { useCurrentUser } from 'hooks';
 import './profile.scss';
 
-const Profile = ({ currentUser }) => {
+const Profile = () => {
+  const { currentUser } = useCurrentUser();
   const navigate = useNavigate();
   const handleTakeToAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
@@ -92,7 +94,7 @@ const Profile = ({ currentUser }) => {
                 </p>
               </div>
             )}
-            {courseData && courseData.length !== 0 && <CourseCards courses={courseData} currentUser={currentUser}></CourseCards>}
+            {courseData && courseData.length !== 0 && <CourseCards courses={courseData}></CourseCards>}
           </div>
         )}
       </section>

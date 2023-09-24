@@ -7,9 +7,12 @@ import { ROUTER_PATH } from 'App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // solid-svg-icons
 import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { useCurrentUser, useModal } from 'hooks';
 import './courseContent.scss';
 
-const CourseContent = ({ currentUser, setIsModalOpen }) => {
+const CourseContent = () => {
+  const { currentUser } = useCurrentUser();
+  const { setIsModalOpen } = useModal();
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
