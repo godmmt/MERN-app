@@ -4,9 +4,13 @@ import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import Login from 'components/Login';
+import { useCurrentUser, useModal } from 'hooks';
 import Register from 'components/Register';
 
-const PrivateRoutes = ({ currentUser, setCurrentUser, setIsModalOpen }) => {
+const PrivateRoutes = () => {
+  const { currentUser } = useCurrentUser();
+  const { setIsModalOpen } = useModal();
+
   const [hasAccount, setHasAccount] = useState(true);
   const handleCloseLoginModal = () => {
     setIsModalOpen(false);
@@ -19,7 +23,7 @@ const PrivateRoutes = ({ currentUser, setCurrentUser, setIsModalOpen }) => {
     createPortal(
       <Modal onClose={handleCloseLoginModal} isCovered>
         {hasAccount ? (
-          <Login setCurrentUser={setCurrentUser} handleCloseLoginModal={handleCloseLoginModal} setHasAccount={setHasAccount} hideCloseIcon />
+          <Login handleCloseLoginModal={handleCloseLoginModal} setHasAccount={setHasAccount} hideCloseIcon />
         ) : (
           <Register setHasAccount={setHasAccount} handleCloseLoginModal={handleCloseLoginModal} hideCloseIcon />
         )}

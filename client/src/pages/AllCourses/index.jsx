@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import CourseCards from 'components/CourseCards';
 import './allCourses.scss';
 
-const AllCourses = ({ currentUser, setIsModalOpen }) => {
+const AllCourses = () => {
   // state 用來儲存從API當中所獲得的Course Data
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -64,13 +64,13 @@ const AllCourses = ({ currentUser, setIsModalOpen }) => {
           )}
           {searchCourseData.length > 0 && (
             <>
-              <CourseCards courses={searchCourseData} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCards>
+              <CourseCards courses={searchCourseData}></CourseCards>
               <div className='dividing-line'></div>
             </>
           )}
         </div>
 
-        <CourseCards courses={allCoursesData} currentUser={currentUser} setIsModalOpen={setIsModalOpen}></CourseCards>
+        <CourseCards courses={allCoursesData}></CourseCards>
       </section>
     </main>
   );

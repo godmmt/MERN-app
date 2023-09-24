@@ -7,12 +7,15 @@ import Register from 'components/Register';
 import Navbar from './Navbar';
 import { ROUTER_PATH } from 'App';
 import logo from 'assets/images/logo.png';
+import { useCurrentUser, useModal } from 'hooks';
 /* Font Awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import './header.scss';
 
-const Header = ({ currentUser, setCurrentUser, isModalOpen, setIsModalOpen }) => {
+const Header = () => {
+  const { isModalOpen, setIsModalOpen } = useModal();
+  const { currentUser, setCurrentUser } = useCurrentUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasAccount, setHasAccount] = useState(true);
 

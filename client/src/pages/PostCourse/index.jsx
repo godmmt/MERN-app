@@ -6,6 +6,7 @@ import Joi from 'joi';
 import CourseService from '../../services/course.service';
 import { ROUTER_PATH } from 'App';
 import Button from 'components/Button';
+import { useCurrentUser } from 'hooks';
 import './postCourse.scss';
 
 const postCourseSchema = Joi.object({
@@ -29,8 +30,8 @@ const Field = (props) => {
   );
 };
 
-const PostCourse = (props) => {
-  const { currentUser } = props;
+const PostCourse = () => {
+  const { currentUser } = useCurrentUser();
 
   const {
     register,
