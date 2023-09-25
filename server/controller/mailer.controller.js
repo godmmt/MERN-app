@@ -3,6 +3,8 @@ import nodemailer from 'nodemailer';
 import { OAuth2Client } from 'google-auth-library';
 import ejs from 'ejs';
 import SubscriberModel from '../models/subscriber.model.js';
+import { UserModel } from '../models/index.js';
+import sendResponse from '../utils/sendResponse.js';
 
 // 到GCP啟用API服務
 // 參考：https://israynotarray.com/nodejs/20230722/1626712457/
@@ -39,10 +41,24 @@ class MailerController {
   static forgetPassword = async (req, res) => {
     const { email } = req.body;
 
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return sendResponse({
+        res,
+        status: 400,
+        message: 'User not found.',
+      });
+    }
+
     ejs.renderFile(process.cwd() + '/templates/email/forgetPassword.ejs', { username: user.username }, (err, html) => {
       if (err) {
         console.log(err);
-        res.status(500).send(err.message);
+        return sendResponse({
+          res,
+          status: 500,
+          message: err.message,
+        });
       }
 
       const mailDetails = {
@@ -54,10 +70,18 @@ class MailerController {
       transport.sendMail(mailDetails, (err, info) => {
         if (err) {
           console.log(err);
-          res.status(500).send(err.message);
-        } else {
-          res.status(200).send('A password reset email has been sent to your mailbox.');
+          return sendResponse({
+            res,
+            status: 500,
+            message: err.message,
+          });
         }
+
+        sendResponse({
+          res,
+          status: 200,
+          message: 'A password reset email has been sent to your mailbox.',
+        });
       });
     });
   };
@@ -68,7 +92,13 @@ class MailerController {
 
     const subscriber = await SubscriberModel.findOne({ email });
 
-    if (subscriber) return res.status(404).send("You've already subscribed.");
+    if (subscriber) {
+      return sendResponse({
+        res,
+        status: 200,
+        message: "You've already subscribed.",
+      });
+    }
 
     try {
       const newSubscriber = new SubscriberModel({ email });
@@ -79,7 +109,11 @@ class MailerController {
         (err, html) => {
           if (err) {
             console.log(err);
-            return res.status(500).send(err.message);
+            return sendResponse({
+              res,
+              status: 500,
+              message: err.message,
+            });
           }
 
           const mailDetails = {
@@ -92,16 +126,28 @@ class MailerController {
           transport.sendMail(mailDetails, (err, info) => {
             if (err) {
               console.log(err);
-              res.status(500).send(err.message);
-            } else {
-              res.status(200).send('Thank you for your subscription! Please check your mailbox.');
+              return sendResponse({
+                res,
+                status: 500,
+                message: err.message,
+              });
             }
+
+            sendResponse({
+              res,
+              status: 200,
+              message: 'Thank you for your subscription! Please check your mailbox.',
+            });
           });
         }
       );
     } catch (err) {
       console.log(err);
-      res.status(500).send(err.message);
+      sendResponse({
+        res,
+        status: 500,
+        message: err.message,
+      });
     }
   };
 
@@ -113,14 +159,28 @@ class MailerController {
 
     const subscriber = await SubscriberModel.findOne({ email: decodeEmail });
 
-    if (!subscriber) return res.status(404).send("Can't find subscriber.");
+    if (!subscriber) {
+      return sendResponse({
+        res,
+        status: 400,
+        message: "Can't find subscriber.",
+      });
+    }
 
     try {
       await SubscriberModel.deleteOne({ email: decodeEmail });
-      res.status(200).send('You have been successfully removed from our mailing list. You will no longer receive email updates from us.');
+      sendResponse({
+        res,
+        status: 200,
+        message: 'You have been successfully removed from our mailing list. You will no longer receive email updates from us.',
+      });
     } catch (err) {
       console.log(err);
-      res.status(500).send(err.message);
+      sendResponse({
+        res,
+        status: 500,
+        message: err.message,
+      });
     }
   };
 }
