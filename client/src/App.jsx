@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import PostCourse from './pages/PostCourse';
 import CourseContent from './components/CourseContent';
-// import AuthService from './services/auth.service';
 import AllCourses from 'pages/AllCourses';
 import About from 'pages/About';
 import Contact from 'pages/Contact';
@@ -22,6 +21,7 @@ export const ROUTER_PATH = {
   profile: '/profile',
   postCourse: '/postCourse',
   courseContent: '/course-content',
+  // TODO: 取消訂閱電子報的路徑 /unsubscribe-newsletter/:email
 };
 
 function App() {
@@ -40,6 +40,8 @@ function App() {
                 <Route element={<Profile />} path={ROUTER_PATH.profile}></Route>
                 <Route element={<PostCourse />} path={ROUTER_PATH.postCourse}></Route>
               </Route>
+              {/* TODO: 取消訂閱電子報的路由 */}
+              {/* TODO: 錯誤處理的路由 */}
             </Route>
           </Route>
         </Route>
