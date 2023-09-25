@@ -33,7 +33,6 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "tslib": "^2.6.2",
-    "url": "^0.11.3"
+    "tslib": "^2.6.2"
   }
 }

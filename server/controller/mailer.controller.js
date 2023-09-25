@@ -1,9 +1,8 @@
+import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import { OAuth2Client } from 'google-auth-library';
-import path from 'path';
 import ejs from 'ejs';
-import { fileURLToPath } from 'url';
-import { UserModel } from '../models/index.js';
+import SubscriberModel from '../models/subscriber.model.js';
 
 // 到GCP啟用API服務
 // 參考：https://israynotarray.com/nodejs/20230722/1626712457/
@@ -40,9 +39,9 @@ class MailerController {
   static forgetPassword = async (req, res) => {
     const { email } = req.body;
 
-    ejs.renderFile(process.cwd() + '/templates/email/forgetPassword.ejs', { username: user.username, link: '#' }, (err, html) => {
+    ejs.renderFile(process.cwd() + '/templates/email/forgetPassword.ejs', { username: user.username }, (err, html) => {
       if (err) {
-        console.error(err);
+        console.log(err);
         res.status(500).send(err.message);
       }
 
@@ -54,7 +53,7 @@ class MailerController {
       };
       transport.sendMail(mailDetails, (err, info) => {
         if (err) {
-          console.error(err);
+          console.log(err);
           res.status(500).send(err.message);
         } else {
           res.status(200).send('A password reset email has been sent to your mailbox.');
@@ -67,28 +66,62 @@ class MailerController {
   static subscribeNewsLetter = async (req, res) => {
     const { email } = req.body;
 
-    ejs.renderFile(process.cwd() + '/templates/email/newsletter.ejs', {}, (err, html) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send(err.message);
-      }
+    const subscriber = await SubscriberModel.findOne({ email });
 
-      const mailDetails = {
-        from: EMAIL_ACCOUNT,
-        to: email,
-        subject: 'Thanks for your subscription.',
-        html,
-      };
+    if (subscriber) return res.status(404).send("You've already subscribed.");
 
-      transport.sendMail(mailDetails, (err, info) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send(err.message);
-        } else {
-          res.status(200).send('Thank you for your subscription!');
+    try {
+      const newSubscriber = new SubscriberModel({ email });
+      await newSubscriber.save();
+      ejs.renderFile(
+        process.cwd() + '/templates/email/newsletter.ejs',
+        { email: Buffer.from(email).toString('base64'), link: process.env.CLIENT_SERVER },
+        (err, html) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).send(err.message);
+          }
+
+          const mailDetails = {
+            from: EMAIL_ACCOUNT,
+            to: email,
+            subject: 'Thanks for your subscription.',
+            html,
+          };
+
+          transport.sendMail(mailDetails, (err, info) => {
+            if (err) {
+              console.log(err);
+              res.status(500).send(err.message);
+            } else {
+              res.status(200).send('Thank you for your subscription! Please check your mailbox.');
+            }
+          });
         }
-      });
-    });
+      );
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  };
+
+  // 取消電子報
+  static unsubscribeNewsletter = async (req, res) => {
+    const { email } = req.body;
+
+    const decodeEmail = Buffer.from(email, 'base64').toString();
+
+    const subscriber = await SubscriberModel.findOne({ email: decodeEmail });
+
+    if (!subscriber) return res.status(404).send("Can't find subscriber.");
+
+    try {
+      await SubscriberModel.deleteOne({ email: decodeEmail });
+      res.status(200).send('You have been successfully removed from our mailing list. You will no longer receive email updates from us.');
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
   };
 }
 

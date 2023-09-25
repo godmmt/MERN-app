@@ -23,7 +23,7 @@
         color: #555;
         line-height: 1.4;
       }
-      a {
+      .enroll-btn {
         text-decoration: none;
         color: white !important;
         background-color: #029251;
@@ -38,6 +38,9 @@
       }
       .content {
         padding: 20px 0;
+      }
+      footer {
+        font-size: 12px;
       }
     </style>
   </head>
@@ -58,7 +61,13 @@
         </ul>
         <p>Don't miss out on this incredible opportunity to advance your coding journey.</p>
         <p>Enroll today and start coding like a pro!</p>
-        <p><a href="https://mern-app-client-1iaf.onrender.com" target="_blank">Enroll Now</a></p>
+        <div><a href="<%= link %>" target="_blank" class="enroll-btn">Enroll Now</a></div>
+      </div>
+      <div class="footer">
+        <p>
+          If you no longer wish to receive our newsletter, you can unsubscribe here:
+          <a href="<%= `${link}/unsubscribe-newsletter/${email}` %>" target="_blank">Unsubscribe</a>
+        </p>
       </div>
     </div>
   </body>
