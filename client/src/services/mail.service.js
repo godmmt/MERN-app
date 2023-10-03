@@ -6,9 +6,13 @@ class MailerService {
     return axios.post('/mailer/subscribe-newsletter', { email });
   }
 
-  static unsubscribeNewsletter(email) {}
+  static unsubscribeNewsletter(email) {
+    return axios.post('/mailer/unsubscribe-newsletter', { email });
+  }
 
-  static forgetPassword(email) {}
+  static forgetPassword(email) {
+    return axios.post('/mailer/forget-password', { email });
+  }
 }
 
 export default MailerService;

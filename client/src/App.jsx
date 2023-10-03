@@ -11,6 +11,7 @@ import CommonLayout from 'layouts/CommonLayout';
 import PrivateRoutes from 'utils/PrivateRoutes';
 import UserProvider from 'providers/UserProvider';
 import ModalProvider from 'providers/ModalProvider';
+import UnsubscribeNewsletter from 'pages/UnsubscribeNewsletter';
 import './styles/base.scss';
 
 export const ROUTER_PATH = {
@@ -21,7 +22,8 @@ export const ROUTER_PATH = {
   profile: '/profile',
   postCourse: '/postCourse',
   courseContent: '/course-content',
-  // TODO: 取消訂閱電子報的路徑 /unsubscribe-newsletter/:email
+  // 取消訂閱電子報的路徑
+  UnsubscribeNewsletter: '/unsubscribe-newsletter/:email',
 };
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
                 <Route element={<Profile />} path={ROUTER_PATH.profile}></Route>
                 <Route element={<PostCourse />} path={ROUTER_PATH.postCourse}></Route>
               </Route>
-              {/* TODO: 取消訂閱電子報的路由 */}
+              <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.UnsubscribeNewsletter}></Route>
               {/* TODO: 錯誤處理的路由 */}
             </Route>
           </Route>
