@@ -1,12 +1,13 @@
 import { ROUTER_PATH } from 'App';
-import { useCurrentUser } from 'hooks';
+import { useCurrentUser, useModal } from 'hooks';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
 
-const Navbar = ({ type, setIsModalOpen, setIsMenuOpen }) => {
+const Navbar = ({ type, setIsMenuOpen }) => {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useCurrentUser();
+  const { setIsModalOpen } = useModal();
 
   const handleLogout = () => {
     AuthService.logout();
