@@ -4,29 +4,42 @@ import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import Login from 'components/Login';
+import RecoverPassword from 'components/RecoverPassword';
 import { useCurrentUser, useModal } from 'hooks';
 import Register from 'components/Register';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();
   const { setIsModalOpen } = useModal();
+  const [currentModal, setCurrentModal] = useState('login');
 
-  const [hasAccount, setHasAccount] = useState(true);
-  const handleCloseLoginModal = () => {
+  const closeModal = () => {
     setIsModalOpen(false);
-    setHasAccount(true);
+    setCurrentModal('login');
+  };
+
+  const openLoginModal = () => {
+    setCurrentModal('login');
+  };
+  const openRegisterModal = () => {
+    setCurrentModal('register');
+  };
+  const openForgetPasswordModal = () => {
+    setCurrentModal('recoverPassword');
   };
 
   return currentUser ? (
     <Outlet />
   ) : (
     createPortal(
-      <Modal onClose={handleCloseLoginModal} isCovered>
-        {hasAccount ? (
-          <Login handleCloseLoginModal={handleCloseLoginModal} setHasAccount={setHasAccount} hideCloseIcon />
-        ) : (
-          <Register setHasAccount={setHasAccount} handleCloseLoginModal={handleCloseLoginModal} hideCloseIcon />
+      <Modal onClose={closeModal} isCovered>
+        {currentModal === 'login' && (
+          <Login closeModal={closeModal} openRegisterModal={openRegisterModal} openForgetPasswordModal={openForgetPasswordModal} hideCloseIcon />
         )}
+
+        {currentModal === 'register' && <Register closeModal={closeModal} openLoginModal={openLoginModal} hideCloseIcon />}
+
+        {currentModal === 'recoverPassword' && <RecoverPassword closeModal={closeModal} hideCloseIcon />}
       </Modal>,
       document.body
     )
