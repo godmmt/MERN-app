@@ -8,8 +8,8 @@ import transport from '../config/mail.config.js';
 const EMAIL_ACCOUNT = process.env.EMAIL_ACCOUNT;
 
 class MailerController {
-  // 忘記密碼
-  static forgetPassword = async (req, res) => {
+  // 忘記密碼-找回密碼
+  static recoverPassword = async (req, res) => {
     const { email } = req.body;
 
     const user = await UserModel.findOne({ email });
@@ -18,11 +18,11 @@ class MailerController {
       return sendResponse({
         res,
         status: 400,
-        message: 'User not found.',
+        message: 'This account does not exist.',
       });
     }
 
-    ejs.renderFile(process.cwd() + '/templates/email/forgetPassword.ejs', { username: user.username }, (err, html) => {
+    ejs.renderFile(process.cwd() + '/templates/email/recoverPassword.ejs', { username: user.username }, (err, html) => {
       if (err) {
         console.log(err);
         return sendResponse({

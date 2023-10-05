@@ -10,8 +10,8 @@ class MailerService {
     return axios.post('/mailer/unsubscribe-newsletter', { email });
   }
 
-  static forgetPassword(email) {
-    return axios.post('/mailer/forget-password', { email });
+  static recoverPassword(email) {
+    return axios.post('/mailer/recover-password', { email });
   }
 }
 
