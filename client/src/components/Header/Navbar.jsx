@@ -7,17 +7,13 @@ import AuthService from 'services/auth.service';
 const Navbar = ({ type, setIsMenuOpen }) => {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useCurrentUser();
-  const { setIsModalOpen } = useModal();
+  const { openLoginModal } = useModal();
 
   const handleLogout = () => {
     AuthService.logout();
     window.alert('Logout successfully, now you are redirect to the homepage.');
     setCurrentUser(AuthService.getCurrentUser()); // 也可以寫null
     navigate(ROUTER_PATH.home);
-  };
-
-  const handleOpenLoginModal = () => {
-    setIsModalOpen(true);
   };
 
   const handleCloseMenu = () => {
@@ -50,7 +46,7 @@ const Navbar = ({ type, setIsMenuOpen }) => {
           </>
         )}
 
-        {currentUser ? <li onClick={handleLogout}>Logout</li> : <li onClick={handleOpenLoginModal}>Login</li>}
+        {currentUser ? <li onClick={handleLogout}>Logout</li> : <li onClick={openLoginModal}>Login</li>}
       </ul>
     </nav>
   );

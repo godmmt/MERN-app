@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'components/Modal';
 import Login from 'components/Login';
 import Register from 'components/Register';
-import RecoverPassword from 'components/RecoverPassword';
+import ResetPassword from 'components/ResetPassword';
 import Navbar from './Navbar';
 import { ROUTER_PATH } from 'App';
 import logo from 'assets/images/logo.png';
@@ -15,10 +15,8 @@ import { faBars, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import './header.scss';
 
 const Header = () => {
-  const { isModalOpen, setIsModalOpen } = useModal();
+  const { modalType, isLogin, isRegister, isResetPassword } = useModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentModal, setCurrentModal] = useState('login');
-
   const navigate = useNavigate();
 
   const handleGoToHome = () => {
@@ -27,21 +25,6 @@ const Header = () => {
 
   const handleToggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setCurrentModal('login');
-  };
-
-  const openLoginModal = () => {
-    setCurrentModal('login');
-  };
-  const openRegisterModal = () => {
-    setCurrentModal('register');
-  };
-  const openRecoverPasswordModal = () => {
-    setCurrentModal('recoverPassword');
   };
 
   return (
@@ -55,16 +38,12 @@ const Header = () => {
       </div>
       {isMenuOpen && <Navbar type='mobile' setIsMenuOpen={setIsMenuOpen} />}
 
-      {isModalOpen &&
+      {modalType &&
         createPortal(
-          <Modal onClose={closeModal}>
-            {currentModal === 'login' && (
-              <Login closeModal={closeModal} openRegisterModal={openRegisterModal} openRecoverPasswordModal={openRecoverPasswordModal} />
-            )}
-
-            {currentModal === 'register' && <Register closeModal={closeModal} openLoginModal={openLoginModal} />}
-
-            {currentModal === 'recoverPassword' && <RecoverPassword closeModal={closeModal} openLoginModal={openLoginModal} />}
+          <Modal>
+            {isLogin && <Login />}
+            {isRegister && <Register />}
+            {isResetPassword && <ResetPassword />}
           </Modal>,
           document.body
         )}

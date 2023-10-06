@@ -12,7 +12,7 @@ import './courseContent.scss';
 
 const CourseContent = () => {
   const { currentUser } = useCurrentUser();
-  const { setIsModalOpen } = useModal();
+  const { openLoginModal } = useModal();
   const location = useLocation();
   const course = location.state;
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const CourseContent = () => {
   };
 
   const handleLogin = () => {
-    setIsModalOpen(true);
+    openLoginModal(true);
   };
 
   return (

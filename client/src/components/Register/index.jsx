@@ -5,14 +5,16 @@ import Button from 'components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
+import { useModal } from 'hooks';
 
-const Register = ({ closeModal, openLoginModal, hideCloseIcon }) => {
+const Register = ({ hideCloseIcon }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const { closeModal, openLoginModal } = useModal();
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);

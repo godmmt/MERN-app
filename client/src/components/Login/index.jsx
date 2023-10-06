@@ -4,11 +4,12 @@ import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { useCurrentUser } from 'hooks';
+import { useCurrentUser, useModal } from 'hooks';
 import './login.scss';
 
-const Login = ({ closeModal, openRecoverPasswordModal, openRegisterModal, hideCloseIcon }) => {
+const Login = ({ hideCloseIcon }) => {
   const { setCurrentUser } = useCurrentUser();
+  const { closeModal, openRegisterModal, openResetPasswordModal } = useModal();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -55,7 +56,7 @@ const Login = ({ closeModal, openRecoverPasswordModal, openRegisterModal, hideCl
         </div>
         {message && <div className='alert'>{message}</div>}
         <div className='forgot-password'>
-          <span onClick={openRecoverPasswordModal}>Forgot your password?</span>
+          <span onClick={openResetPasswordModal}>Forgot your password?</span>
         </div>
         <Button cx='login-btn' onClick={handleLogin}>
           Login
