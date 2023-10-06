@@ -8,8 +8,8 @@ import transport from '../config/mail.config.js';
 const EMAIL_ACCOUNT = process.env.EMAIL_ACCOUNT;
 
 class MailerController {
-  // 忘記密碼-找回密碼
-  static recoverPassword = async (req, res) => {
+  // 忘記密碼-變更密碼
+  static resetPassword = async (req, res) => {
     const { email } = req.body;
 
     const user = await UserModel.findOne({ email });
@@ -22,7 +22,7 @@ class MailerController {
       });
     }
 
-    ejs.renderFile(process.cwd() + '/templates/email/recoverPassword.ejs', { username: user.username }, (err, html) => {
+    ejs.renderFile(process.cwd() + '/templates/email/resetPassword.ejs', { username: user.username }, (err, html) => {
       if (err) {
         console.log(err);
         return sendResponse({

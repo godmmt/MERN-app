@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-class RecoverPasswordValidator {
+class ResetPasswordValidator {
   // 找回密碼驗證器 - 只需驗證信箱
   static hasEmailInfo = (req, res, next) => {
     const data = req.body;
@@ -18,4 +18,4 @@ class RecoverPasswordValidator {
   };
 }
 
-export default RecoverPasswordValidator;
+export default ResetPasswordValidator;
