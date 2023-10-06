@@ -23,7 +23,7 @@ export const ROUTER_PATH = {
   postCourse: '/postCourse',
   courseContent: '/course-content',
   // 取消訂閱電子報的路徑
-  UnsubscribeNewsletter: '/unsubscribe-newsletter/:email',
+  unsubscribeNewsletter: '/unsubscribe-newsletter/:email',
 };
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
                 <Route element={<Profile />} path={ROUTER_PATH.profile}></Route>
                 <Route element={<PostCourse />} path={ROUTER_PATH.postCourse}></Route>
               </Route>
-              <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.UnsubscribeNewsletter}></Route>
+              <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.unsubscribeNewsletter}></Route>
               {/* TODO: 錯誤處理的路由 */}
             </Route>
           </Route>
