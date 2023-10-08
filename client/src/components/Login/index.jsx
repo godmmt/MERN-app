@@ -3,12 +3,13 @@ import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { useCurrentUser } from 'hooks';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useCurrentUser, useModal } from 'hooks';
 import './login.scss';
 
-const Login = ({ handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
+const Login = () => {
   const { setCurrentUser } = useCurrentUser();
+  const { closeModal, openRegisterModal, openResetPasswordModal } = useModal();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +35,7 @@ const Login = ({ handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
       localStorage.setItem('user', JSON.stringify(res.data));
       window.alert('Login successfully.');
       setCurrentUser(res.data);
-      handleCloseLoginModal();
+      closeModal();
     } catch (error) {
       setMessage(error.data.message);
     }
@@ -43,26 +44,24 @@ const Login = ({ handleCloseLoginModal, setHasAccount, hideCloseIcon }) => {
   return (
     <div className='login-content'>
       <h1>Login</h1>
-      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className={`close-icon  ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
-
       <main>
         <div className='inputs'>
-          <input onChange={handleChangeEmail} type='text' name='email' placeholder='Email' />
+          <input onChange={handleChangeEmail} type='text' placeholder='Email' />
           <div className='input-password'>
-            <input onChange={handleChangePassword} type={isPasswordVisible ? 'text' : 'password'} name='password' placeholder='Password' />
+            <input onChange={handleChangePassword} type={isPasswordVisible ? 'text' : 'password'} placeholder='Password' />
             <FontAwesomeIcon icon={isPasswordVisible ? faEye : faEyeSlash} className='eye-icon' onClick={togglePasswordVisibility} />
           </div>
         </div>
         {message && <div className='alert'>{message}</div>}
         <div className='forgot-password'>
-          <span>Forgot your password?</span>
+          <span onClick={openResetPasswordModal}>Forgot your password?</span>
         </div>
         <Button cx='login-btn' onClick={handleLogin}>
           Login
         </Button>
       </main>
       <div className='click-sign-up'>
-        <span onClick={() => setHasAccount(false)}>Click to Sign Up!</span>
+        <span onClick={openRegisterModal}>Click to Sign Up!</span>
       </div>
     </div>
   );

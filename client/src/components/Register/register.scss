@@ -7,17 +7,6 @@
   h1 {
     padding: 1rem 1.5rem;
   }
-  .close-icon {
-    position: absolute;
-    top: 1.25rem;
-    right: 1rem;
-    color: $btn-gray;
-    cursor: pointer;
-    font-size: 2rem;
-  }
-  .hide-close-icon {
-    display: none;
-  }
 
   main {
     display: flex;

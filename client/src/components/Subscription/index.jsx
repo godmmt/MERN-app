@@ -1,12 +1,20 @@
 import React, { useRef } from 'react';
 import Button from 'components/Button';
+import MailerService from 'services/mail.service';
 import './subscription.scss';
 
 const Subscription = () => {
   const emailInput = useRef(null);
 
   const handleSubscribe = async () => {
-    // TODO: 串接訂閱電子報 API
+    const email = emailInput.current.value;
+    try {
+      const res = await MailerService.subscribeNewsletter(email);
+      window.alert(res.data.message);
+    } catch (err) {
+      window.alert(err.data.message === 'No recipients defined' ? 'Your email seems to be incorrect. Please re-enter.' : err.data.message);
+    }
+    emailInput.current.value = '';
   };
 
   return (

@@ -3,16 +3,18 @@ import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
+import { useModal } from 'hooks';
 
-const Register = ({ setHasAccount, handleCloseLoginModal, hideCloseIcon }) => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const { openLoginModal } = useModal();
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
@@ -36,7 +38,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal, hideCloseIcon }) => {
     try {
       await AuthService.register(username, email, password, role);
       window.alert('Registration succeeds. You are now redirected to the login page.');
-      setHasAccount(true);
+      openLoginModal();
     } catch (error) {
       setMessage(error.data.message);
     }
@@ -45,8 +47,6 @@ const Register = ({ setHasAccount, handleCloseLoginModal, hideCloseIcon }) => {
   return (
     <div className='register-content'>
       <h1>Register</h1>
-
-      <FontAwesomeIcon onClick={handleCloseLoginModal} icon={faCircleXmark} className={`close-icon ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
       <main>
         <div className='inputs'>
@@ -72,7 +72,7 @@ const Register = ({ setHasAccount, handleCloseLoginModal, hideCloseIcon }) => {
       </main>
 
       <div className='click-login'>
-        <span onClick={() => setHasAccount(true)}>Click to Login!</span>
+        <span onClick={openLoginModal}>Click to Login!</span>
       </div>
     </div>
   );

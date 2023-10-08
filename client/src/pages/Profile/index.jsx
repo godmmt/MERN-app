@@ -66,10 +66,10 @@ const Profile = () => {
                 <p>Role :</p>
                 <div>{currentUser.user.role}</div>
               </div>
-              <d className='column'>
+              <div className='column'>
                 <p>The date you registered on our website :</p>
                 <div>{currentUser.user.date.substring(0, 10)}</div>
-              </d>
+              </div>
             </div>
           </div>
         )}

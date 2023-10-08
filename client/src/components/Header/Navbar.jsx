@@ -1,20 +1,19 @@
 import { ROUTER_PATH } from 'App';
+import { useCurrentUser, useModal } from 'hooks';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from 'services/auth.service';
 
-const Navbar = ({ type, currentUser, setCurrentUser, setIsModalOpen, setIsMenuOpen }) => {
+const Navbar = ({ type, setIsMenuOpen }) => {
   const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useCurrentUser();
+  const { openLoginModal } = useModal();
 
   const handleLogout = () => {
     AuthService.logout();
     window.alert('Logout successfully, now you are redirect to the homepage.');
     setCurrentUser(AuthService.getCurrentUser()); // 也可以寫null
     navigate(ROUTER_PATH.home);
-  };
-
-  const handleOpenLoginModal = () => {
-    setIsModalOpen(true);
   };
 
   const handleCloseMenu = () => {
@@ -47,7 +46,7 @@ const Navbar = ({ type, currentUser, setCurrentUser, setIsModalOpen, setIsMenuOp
           </>
         )}
 
-        {currentUser ? <li onClick={handleLogout}>Logout</li> : <li onClick={handleOpenLoginModal}>Login</li>}
+        {currentUser ? <li onClick={handleLogout}>Logout</li> : <li onClick={openLoginModal}>Login</li>}
       </ul>
     </nav>
   );
