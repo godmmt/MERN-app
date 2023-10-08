@@ -3,11 +3,11 @@ import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useCurrentUser, useModal } from 'hooks';
 import './login.scss';
 
-const Login = ({ hideCloseIcon }) => {
+const Login = () => {
   const { setCurrentUser } = useCurrentUser();
   const { closeModal, openRegisterModal, openResetPasswordModal } = useModal();
 
@@ -44,8 +44,6 @@ const Login = ({ hideCloseIcon }) => {
   return (
     <div className='login-content'>
       <h1>Login</h1>
-      <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon  ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
-
       <main>
         <div className='inputs'>
           <input onChange={handleChangeEmail} type='text' placeholder='Email' />

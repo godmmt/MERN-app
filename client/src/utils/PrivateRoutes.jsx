@@ -1,29 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { createPortal } from 'react-dom';
-import Modal from 'components/Modal';
-import Login from 'components/Login';
-import ResetPassword from 'components/ResetPassword';
-import { useCurrentUser, useModal } from 'hooks';
-import Register from 'components/Register';
+import { useCurrentUser } from 'hooks';
+import { useModal } from 'hooks';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();
-  const { isLogin, isRegister, isResetPassword, modalType } = useModal();
+  const { openLoginModal, onHideCloseIcon } = useModal();
 
-  return currentUser ? (
-    <Outlet />
-  ) : (
-    createPortal(
-      <Modal isCovered>
-        {!modalType && <Login hideCloseIcon />}
-        {isLogin && <Login hideCloseIcon />}
-        {isRegister && <Register hideCloseIcon />}
-        {isResetPassword && <ResetPassword hideCloseIcon />}
-      </Modal>,
-      document.body
-    )
-  );
+  useEffect(() => {
+    if (!currentUser) {
+      openLoginModal();
+      onHideCloseIcon();
+    }
+  }, [currentUser]);
+
+  return currentUser ? <Outlet /> : <main style={{ height: '100vh' }}></main>;
 };
 
 export default PrivateRoutes;

@@ -2,13 +2,10 @@ import React, { useRef, useState } from 'react';
 import Button from 'components/Button';
 import MailerService from 'services/mail.service';
 import { useModal } from 'hooks';
-// Font Awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './resetPassword.scss';
 
-const ResetPassword = ({ hideCloseIcon }) => {
-  const { closeModal, openLoginModal } = useModal();
+const ResetPassword = () => {
+  const { openLoginModal } = useModal();
   const [msgForUser, setMsgForUser] = useState('');
   // useRef
   const emailRef = useRef(null);
@@ -34,7 +31,6 @@ const ResetPassword = ({ hideCloseIcon }) => {
   return (
     <div className='reset-password'>
       <h1>Forget Password</h1>
-      <FontAwesomeIcon icon={faCircleXmark} onClick={closeModal} className={`close-icon  ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
       <main>
         <p>Enter your email to reset password:</p>

@@ -3,18 +3,18 @@ import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
 import { useModal } from 'hooks';
 
-const Register = ({ hideCloseIcon }) => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const { closeModal, openLoginModal } = useModal();
+  const { openLoginModal } = useModal();
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
@@ -47,8 +47,6 @@ const Register = ({ hideCloseIcon }) => {
   return (
     <div className='register-content'>
       <h1>Register</h1>
-
-      <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
       <main>
         <div className='inputs'>
