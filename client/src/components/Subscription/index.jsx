@@ -14,6 +14,7 @@ const Subscription = () => {
     } catch (err) {
       window.alert(err.data.message === 'No recipients defined' ? 'Your email seems to be incorrect. Please re-enter.' : err.data.message);
     }
+    emailInput.current.value = '';
   };
 
   return (
