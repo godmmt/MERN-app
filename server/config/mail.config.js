@@ -6,6 +6,7 @@ import { google } from 'googleapis';
 // 參考：https://www.youtube.com/watch?v=k-6KFSnaFTU&ab_channel=ProgrammingInBlood
 
 const EMAIL_ACCOUNT = process.env.EMAIL_ACCOUNT;
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 const EMAIL_CLIENT_ID = process.env.EMAIL_CLIENT_ID;
 const EMAIL_CLIENT_SECRET = process.env.EMAIL_CLIENT_SECRET;
 const EMAIL_REDIRECT_URL = process.env.EMAIL_REDIRECT_URL;
@@ -13,6 +14,7 @@ const EMAIL_REFRESH_TOKEN = process.env.EMAIL_REFRESH_TOKEN;
 
 const createTransporter = async () => {
   try {
+    /* 
     // 創建google OAuth2客戶端
     const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REDIRECT_URL);
 
@@ -35,6 +37,15 @@ const createTransporter = async () => {
       },
       tls: {
         rejectUnauthorized: true,
+      },
+    });
+    */
+
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: EMAIL_ACCOUNT,
+        pass: EMAIL_PASSWORD,
       },
     });
 
