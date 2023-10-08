@@ -26,7 +26,6 @@ const UnsubscribeNewsletter = () => {
   };
 
   const handleCancel = () => {
-    // TODO：回主畫面
     navigate(ROUTER_PATH.home);
   };
 

@@ -1,4 +1,4 @@
-// TODO：發送信件的 APIs
+// 發送信件的 APIs
 
 import axios from 'config/axios.config';
 class MailerService {

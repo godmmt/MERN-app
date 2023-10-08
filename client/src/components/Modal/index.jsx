@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { useCurrentUser, useModal } from 'hooks';
+import { useModal } from 'hooks';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import ResetPassword from 'components/ResetPassword';
@@ -12,7 +12,6 @@ import './modal.scss';
 
 const Modal = () => {
   const { modalType, closeModal, isLogin, isRegister, isResetPassword } = useModal();
-  const { currentUser } = useCurrentUser();
 
   // TODO: 在Private Routes時候固定開啟Modal
   // const hideCloseIcon = () => {

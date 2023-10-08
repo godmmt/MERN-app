@@ -16,16 +16,17 @@
     background-color: $background-gray;
     position: relative;
 
+    .close-icon {
+      position: absolute;
+      top: 1.25rem;
+      right: 1rem;
+      color: $btn-gray;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1;
+    }
+
     // TODO: 在Private Routes時候固定開啟Modal
-    // .close-icon {
-    //   position: absolute;
-    //   top: 1.25rem;
-    //   right: 1rem;
-    //   color: $btn-gray;
-    //   font-size: 2rem;
-    //   cursor: pointer;
-    //   z-index: 1;
-    // }
     // .hide-close-icon {
     //   display: none;
     // }
