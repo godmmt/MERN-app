@@ -45,6 +45,22 @@ class AuthValidator {
     next();
   };
 
+  // 重置密碼驗證器 - 只需驗證信箱
+  static hasEmailInfo = (req, res, next) => {
+    const data = req.body;
+    const schema = Joi.object({
+      email: Joi.string().min(6).max(320).required().email(),
+    });
+    const { error } = schema.validate(data);
+    if (error) {
+      return res.status(400).send({
+        success: false,
+        message: error.details[0].message,
+      });
+    }
+    next();
+  };
+
   // 具有學生權限
   static hasStudentPermission = (req, res, next) => {
     if (req.user.isStudent() || req.user.isAdmin()) {
