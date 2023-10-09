@@ -1,7 +1,8 @@
-import { ROUTER_PATH } from 'App';
-import { useCurrentUser, useModal } from 'hooks';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ROUTER_PATH } from 'App';
+import useCurrentUser from 'hooks/useCurrentUser';
+import useModal from 'hooks/useModal';
 import AuthService from 'services/auth.service';
 
 const Navbar = ({ type, setIsMenuOpen }) => {

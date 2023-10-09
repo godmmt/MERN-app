@@ -6,7 +6,7 @@ import Joi from 'joi';
 import CourseService from '../../services/course.service';
 import { ROUTER_PATH } from 'App';
 import Button from 'components/Button';
-import { useCurrentUser } from 'hooks';
+import useCurrentUser from 'hooks/useCurrentUser';
 import './postCourse.scss';
 
 const postCourseSchema = Joi.object({

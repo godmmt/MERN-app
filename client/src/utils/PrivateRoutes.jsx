@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useCurrentUser } from 'hooks';
-import { useModal } from 'hooks';
+import useCurrentUser from 'hooks/useCurrentUser';
+import useModal from 'hooks/useModal';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();

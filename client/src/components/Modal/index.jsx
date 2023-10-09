@@ -1,13 +1,12 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { useModal } from 'hooks';
+import useModal from 'hooks/useModal';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import ResetPassword from 'components/ResetPassword';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-
 import './modal.scss';
 
 const Modal = () => {
