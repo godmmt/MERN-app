@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
+import useModal from 'hooks/useModal';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './register.scss';
-import { useModal } from 'hooks';
 
 const Register = () => {
   const [username, setUsername] = useState('');

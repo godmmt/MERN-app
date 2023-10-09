@@ -1,13 +1,12 @@
 import React, { useRef, useState } from 'react';
 import Button from 'components/Button';
 import MailerService from 'services/mail.service';
-import { useModal } from 'hooks';
+import useModal from 'hooks/useModal';
 import './resetPassword.scss';
 
 const ResetPassword = () => {
   const { openLoginModal } = useModal();
   const [msgForUser, setMsgForUser] = useState('');
-  // useRef
   const emailRef = useRef(null);
 
   const sendPasswordResetEmail = async () => {

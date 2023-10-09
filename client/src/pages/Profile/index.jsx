@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
-import { useCurrentUser } from 'hooks';
+import useCurrentUser from 'hooks/useCurrentUser';
 import './profile.scss';
 
 const Profile = () => {

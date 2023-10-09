@@ -2,8 +2,10 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import useScrollToTopWhenRouteChange from 'hooks/useScrollToTopWhenRouteChange';
 
 const CommonLayout = () => {
+  useScrollToTopWhenRouteChange();
   return (
     <>
       <Header />

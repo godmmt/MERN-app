@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
+import useCurrentUser from 'hooks/useCurrentUser';
+import useModal from 'hooks/useModal';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useCurrentUser, useModal } from 'hooks';
 import './login.scss';
 
 const Login = () => {

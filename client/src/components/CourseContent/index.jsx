@@ -1,13 +1,13 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ROUTER_PATH } from 'App';
 import CourseService from '../../services/course.service';
 import Button from 'components/Button';
-import { ROUTER_PATH } from 'App';
+import useModal from 'hooks/useModal';
+import useCurrentUser from 'hooks/useCurrentUser';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// solid-svg-icons
 import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
-import { useCurrentUser, useModal } from 'hooks';
 import './courseContent.scss';
 
 const CourseContent = () => {

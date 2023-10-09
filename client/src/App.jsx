@@ -20,7 +20,7 @@ export const ROUTER_PATH = {
   about: '/about',
   contact: '/contact',
   profile: '/profile',
-  postCourse: '/postCourse',
+  postCourse: '/post-course',
   courseContent: '/course-content',
   // 取消訂閱電子報的路徑
   unsubscribeNewsletter: '/unsubscribe-newsletter/:email',
