@@ -5,12 +5,11 @@ import { useModal } from 'hooks';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();
-  const { openLoginModal, onHideCloseIcon } = useModal();
+  const { openLoginModal } = useModal();
 
   useEffect(() => {
     if (!currentUser) {
       openLoginModal();
-      onHideCloseIcon();
     }
   }, [currentUser]);
 
