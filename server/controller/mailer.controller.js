@@ -126,7 +126,7 @@ class MailerController {
   // 取消電子報
   static unsubscribeNewsletter = async (req, res) => {
     const { email } = req.body;
-
+    // 解碼以 base64 編碼的郵件地址
     const decodeEmail = Buffer.from(email, 'base64').toString();
 
     const subscriber = await SubscriberModel.findOne({ email: decodeEmail });

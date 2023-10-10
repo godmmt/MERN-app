@@ -6,22 +6,17 @@ import MailerService from 'services/mail.service';
 import { ROUTER_PATH } from 'App';
 import './unsubscribeNewsletter.scss';
 
-// TODO：取消電子報畫面
 const UnsubscribeNewsletter = () => {
-  // TODO：從url中抓取email
   // 使用useParams來獲取URL中的變數
   const { email } = useParams();
   const navigate = useNavigate();
 
   const handleUnsubscribe = async () => {
-    // TODO：串接 API
     try {
       const res = await MailerService.unsubscribeNewsletter(email);
-      console.log({ res });
-      console.log(res.data.message);
+      window.alert(res.data.message);
     } catch (err) {
-      console.log({ err });
-      console.log(err.data.message);
+      window.alert(err.data.message);
     }
   };
 
@@ -30,16 +25,18 @@ const UnsubscribeNewsletter = () => {
   };
 
   return (
-    <Modal isCovered>
-      <div className='unsubscribe-content'>
+    <main className='unsubscribe-content'>
+      <div className='unsubscribe-content-modal'>
         <h1>Unsubscribe newsletter</h1>
         <p>No longer wish to receive our newsletter?</p>
         <div className='btn-container'>
-          <Button onClick={handleUnsubscribe}>Unsubscribe</Button>
+          <Button cx='unsubscribe-btn' onClick={handleUnsubscribe}>
+            Unsubscribe
+          </Button>
           <Button onClick={handleCancel}>Cancel</Button>
         </div>
       </div>
-    </Modal>
+    </main>
   );
 };
 
