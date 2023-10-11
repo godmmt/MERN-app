@@ -11,8 +11,19 @@ const UnsubscribeNewsletter = () => {
   const endMsgRef = useRef();
   const [closeModal, setCloseModal] = useState(false);
   const navigate = useNavigate();
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const hideButton = () => {
+    setIsButtonVisible(false);
+    console.log('Hide button');
+  };
+  const showButton = () => {
+    setIsButtonVisible(true);
+    console.log('Show button');
+  };
 
   const handleUnsubscribe = async () => {
+    hideButton();
     try {
       const res = await MailerService.unsubscribeNewsletter(email);
       window.alert(res.data.message);
@@ -20,6 +31,7 @@ const UnsubscribeNewsletter = () => {
       setCloseModal(true);
     } catch (err) {
       window.alert(err.data.message);
+      showButton();
     }
   };
 
@@ -33,10 +45,12 @@ const UnsubscribeNewsletter = () => {
         <h1>Unsubscribe newsletter</h1>
         <p>No longer wish to receive our newsletter?</p>
         <div className='btn-container'>
-          <Button cx='unsubscribe-btn' onClick={handleUnsubscribe}>
+          <Button cx={`unsubscribe-btn ${isButtonVisible ? '' : 'hide-button'}`} onClick={handleUnsubscribe}>
             Unsubscribe
           </Button>
-          <Button onClick={handleCancel}>Cancel</Button>
+          <Button cx={isButtonVisible ? '' : 'hide-button'} onClick={handleCancel}>
+            Cancel
+          </Button>
         </div>
       </div>
       <div className='end-msg' ref={endMsgRef}></div>
