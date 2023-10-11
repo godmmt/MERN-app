@@ -1,13 +1,12 @@
 @import '../../styles';
 
 .unsubscribe-content {
-  min-height: 50vh;
+  padding: 5rem 0 0 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   .unsubscribe-content-modal {
-    width: max(40%, 25rem);
+    width: min(100%, 28rem);
     margin: 1rem;
     padding: 2rem 1rem;
     border-radius: 1rem;
@@ -34,5 +33,14 @@
         color: $primary-red;
       }
     }
+  }
+
+  .close-modal {
+    display: none;
+  }
+
+  .end-msg {
+    color: $primary-blue;
+    font-size: 3rem;
   }
 }
