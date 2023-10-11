@@ -1,13 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Button from 'components/Button';
 import MailerService from 'services/mail.service';
 import './subscription.scss';
 
 const Subscription = () => {
   const emailInput = useRef(null);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const hideButton = () => {
+    setIsButtonVisible(false);
+    console.log('Hide button');
+  };
+  const showButton = () => {
+    setIsButtonVisible(true);
+    console.log('Show button');
+  };
 
   const handleSubscribe = async () => {
     const email = emailInput.current.value;
+    hideButton();
     try {
       const res = await MailerService.subscribeNewsletter(email);
       window.alert(res.data.message);
@@ -15,6 +26,7 @@ const Subscription = () => {
       window.alert(err.data.message === 'No recipients defined' ? 'Your email seems to be incorrect. Please re-enter.' : err.data.message);
     }
     emailInput.current.value = '';
+    showButton();
   };
 
   return (
@@ -24,7 +36,9 @@ const Subscription = () => {
       <p>Unleash the Secrets of Knowledge, Subscribe to our Newsletter!</p>
       <div className='action'>
         <input type='email' placeholder='Please enter your email' ref={emailInput} />
-        <Button onClick={handleSubscribe}>Subscribe!</Button>
+        <Button cx={isButtonVisible ? '' : 'hide-button'} onClick={handleSubscribe}>
+          Subscribe!
+        </Button>
       </div>
     </section>
   );
