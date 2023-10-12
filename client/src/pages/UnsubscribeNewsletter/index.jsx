@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import Button from 'components/Button';
 import { useNavigate, useParams } from 'react-router-dom';
-import MailerService from 'services/mail.service';
 import { ROUTER_PATH } from 'App';
+import MailerService from 'services/mail.service';
+import Button from 'components/Button';
+import useLoadingButton from 'hooks/useLoadingButton';
 import './unsubscribeNewsletter.scss';
 
 const UnsubscribeNewsletter = () => {
@@ -11,16 +12,7 @@ const UnsubscribeNewsletter = () => {
   const endMsgRef = useRef();
   const [closeModal, setCloseModal] = useState(false);
   const navigate = useNavigate();
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
-
-  const hideButton = () => {
-    setIsButtonVisible(false);
-    console.log('Hide button');
-  };
-  const showButton = () => {
-    setIsButtonVisible(true);
-    console.log('Show button');
-  };
+  const { isButtonVisible, hideButton, showButton } = useLoadingButton();
 
   const handleUnsubscribe = async () => {
     hideButton();

@@ -1,20 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Button from 'components/Button';
 import MailerService from 'services/mail.service';
+import useLoadingButton from 'hooks/useLoadingButton';
 import './subscription.scss';
 
 const Subscription = () => {
   const emailInput = useRef(null);
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
-
-  const hideButton = () => {
-    setIsButtonVisible(false);
-    console.log('Hide button');
-  };
-  const showButton = () => {
-    setIsButtonVisible(true);
-    console.log('Show button');
-  };
+  const { isButtonVisible, hideButton, showButton } = useLoadingButton();
 
   const handleSubscribe = async () => {
     const email = emailInput.current.value;
