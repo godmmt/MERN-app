@@ -42,9 +42,9 @@ function App() {
                 <Route element={<Profile />} path={ROUTER_PATH.profile}></Route>
                 <Route element={<PostCourse />} path={ROUTER_PATH.postCourse}></Route>
               </Route>
-              <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.unsubscribeNewsletter}></Route>
               {/* TODO: 錯誤處理的路由 */}
             </Route>
+            <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.unsubscribeNewsletter}></Route>
           </Route>
         </Route>
       </Routes>
