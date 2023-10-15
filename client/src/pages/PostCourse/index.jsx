@@ -80,14 +80,14 @@ const PostCourse = () => {
 
   return (
     <main className='post-course'>
-      {currentUser && currentUser.user.role !== 'instructor' && (
+      {currentUser.user.role !== 'instructor' && (
         <section className='alert-msg'>
           <p>Only instructors can post new courses.</p>
         </section>
       )}
 
       <section className='main-content'>
-        {currentUser && currentUser.user.role === 'instructor' && (
+        {currentUser.user.role === 'instructor' && (
           <form className='form' onSubmit={handleSubmit(postCourse)}>
             <div className='form-header'>
               <h2>Enter the information for the course you want to teach.</h2>
