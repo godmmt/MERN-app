@@ -1,0 +1,45 @@
+@import '../../styles';
+
+.loading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $font-size-base;
+  padding: 0 1rem;
+
+  .dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 1px solid $primary-black;
+    border-radius: 100%;
+    margin-right: 5px;
+    animation: bounce 0.8s infinite;
+  }
+
+  .dot-0 {
+    animation-delay: 0.1s;
+    background-color: $primary-green;
+  }
+
+  .dot-1 {
+    animation-delay: 0.3s;
+    background-color: $primary-yellow;
+  }
+
+  .dot-2 {
+    animation-delay: 0.5s;
+    background-color: $primary-red;
+  }
+
+  @keyframes bounce {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
