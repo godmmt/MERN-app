@@ -19,6 +19,11 @@
   }
 }
 
+.loading-button {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .hide-button {
   display: none;
 }
