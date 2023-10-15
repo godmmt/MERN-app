@@ -5,15 +5,15 @@ import Modal from 'components/Modal';
 import useModal from 'hooks/useModal';
 
 const PrivateRoutes = () => {
-  const { currentUser } = useCurrentUser();
+  const { hasUser } = useCurrentUser();
   const { openLoginModal, modalType } = useModal();
   useEffect(() => {
-    if (!currentUser && !modalType) {
+    if (!hasUser && !modalType) {
       openLoginModal();
     }
-  }, [currentUser, modalType, openLoginModal]);
+  }, [hasUser, modalType, openLoginModal]);
 
-  return currentUser ? <Outlet /> : <Modal allowCloseModal={false} />;
+  return hasUser ? <Outlet /> : <Modal allowCloseModal={false} />;
 };
 
 export default PrivateRoutes;

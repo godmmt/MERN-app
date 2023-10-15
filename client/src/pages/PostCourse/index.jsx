@@ -31,7 +31,7 @@ const Field = (props) => {
 };
 
 const PostCourse = () => {
-  const { currentUser } = useCurrentUser();
+  const { isInstructor, isStudent } = useCurrentUser();
 
   const {
     register,
@@ -80,14 +80,14 @@ const PostCourse = () => {
 
   return (
     <main className='post-course'>
-      {currentUser.user.role !== 'instructor' && (
+      {isStudent && (
         <section className='alert-msg'>
           <p>Only instructors can post new courses.</p>
         </section>
       )}
 
       <section className='main-content'>
-        {currentUser.user.role === 'instructor' && (
+        {isInstructor && (
           <form className='form' onSubmit={handleSubmit(postCourse)}>
             <div className='form-header'>
               <h2>Enter the information for the course you want to teach.</h2>

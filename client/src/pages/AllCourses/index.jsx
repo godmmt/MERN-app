@@ -22,14 +22,15 @@ const AllCourses = () => {
   const handleSearch = () => {
     const courseName = searchInput.trim();
     CourseService.getCourseByName(courseName)
-      .then((response) => {
-        setSearchCourseData(response.data); // 取得資料
-        setShowNotFoundMsg(!response.data.length); // 打開查無資料提示
+      .then((res) => {
+        const courses = res.data?.value ?? [];
+        setSearchCourseData(courses); // 取得資料
+        setShowNotFoundMsg(!courses.length); // 打開查無資料提示
       })
-      .catch((err) => {
-        console.log({ err });
+      .catch((error) => {
         setSearchCourseData([]); // 清空搜尋結果
         setShowNotFoundMsg(false); // 清空查無資料提示
+        console.log(error);
       });
     setSearchInput(''); // 清空搜尋欄位的值
   };
@@ -38,7 +39,8 @@ const AllCourses = () => {
   useEffect(() => {
     CourseService.getAllCourses()
       .then((res) => {
-        setAllCoursesData(res.data); // Array
+        const courses = res.data?.value ?? [];
+        setAllCoursesData(courses); // Array
       })
       .catch((error) => {
         console.log({ error });
