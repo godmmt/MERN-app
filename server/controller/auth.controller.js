@@ -1,99 +1,134 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/index.js';
+import sendResponse from '../utils/sendResponse.js';
+
+const PASSPORT_SECRET = process.env.PASSPORT_SECRET;
+const ACCESS_TOKEN_EXP = process.env.ACCESS_TOKEN_EXP;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+const REFRESH_TOKEN_EXP = process.env.REFRESH_TOKEN_EXP;
+const SALT_ROUNDS = process.env.SALT_ROUNDS;
 
 class AuthController {
   static hashPassword = (password) => {
-    return bcrypt.hash(password, 10);
+    return bcrypt.hash(password, SALT_ROUNDS);
   };
 
-  static generateAccessToken = (tokenObj) => {
-    return jwt.sign(tokenObj, process.env.PASSPORT_SECRET);
+  static generateAccessToken = (payload) => {
+    return jwt.sign(payload, PASSPORT_SECRET, {
+      expiresIn: ACCESS_TOKEN_EXP,
+    });
   };
 
-  static generateRefreshToken = (tokenObj) => {
-    return jwt.sign(tokenObj, process.env.REFRESH_TOKEN_SECRET);
+  static generateRefreshToken = (payload) => {
+    return jwt.sign(payload, REFRESH_TOKEN_SECRET, {
+      expiresIn: REFRESH_TOKEN_EXP,
+    });
   };
 
-  /*-------註冊-------*/
-  static register = async (req, res) => {
-    // 檢查使用者信箱是否已被註冊
-    const { email, username, password, role } = req.body;
-    const emailExist = await UserModel.findOne({ email });
-    if (emailExist) {
-      return res.status(400).send({
-        success: false,
-        message: 'Email has already been registered.',
-      });
-    }
+  static verifyToken = (token) => {
+    return jwt.verify(token, PASSPORT_SECRET);
+  };
 
-    // 通過以上的檢查都OK後就幫使用者註冊
+  static register = async (req, res, next) => {
     try {
+      // 檢查使用者信箱是否已被註冊
+      const { email, username, password, role } = req.body;
+      const emailExist = await UserModel.findOne({ email });
+
+      if (emailExist) {
+        return sendResponse({
+          res,
+          status: 400,
+          message: 'Email has been registered.',
+        });
+      }
+
       const newUser = new UserModel({ email, username, password, role });
-      const savedUser = await newUser.save();
-      res.status(200).send({
-        success: true,
-        saveObject: savedUser,
+      await newUser.save();
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Registered successfully. Please log in.',
       });
     } catch (err) {
-      res.status(400).send(err);
+      next(err);
     }
   };
 
-  /*-------登入-------*/
-  static login = async (req, res) => {
+  static login = async (req, res, next) => {
     try {
-      // 檢查資料庫是否有該使用者
+      // 檢查是否有該使用者
       const { email, password } = req.body;
       const user = await UserModel.findOne({ email });
       if (!user) {
-        return res.status(400).send({
-          success: false,
+        return sendResponse({
+          res,
+          status: 400,
           message: 'User not found.',
         });
       }
 
-      // 有的話就產生JWT
-      user.comparePassword(password, (err, isMatch) => {
-        if (err) {
-          return res.status(400).send(err);
-        }
+      // 檢查密碼是否正確
+      const hashPassword = user.password;
+      const isMatched = await user.isPasswordMatched(password, hashPassword);
 
-        if (isMatch) {
-          // 製作JWT
-          const accessToken = AuthController.generateAccessToken({ email, password });
-          const refreshToken = AuthController.generateRefreshToken({ email, password });
-          // 伺服器回傳物件包含屬性success & token & 物件user
-          res.status(200).send({
-            success: true,
-            token: `bearer ${accessToken}`,
-            refreshToken,
-            user,
-          });
-        } else {
-          res.status(400).send({
-            success: false,
-            message: 'Wrong password.',
-          });
-        }
+      if (!isMatched) {
+        return sendResponse({
+          res,
+          status: 400,
+          message: 'Wrong password.',
+        });
+      }
+
+      // 製作JWT
+      const { username, role, _id } = user;
+      const payload = { username, role, email };
+      const accessToken = AuthController.generateAccessToken(payload);
+      const refreshToken = AuthController.generateRefreshToken(payload);
+
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Login successfully.',
+        value: {
+          accessToken,
+          refreshToken,
+          role,
+          id: _id,
+        },
       });
     } catch (err) {
-      console.log(err);
-      res.status(400).send(err);
+      next(err);
     }
   };
 
-  static resetPassword = async (req, res) => {
-    const { email } = req.body;
-    const user = await UserModel.findOne({ email });
-
+  static resetPassword = async (req, res, next) => {
     try {
-    } catch (error) {}
+      const { email } = req.body;
+      const user = await UserModel.findOne({ email });
+    } catch (err) {
+      next(err);
+    }
   };
 
-  // static refreshToken = async (req, res) => {};
-
-  // static revokeToken = async (req, res) => {};
+  static getUserInfo = async (req, res, next) => {
+    try {
+      const user = req.user;
+      const { username, email, date } = user;
+      sendResponse({
+        res,
+        status: 200,
+        value: {
+          username,
+          email,
+          date,
+        },
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 export default AuthController;

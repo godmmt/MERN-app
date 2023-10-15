@@ -5,6 +5,7 @@ import cors from 'cors';
 import apiRouter from './routes/index.js';
 import corsOptionsDelegate from './config/cors.config.js';
 import connectToDB from './config/db.config.js';
+import sendResponse from './utils/sendResponse.js';
 
 // server app
 const app = express();
@@ -20,6 +21,16 @@ app.use(express.urlencoded({ extended: true })); // parse URL
 
 // routers
 app.use('/api', apiRouter);
+
+// error handler
+app.use((err, req, res) => {
+  console.error(err.stack);
+  sendResponse({
+    res,
+    status: 500,
+    message: err.message,
+  });
+});
 
 // listen on port
 app.listen(process.env.PORT, () => {
