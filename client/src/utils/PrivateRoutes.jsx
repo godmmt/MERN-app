@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import useCurrentUser from 'hooks/useCurrentUser';
+import Modal from 'components/Modal';
 import useModal from 'hooks/useModal';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();
-  const { openLoginModal } = useModal();
-
+  const { openLoginModal, modalType } = useModal();
   useEffect(() => {
-    if (!currentUser) {
+    if (!currentUser && !modalType) {
       openLoginModal();
     }
-  }, [currentUser]);
+  }, [currentUser, modalType, openLoginModal]);
 
-  return currentUser ? <Outlet /> : <main style={{ height: '100vh' }}></main>;
+  return currentUser ? <Outlet /> : <Modal allowCloseModal={false} />;
 };
 
 export default PrivateRoutes;
