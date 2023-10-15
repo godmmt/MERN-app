@@ -1,76 +1,87 @@
 import { CourseModel } from '../models/index.js';
+import sendResponse from '../utils/sendResponse.js';
 
 class CourseController {
   // 搜尋所有課程
-  static getCourses = (req, res) => {
-    CourseModel.find({})
-      .populate('instructor', ['username', 'email'])
-      .then((course) => {
-        res.status(200).send(course);
-      })
-      .catch(() => {
-        res.status(500).send('Error! Cannot get Course!');
+  static getCourses = async (req, res, next) => {
+    try {
+      const course = await CourseModel.find({}).populate('instructor', ['username', 'email']);
+
+      sendResponse({
+        res,
+        status: 200,
+        value: course,
       });
+    } catch (err) {
+      next(err);
+    }
   };
 
   // 以課程名稱搜尋課程
-  static getCoursesByCourseName = (req, res) => {
-    const { name } = req.params;
-    console.log('進來findByName了', name);
-    CourseModel.find({ title: name })
-      .populate('instructor', ['username', 'email'])
-      .then((course) => {
-        res.status(200).send(course);
-      })
-      .catch((err) => {
-        res.status(500).send(err);
+  static getCoursesByCourseName = async (req, res, next) => {
+    try {
+      const { name } = req.params;
+      const course = await CourseModel.find({ title: name }).populate('instructor', ['username', 'email']);
+
+      sendResponse({
+        res,
+        status: 200,
+        value: course,
       });
+    } catch (err) {
+      next(err);
+    }
   };
 
   // 根據講師ID獲得課程內容
-  static getCoursesByInstructorID = (req, res) => {
-    const { _instructor_id } = req.params;
-    CourseModel.find({ instructor: _instructor_id })
-      .populate('instructor', ['username', 'email'])
-      .then((data) => {
-        res.send(data);
-      })
-      .catch(() => {
-        res.status(500).send('Cannot get course data.');
+  static getCoursesByInstructorID = async (req, res) => {
+    try {
+      const { _instructor_id } = req.params;
+      const course = await CourseModel.find({ instructor: _instructor_id }).populate('instructor', ['username', 'email']);
+      sendResponse({
+        res,
+        status: 200,
+        value: course,
       });
+    } catch (err) {
+      next(err);
+    }
   };
 
   // 根據學生ID獲得課程內容
-  static getCoursesByStudentID = (req, res) => {
-    const { _student_id } = req.params;
-    CourseModel.find({ students: _student_id })
-      .populate('instructor', ['username', 'email'])
-      .then((courses) => {
-        res.status(200).send(courses); // 因為會找到複數的課程
-      })
-      .catch(() => {
-        res.status(500).send('Cannot get data.');
+  static getCoursesByStudentID = async (req, res) => {
+    try {
+      const { _student_id } = req.params;
+      const courses = await CourseModel.find({ students: _student_id }).populate('instructor', ['username', 'email']);
+      sendResponse({
+        res,
+        status: 200,
+        value: courses,
       });
+    } catch (err) {
+      next(err);
+    }
   };
 
   // 根據課程ID來找到課程內容
   static getCourse = (req, res) => {
-    const { _id } = req.params;
-    CourseModel.findOne({ _id })
-      .populate('instructor', ['email'])
-      .then((course) => {
-        res.send(course);
-      })
-      .catch((e) => {
-        res.send(e);
+    try {
+      const { _id } = req.params;
+      const course = CourseModel.findOne({ _id }).populate('instructor', ['email']);
+      sendResponse({
+        res,
+        status: 200,
+        value: course,
       });
+    } catch (err) {
+      next(err);
+    }
   };
 
   // 新增課程
-  static createCourse = async (req, res) => {
-    const { title, subtitle, description, price } = req.body;
-    // 儲存課程到DB
+  static createCourse = async (req, res, next) => {
     try {
+      const { title, subtitle, description, price } = req.body;
       const newCourse = new CourseModel({
         title,
         subtitle,
@@ -80,98 +91,116 @@ class CourseController {
         img: req.imgURL,
       });
       await newCourse.save();
-      res.status(200).send('New course has been saved.');
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Course created successfully.',
+      });
     } catch (err) {
-      res.status(400).send('Cannot save course.');
+      next(err);
     }
   };
 
   // 編輯課程
-  static editCourse = async (req, res) => {
-    const { _id } = req.params;
+  static editCourse = async (req, res, next) => {
+    try {
+      const { _id } = req.params;
 
-    // 檢查是否有該課程存在
-    const course = await CourseModel.findOne({ _id });
-    if (!course) {
-      res.status(404);
-      return res.json({
-        success: false,
-        message: 'Course not found.',
-      });
-    }
+      // 檢查是否有該課程存在
+      const course = await CourseModel.findOne({ _id });
+      if (!course) {
+        return sendResponse({
+          res,
+          status: 400,
+          message: 'Course not found.',
+        });
+      }
 
-    const newCourseInfo = { ...req.body, img: req.imgURL };
+      // 檢查身分是否為該開課講師
+      if (!course.instructor.equals(req.user._id)) {
+        return sendResponse({
+          res,
+          status: 403,
+          message: 'Only the instructor who created the course has editing permission.',
+        });
+      }
 
-    // 檢查身分是否為該開課講師
-    if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
-      CourseModel.findOneAndUpdate({ _id }, newCourseInfo, {
+      const newCourse = { ...req.body, img: req.imgURL };
+      await CourseModel.findOneAndUpdate({ _id }, newCourse, {
         new: true,
         runValidators: true,
-      })
-        .then(() => {
-          res.send('Course updated.');
-        })
-        .catch((e) => {
-          res.send({
-            success: false,
-            message: e,
-          });
-        });
-    } else {
-      res.status(403);
-      return res.json({
-        success: false,
-        message: 'Only the instructor of this course or web admin can edit this course.',
       });
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Course updated successfully.',
+      });
+    } catch (err) {
+      next(err);
     }
   };
 
   // 刪除課程
-  static deleteCourse = async (req, res) => {
-    const { _id } = req.params;
+  static deleteCourse = async (req, res, next) => {
+    try {
+      const { _id } = req.params;
 
-    // 檢查是否有該課程存在
-    const course = await CourseModel.findOne({ _id });
-    if (!course) {
-      res.status(404);
-      return res.json({
-        success: false,
-        message: 'Course not found.',
-      });
-    }
-
-    // 檢查身分是否為該開課講師
-    if (course.instructor.equals(req.user._id) || req.user.isAdmin()) {
-      CourseModel.deleteOne({ _id })
-        .then(() => {
-          res.send('Course deleted.');
-        })
-        .catch((e) => {
-          res.send({
-            success: false,
-            message: e,
-          });
+      // 檢查是否有該課程存在
+      const course = await CourseModel.findOne({ _id });
+      if (!course) {
+        return sendResponse({
+          res,
+          status: 400,
+          message: 'Course not found.',
         });
-    } else {
-      res.status(403);
-      return res.json({
-        success: false,
-        message: 'Only the instructor of this course or web admin can edit this course.',
+      }
+
+      // 檢查身分是否為該開課講師
+      if (!course.instructor.equals(req.user._id)) {
+        return sendResponse({
+          res,
+          status: 403,
+          message: 'Only the instructor who created the course has deleting permission.',
+        });
+      }
+
+      await CourseModel.deleteOne({ _id });
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Course deleted successfully.',
       });
+    } catch (err) {
+      next(err);
     }
   };
 
   // 學生註冊課程
-  static enrollCourse = async (req, res) => {
-    const { course_id } = req.params;
-    const { user_id } = req.body;
+  static enrollCourse = async (req, res, next) => {
     try {
+      const { course_id } = req.params;
+      const { user_id } = req.body;
+
       const course = await CourseModel.findOne({ _id: course_id });
+
+      // 檢查學生是否已註冊過
+      if (course.students.includes(user_id)) {
+        return sendResponse({
+          res,
+          status: 400,
+          message: 'You have already registered for the course.',
+        });
+      }
+
       course.students.push(user_id);
       await course.save();
-      res.send('Done Enrollment.');
+      sendResponse({
+        res,
+        status: 200,
+        message: 'Enroll successfully.',
+      });
     } catch (err) {
-      res.send(err);
+      next(err);
     }
   };
 }

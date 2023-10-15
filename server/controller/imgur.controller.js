@@ -1,5 +1,6 @@
 import Imgur from 'imgur';
 import multer from 'multer';
+import sendResponse from '../utils/sendResponse.js';
 
 // 設定imgur實例
 const { ImgurClient } = Imgur;
@@ -27,7 +28,11 @@ class ImgurController {
   static parseImage = (req, res, next) => {
     parse(req, res, (err) => {
       if (err) {
-        return res.status(400).send(err.message);
+        return sendResponse({
+          res,
+          status: 400,
+          message: err.message,
+        });
       }
       next();
     });
@@ -42,8 +47,12 @@ class ImgurController {
       });
       req.imgURL = response.data.link;
       next();
-    } catch (error) {
-      res.status(500).send(error);
+    } catch (err) {
+      sendResponse({
+        res,
+        status: 500,
+        message: err.message,
+      });
     }
   };
 }
