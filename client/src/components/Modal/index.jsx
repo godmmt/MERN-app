@@ -9,15 +9,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './modal.scss';
 
-const Modal = ({ disallowClose }) => {
+const Modal = ({ allowCloseModal = true }) => {
   const { modalType, closeModal, isLogin, isRegister, isResetPassword } = useModal();
 
   return (
     modalType &&
     createPortal(
-      <div className='modal-backdrop' onClick={disallowClose ? undefined : closeModal}>
+      <div className='modal-backdrop' onClick={allowCloseModal ? closeModal : undefined}>
         <div className='modal-content' onClick={(event) => event.stopPropagation()}>
-          <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon ${disallowClose ? 'hide-close-icon' : ''}`} />
+          <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon ${allowCloseModal ? '' : 'hide-close-icon'}`} />
 
           {isLogin && <Login />}
           {isRegister && <Register />}

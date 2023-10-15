@@ -13,7 +13,7 @@ const PrivateRoutes = () => {
     }
   }, [currentUser, modalType, openLoginModal]);
 
-  return currentUser ? <Outlet /> : <Modal disallowClose />;
+  return currentUser ? <Outlet /> : <Modal allowCloseModal={false} />;
 };
 
 export default PrivateRoutes;
