@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import useCurrentUser from 'hooks/useCurrentUser';
-import useModal from 'hooks/useModal';
+import { ROUTER_PATH } from 'App';
 
 const PrivateRoutes = () => {
   const { currentUser } = useCurrentUser();
-  const { openLoginModal } = useModal();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser) {
-      openLoginModal();
-    }
-  }, [currentUser]);
+    !currentUser && navigate(ROUTER_PATH.home);
+  }, [currentUser, navigate]);
 
-  return currentUser ? <Outlet /> : <main style={{ height: '100vh' }}></main>;
+  return currentUser ? <Outlet /> : null;
 };
 
 export default PrivateRoutes;
