@@ -9,21 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './modal.scss';
 
-const Modal = () => {
+const Modal = ({ hideCloseIcon }) => {
   const { modalType, closeModal, isLogin, isRegister, isResetPassword } = useModal();
 
+  console.log('Modal');
   // TODO: 在Private Routes時候固定開啟Modal
-  // const hideCloseIcon = () => {
-  //   return currentUser ? true : false;
-  // };
 
   return (
     modalType &&
     createPortal(
       <div className='modal-backdrop' onClick={closeModal}>
         <div className='modal-content' onClick={(event) => event.stopPropagation()}>
-          {/* <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon  ${hideCloseIcon ? 'hide-close-icon' : ''}`} /> */}
-          <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon`} />
+          <FontAwesomeIcon onClick={closeModal} icon={faCircleXmark} className={`close-icon ${hideCloseIcon ? 'hide-close-icon' : ''}`} />
 
           {isLogin && <Login />}
           {isRegister && <Register />}

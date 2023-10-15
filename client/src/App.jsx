@@ -38,11 +38,13 @@ function App() {
               <Route element={<About />} path={ROUTER_PATH.about}></Route>
               <Route element={<Contact />} path={ROUTER_PATH.contact}></Route>
               <Route element={<CourseContent />} path={ROUTER_PATH.courseContent}></Route>
-              <Route element={<PrivateRoutes />}>
+              {/* TODO: 錯誤處理的路由 */}
+            </Route>
+            <Route element={<PrivateRoutes />}>
+              <Route element={<CommonLayout />}>
                 <Route element={<Profile />} path={ROUTER_PATH.profile}></Route>
                 <Route element={<PostCourse />} path={ROUTER_PATH.postCourse}></Route>
               </Route>
-              {/* TODO: 錯誤處理的路由 */}
             </Route>
             <Route element={<UnsubscribeNewsletter />} path={ROUTER_PATH.unsubscribeNewsletter}></Route>
           </Route>
