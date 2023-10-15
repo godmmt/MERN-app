@@ -11,7 +11,7 @@ import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import './courseContent.scss';
 
 const CourseContent = () => {
-  const { currentUser } = useCurrentUser();
+  const { id, hasUser, isInstructor } = useCurrentUser();
   const { openLoginModal } = useModal();
   const location = useLocation();
   const course = location.state;
@@ -19,17 +19,16 @@ const CourseContent = () => {
 
   const handleEnroll = async () => {
     try {
-      const res = await CourseService.enroll(course._id, currentUser.user._id);
+      if (!hasUser) {
+        openLoginModal(true);
+        return;
+      }
+      const res = await CourseService.enroll(course._id, id);
       window.alert(res.data);
-      console.log({ res });
       navigate(ROUTER_PATH.profile);
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const handleLogin = () => {
-    openLoginModal(true);
   };
 
   return (
@@ -55,20 +54,11 @@ const CourseContent = () => {
             <p className='description'>{course.description}</p>
           </div>
 
-          {!currentUser && (
-            <Button cx='submit-btn' onClick={handleLogin}>
-              Enroll
+          {!(hasUser && isInstructor) && (
+            <Button cx='submit-btn' onClick={handleEnroll}>
+              {course.students.some((item) => item === id) ? 'Start Lesson' : 'Enroll'}
             </Button>
           )}
-
-          {currentUser?.user.role === 'student' &&
-            (course.students.some((item) => item === currentUser.user._id) ? (
-              <Button cx='submit-btn'>Start Lesson</Button>
-            ) : (
-              <Button cx='submit-btn' onClick={handleEnroll}>
-                Enroll
-              </Button>
-            ))}
         </section>
       )}
     </main>
