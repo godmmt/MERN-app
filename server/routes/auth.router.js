@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { AuthController } from '../controller/index.js';
 import { AuthValidator } from '../validations/index.js';
-import passport from 'passport';
+import passport from '../config/passport.config.js';
 
 const authRouter = Router();
 

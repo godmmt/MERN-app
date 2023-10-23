@@ -13,7 +13,7 @@ const UserProvider = () => {
   const isInstructor = role === 'instructor';
   const isStudent = role === 'student';
 
-  const login = async (value) => {
+  const login = (value) => {
     setCurrentUser(value);
     Object.entries(value).forEach(([key, value]) => {
       localStorage.setItem(key, value);

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
+import AuthService from 'services/auth.service';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
 import useCurrentUser from 'hooks/useCurrentUser';
 import './profile.scss';
-import AuthService from 'services/auth.service';
 
 const Profile = () => {
   const { id, role, isInstructor, isStudent } = useCurrentUser();

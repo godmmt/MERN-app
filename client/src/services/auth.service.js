@@ -7,9 +7,10 @@ class AuthService {
     return axios.post('user/login', { email, password });
   }
 
-  static logout() {
-    // return axios.post('user/revoke-token');
-  }
+  // TODO
+  // static logout() {
+  //    return axios.post('user/revoke-token');
+  // }
 
   static register(username, email, password, role) {
     return axios.post('user/register', { username, email, password, role });

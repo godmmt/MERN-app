@@ -107,6 +107,8 @@ class AuthController {
     try {
       const { email } = req.body;
       const user = await UserModel.findOne({ email });
+      // TODO
+      // 寄信到使用者email
     } catch (err) {
       next(err);
     }
