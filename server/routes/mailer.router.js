@@ -3,7 +3,7 @@ import { MailerController } from '../controller/index.js';
 import { AuthValidator } from '../validations/index.js';
 
 const mailerRouter = Router();
-
+console.log('test');
 mailerRouter.post('/reset-password', AuthValidator.hasEmailInfo, MailerController.resetPassword);
 mailerRouter.post('/subscribe-newsletter', MailerController.subscribeNewsLetter);
 mailerRouter.post('/unsubscribe-newsletter', MailerController.unsubscribeNewsletter);
