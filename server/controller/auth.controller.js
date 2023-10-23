@@ -11,7 +11,7 @@ const SALT_ROUNDS = process.env.SALT_ROUNDS;
 
 class AuthController {
   static hashPassword = (password) => {
-    return bcrypt.hash(password, SALT_ROUNDS);
+    return bcrypt.hash(password, Number(SALT_ROUNDS));
   };
 
   static generateAccessToken = (payload) => {
