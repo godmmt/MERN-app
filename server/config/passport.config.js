@@ -14,7 +14,7 @@ passport.use(
         const user = await UserModel.findOne({ email });
         return done(null, user ?? false);
       } catch (error) {
-        return done(err, false);
+        return done(error, false);
       }
     }
   )

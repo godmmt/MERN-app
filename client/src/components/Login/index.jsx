@@ -9,8 +9,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './login.scss';
 
 const Login = () => {
-  const { setCurrentUser } = useCurrentUser();
   const { closeModal, openRegisterModal, openResetPasswordModal } = useModal();
+  const { login } = useCurrentUser();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,10 +32,9 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await AuthService.login(email, password); // 接住伺服器回傳的物件(成為被包在res物件裡面的data物件)
-      localStorage.setItem('user', JSON.stringify(res.data));
-      window.alert('Login successfully.');
-      setCurrentUser(res.data);
+      const res = await AuthService.login(email, password);
+      const { value } = res.data;
+      login(value);
       closeModal();
     } catch (error) {
       setMessage(error.data.message);

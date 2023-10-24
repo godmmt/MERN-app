@@ -11,7 +11,7 @@ import { faUserTie, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import './courseContent.scss';
 
 const CourseContent = () => {
-  const { currentUser } = useCurrentUser();
+  const { id, hasUser, isStudent } = useCurrentUser();
   const { openLoginModal } = useModal();
   const location = useLocation();
   const course = location.state;
@@ -19,17 +19,21 @@ const CourseContent = () => {
 
   const handleEnroll = async () => {
     try {
-      const res = await CourseService.enroll(course._id, currentUser.user._id);
-      window.alert(res.data);
-      console.log({ res });
+      if (!hasUser) {
+        openLoginModal(true);
+        return;
+      }
+      const res = await CourseService.enroll(course._id, id);
+      window.alert(res.data.message);
       navigate(ROUTER_PATH.profile);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleLogin = () => {
-    openLoginModal(true);
+  const handleStartLesson = () => {
+    //TODO
+    window.alert('This feature is coming soon.');
   };
 
   return (
@@ -55,15 +59,18 @@ const CourseContent = () => {
             <p className='description'>{course.description}</p>
           </div>
 
-          {!currentUser && (
-            <Button cx='submit-btn' onClick={handleLogin}>
+          {!hasUser && (
+            <Button cx='submit-btn' onClick={handleEnroll}>
               Enroll
             </Button>
           )}
 
-          {currentUser?.user.role === 'student' &&
-            (course.students.some((item) => item === currentUser.user._id) ? (
-              <Button cx='submit-btn'>Start Lesson</Button>
+          {hasUser &&
+            isStudent &&
+            (course.students.some((item) => item === id) ? (
+              <Button cx='submit-btn' onClick={handleStartLesson}>
+                Start Lesson
+              </Button>
             ) : (
               <Button cx='submit-btn' onClick={handleEnroll}>
                 Enroll

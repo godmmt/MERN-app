@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'App';
+import AuthService from 'services/auth.service';
 import CourseService from 'services/course.service';
 import CourseCards from 'components/CourseCards';
 import useCurrentUser from 'hooks/useCurrentUser';
 import './profile.scss';
 
 const Profile = () => {
-  const { currentUser } = useCurrentUser();
+  const { id, role, isInstructor, isStudent } = useCurrentUser();
+
+  const [userInfo, setUserInfo] = useState(null);
+
   // 跳轉routes
   const navigate = useNavigate();
   const handleTakeToAllCourses = () => {
@@ -22,18 +26,27 @@ const Profile = () => {
   // state 用來控制msg是否開啟
   const [isMsgOpen, setIsMsgOpen] = useState(false);
 
+  useEffect(() => {
+    AuthService.getUserInfo()
+      .then((res) => {
+        const userInfo = res.data?.value ?? null;
+        setUserInfo(userInfo);
+      })
+      .catch((err) => {
+        setUserInfo(null);
+        console.log({ err });
+      });
+  }, []);
+
   // 一進入網頁就要根據身分得到所對應的課程
   useEffect(() => {
-    console.log('Using effect');
-    let _id = currentUser.user._id;
-
     // 講師
-    if (currentUser.user.role === 'instructor') {
-      CourseService.getCoursesByInstructorID(_id)
+    if (isInstructor && id) {
+      CourseService.getCoursesByInstructorID(id)
         .then((res) => {
-          console.log({ res });
-          setCourseData(res.data);
-          setIsMsgOpen(res.data.length === 0 ? true : false);
+          const courses = res.data?.value ?? [];
+          setCourseData(courses);
+          setIsMsgOpen(!courses.length);
         })
         .catch((err) => {
           console.log({ err });
@@ -41,18 +54,18 @@ const Profile = () => {
     }
 
     // 學生
-    if (currentUser.user.role === 'student') {
-      CourseService.getCoursesByStudentID(_id)
+    if (isStudent && id) {
+      CourseService.getCoursesByStudentID(id)
         .then((res) => {
-          console.log({ res });
-          setCourseData(res.data);
-          setIsMsgOpen(res.data.length === 0 ? true : false);
+          const courses = res.data?.value ?? [];
+          setCourseData(courses);
+          setIsMsgOpen(!courses.length);
         })
         .catch((err) => {
           console.log({ err });
         });
     }
-  }, [currentUser]);
+  }, [id, isInstructor, isStudent]);
 
   return (
     <main className='profile'>
@@ -62,25 +75,25 @@ const Profile = () => {
           <div className='user-information'>
             <div className='column'>
               <p>Name :</p>
-              <div>{currentUser.user.username}</div>
+              <div>{userInfo?.username}</div>
             </div>
             <div className='column'>
               <p>Email :</p>
-              <div>{currentUser.user.email}</div>
+              <div>{userInfo?.email}</div>
             </div>
             <div className='column'>
               <p>Role :</p>
-              <div>{currentUser.user.role}</div>
+              <div>{role}</div>
             </div>
             <div className='column'>
               <p>The date you registered on our website :</p>
-              <div>{currentUser.user.date.substring(0, 10)}</div>
+              <div>{userInfo?.date?.substring(0, 10)}</div>
             </div>
           </div>
         </div>
 
         <div className='card-layout'>
-          {currentUser.user.role === 'instructor' && (
+          {isInstructor && (
             <>
               <h1>Courses You've Created</h1>
               <div className={isMsgOpen ? 'msg-for-no-course' : 'close-msg'}>
@@ -91,7 +104,7 @@ const Profile = () => {
             </>
           )}
 
-          {currentUser.user.role === 'student' && (
+          {isStudent && (
             <>
               <h1>Your Purchased Courses</h1>
               <div className={isMsgOpen ? 'msg-for-no-course' : 'close-msg'}>
