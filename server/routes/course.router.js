@@ -5,10 +5,12 @@ import { AuthValidator, CourseValidator } from '../validations/index.js';
 
 const courseRouter = Router();
 
-courseRouter.get('/', CourseController.getCourses); // 訪客可使用
-courseRouter.get('/findByName/:name?', CourseController.getCoursesByCourseName); // 訪客可使用
+// # 訪客可使用 #
+courseRouter.get('/', CourseController.getCourses);
+courseRouter.get('/findByName/:name?', CourseController.getCoursesByCourseName);
 
-courseRouter.use(passport.authenticate('jwt', { session: false }));
+// # 訪客不得使用 #
+courseRouter.use(passport.authenticate('jwt', { session: false })); // 通過passport驗證後req攜帶user物件
 
 // fetch Course
 courseRouter.get('/instructor/:_instructor_id', AuthValidator.hasInstructorPermission, CourseController.getCoursesByInstructorID);

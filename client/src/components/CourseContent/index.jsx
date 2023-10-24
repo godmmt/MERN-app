@@ -24,7 +24,7 @@ const CourseContent = () => {
         return;
       }
       const res = await CourseService.enroll(course._id, id);
-      window.alert(res.data.value.message); // not sure
+      window.alert(res.data.message);
       navigate(ROUTER_PATH.profile);
     } catch (err) {
       console.log(err);
