@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 import useModal from 'hooks/useModal';
-// react-toastify
 import { toast } from 'react-toastify';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +13,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
+  const [message, setMessage] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { openLoginModal } = useModal();
 
@@ -36,24 +36,12 @@ const Register = () => {
   };
 
   const handleRegister = async () => {
-    toast.dismiss(); // clear all toasts
-    const pendingToastId = toast.info('Wait a moment . . .', { autoClose: false, icon: '🚀' });
     try {
       const res = await AuthService.register(username, email, password, role);
-      toast.update(pendingToastId, {
-        render: res.data.message,
-        type: toast.TYPE.SUCCESS,
-        autoClose: 3000,
-        icon: true,
-      });
+      toast.success(res.data.message);
       openLoginModal();
     } catch (err) {
-      toast.update(pendingToastId, {
-        render: err.data.message ?? 'System error, please wait.',
-        type: toast.TYPE.ERROR,
-        autoClose: 3000,
-        icon: true,
-      });
+      setMessage(err.data.message);
     }
   };
 
@@ -76,6 +64,8 @@ const Register = () => {
             <option value='instructor'>Instructor</option>
           </select>
         </div>
+
+        {message && <div className='alert'>{message}</div>}
 
         <Button cx='register-btn' onClick={handleRegister}>
           Register
