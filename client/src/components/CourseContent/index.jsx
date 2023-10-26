@@ -18,18 +18,26 @@ const CourseContent = () => {
   const course = location.state;
   const [hasEnrolled, setHasEnrolled] = useState(course.students.includes(id));
 
-  const handleEnroll = async () => {
-    try {
-      if (!hasUser) {
-        openLoginModal(true);
-        return;
-      }
-      const res = await CourseService.enroll(course._id, id);
-      toast.success(res.data.message);
-      setHasEnrolled(true);
-    } catch (err) {
-      console.log(err);
+  const handleEnroll = () => {
+    if (!hasUser) {
+      openLoginModal(true);
+      return;
     }
+    toast.dismiss();
+    toast.promise(CourseService.enroll(course._id, id), {
+      pending: 'Wait a moment . . .',
+      success: {
+        render({ data }) {
+          setHasEnrolled(true);
+          return data.data.message;
+        },
+      },
+      error: {
+        render({ data }) {
+          return data.data.message ?? 'System error, please wait.';
+        },
+      },
+    });
   };
 
   const handleStartLesson = () => {

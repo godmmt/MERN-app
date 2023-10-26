@@ -15,15 +15,15 @@ const CommonLayout = () => {
       <Outlet />
       <Footer />
       <ToastContainer
-        position='top-center'
+        position='top-left'
         autoClose={3000}
         limit={1}
-        hideProgressBar={false}
+        hideProgressBar
         newestOnTop
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        draggable
+        draggable={false}
         pauseOnHover
         theme='light'
       />
