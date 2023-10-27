@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import AuthService from 'services/auth.service';
+import { toast } from 'react-toastify';
 
 export const UserContext = createContext();
 
@@ -18,7 +19,7 @@ const UserProvider = () => {
     Object.entries(value).forEach(([key, value]) => {
       localStorage.setItem(key, value);
     });
-    window.alert('Login successfully.');
+    toast.success('Login successfully.');
   };
 
   const logout = () => {
@@ -26,7 +27,7 @@ const UserProvider = () => {
     AuthService.authKeys.forEach((key) => {
       localStorage.removeItem(key);
     });
-    window.alert('Logout successfully, now you are redirect to the homepage.');
+    toast.success('Logout successfully.');
   };
 
   const value = {

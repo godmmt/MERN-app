@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import { ROUTER_PATH } from 'App';
 import MailerService from 'services/mail.service';
 import Button from 'components/Button';
@@ -14,14 +15,16 @@ const UnsubscribeNewsletter = () => {
   const [loading, setLoading] = useState(false);
 
   const handleUnsubscribe = async () => {
+    toast.dismiss(); // clear toasts
     setLoading(true);
+    const pendingToastId = toast.info('Wait a moment ...', { icon: '🚀', autoClose: false });
     try {
       const res = await MailerService.unsubscribeNewsletter(email);
-      window.alert(res.data.message);
+      toast.update(pendingToastId, { render: res.data.message, type: 'success', icon: null });
       endMsgRef.current.innerText = 'Unsubscribe successfully';
       setCloseModal(true);
     } catch (err) {
-      window.alert(err.data.message);
+      toast.update(pendingToastId, { render: err.data.message, type: 'error', icon: null });
       setLoading(false);
     }
   };
@@ -45,6 +48,19 @@ const UnsubscribeNewsletter = () => {
         </div>
       </div>
       <div className='end-msg' ref={endMsgRef}></div>
+      <ToastContainer
+        position='top-left'
+        autoClose={3000}
+        limit={5}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme='light'
+      />
     </main>
   );
 };

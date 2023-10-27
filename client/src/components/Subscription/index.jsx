@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import Button from 'components/Button';
 import MailerService from 'services/mail.service';
 import './subscription.scss';
@@ -8,18 +9,24 @@ const Subscription = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubscribe = async () => {
+    toast.dismiss(); // clear toasts
     const email = emailInput.current.value;
-    if (email.trim() === '') {
-      window.alert('Please enter a valid email.');
+    const isValidEmail = (email) => {
+      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      return emailRegex.test(email);
+    };
+    if (email.trim() === '' || !isValidEmail(email)) {
+      toast.warning('Please enter a valid email.');
       emailInput.current.value = '';
       return;
     }
     setLoading(true);
+    const pendingToastId = toast.info('Wait a moment ...', { icon: '🚀', autoClose: false });
     try {
       const res = await MailerService.subscribeNewsletter(email);
-      window.alert(res.data.message);
+      toast.update(pendingToastId, { render: res.data.message, type: 'success', icon: null });
     } catch (err) {
-      window.alert(err.data.message === 'No recipients defined' ? 'Your email seems to be incorrect. Please re-enter.' : err.data.message);
+      toast.update(pendingToastId, { render: err.data?.message ?? 'System Error', type: 'error', icon: null });
     }
     emailInput.current.value = '';
     setLoading(false);
