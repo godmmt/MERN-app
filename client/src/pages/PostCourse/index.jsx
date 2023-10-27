@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import CourseService from '../../services/course.service';
@@ -70,11 +71,12 @@ const PostCourse = () => {
 
     CourseService.post(formData)
       .then((res) => {
-        window.alert('New course has been created. Now redirect to My Course page.');
+        toast.success(res.data.message);
         navigate(ROUTER_PATH.profile);
       })
       .catch((error) => {
         console.log({ error });
+        toast.error('System Error');
       });
   };
 

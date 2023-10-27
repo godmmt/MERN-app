@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AuthService from 'services/auth.service';
 import Button from 'components/Button';
 import useModal from 'hooks/useModal';
+import { toast } from 'react-toastify';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -36,11 +37,11 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      await AuthService.register(username, email, password, role);
-      window.alert('Registration succeeds. You are now redirected to the login page.');
+      const res = await AuthService.register(username, email, password, role);
+      toast.success(res.data.message);
       openLoginModal();
-    } catch (error) {
-      setMessage(error.data.message);
+    } catch (err) {
+      setMessage(err.data.message);
     }
   };
 
