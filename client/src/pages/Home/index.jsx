@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import { toast } from 'react-toastify';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // solid-svg-icons
@@ -30,9 +30,9 @@ const Home = () => {
   const handleClickAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
   };
-  const handleClickToTop = () => {
-    // 導航到當前頁面的頂部
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const featureNotReady = () => {
+    toast.dismiss();
+    toast.info('This feature is coming soon!');
   };
 
   return (
@@ -46,7 +46,6 @@ const Home = () => {
               learning experience that allows you to unleash your coding potential.
             </p>
             <div className='action'>
-              <Button onClick={handleClickToTop}>Start Course</Button>
               <Button onClick={handleClickAllCourses}>View All Courses</Button>
             </div>
           </div>
@@ -85,7 +84,7 @@ const Home = () => {
                 <div className='feedback-name'>Elena Miles</div>
                 <div className='role'>Student</div>
               </div>
-              <div className='right' onClick={handleClickToTop}>
+              <div className='right' onClick={featureNotReady}>
                 <div>Read All Reviews</div>
                 <div>
                   <FontAwesomeIcon icon={faCircleRight} className='right-arrow-icon' />
@@ -116,7 +115,9 @@ const Home = () => {
                 <p>{circleCheckIcon}8+ more lessons</p>
               </div>
             </div>
-            <Button cx='start-course'>Start Course</Button>
+            <Button cx='start-course' onClick={handleClickAllCourses}>
+              Start Course
+            </Button>
           </div>
         </section>
 
@@ -151,7 +152,7 @@ const Home = () => {
               <h2>Trusted by Thousand of Students and Tutors</h2>
             </div>
             <div className='testimonial-head-right'>
-              <Button>Start Learning</Button>
+              <Button onClick={handleClickAllCourses}>Start Learning</Button>
             </div>
           </div>
           <Slider
