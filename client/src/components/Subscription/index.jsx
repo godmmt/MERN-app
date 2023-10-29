@@ -21,12 +21,12 @@ const Subscription = () => {
       return;
     }
     setLoading(true);
-    const pendingToastId = toast.info('Wait a moment ...', { icon: '🚀', autoClose: false });
+    const pendingToastId = toast.loading('Wait a moment ...');
     try {
       const res = await MailerService.subscribeNewsletter(email);
-      toast.update(pendingToastId, { render: res.data.message, type: 'success', icon: null });
+      toast.update(pendingToastId, { render: res.data.message, type: 'success', isLoading: false, closeOnClick: true });
     } catch (err) {
-      toast.update(pendingToastId, { render: err.data?.message ?? 'System Error', type: 'error', icon: null });
+      toast.update(pendingToastId, { render: err.data?.message ?? 'System Error', type: 'error', isLoading: false, closeOnClick: true });
     }
     emailInput.current.value = '';
     setLoading(false);
