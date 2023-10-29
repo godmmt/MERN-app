@@ -1,14 +1,19 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import Button from 'components/Button';
+import Subscription from 'components/Subscription';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faYoutube, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
-import Button from 'components/Button';
-import Subscription from 'components/Subscription';
 import './contact.scss';
 
 const Contact = () => {
+  const handleSendMessage = () => {
+    // TODO
+    toast.dismiss();
+    toast.info('This feature is coming soon !', { icon: '🚀' });
+  };
   return (
     <main className='contact'>
       <section className='main-content'>
@@ -78,7 +83,9 @@ const Contact = () => {
               </label>
               <textarea name='guest-message' id='guest-message' placeholder='Please fill out any questions or suggestions.'></textarea>
             </div>
-            <Button cx='submit-btn'>Send Message</Button>
+            <Button cx='submit-btn' onClick={handleSendMessage}>
+              Send Message
+            </Button>
           </div>
         </div>
       </section>

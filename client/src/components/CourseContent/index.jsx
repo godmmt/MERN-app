@@ -4,7 +4,6 @@ import CourseService from '../../services/course.service';
 import Button from 'components/Button';
 import useModal from 'hooks/useModal';
 import useCurrentUser from 'hooks/useCurrentUser';
-// react-toastify
 import { toast } from 'react-toastify';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,7 +40,7 @@ const CourseContent = () => {
   };
 
   const handleStartLesson = () => {
-    //TODO
+    // TODO
     toast.dismiss();
     toast.info('This feature is coming soon !', { icon: '🚀' });
   };

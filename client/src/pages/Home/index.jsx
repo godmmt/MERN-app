@@ -5,22 +5,19 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { toast } from 'react-toastify';
-// Font Awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// solid-svg-icons
-import { faCircle, faCircleCheck, faUser } from '@fortawesome/free-solid-svg-icons';
-// regular-svg-icons
-import { faHourglassHalf, faCircleRight } from '@fortawesome/free-regular-svg-icons';
-
 import Button from 'components/Button';
 import Subscription from 'components/Subscription';
 import { ROUTER_PATH } from 'App';
+import { gallery, courseCards, userTestimonials } from 'config/home.config';
+// assets
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
-
 import happyStudent from 'assets/images/happy-student.png';
 import computer from 'assets/images/computer.jpg';
-import { gallery, courseCards, userTestimonials } from 'config/home.config';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faCircleCheck, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHourglassHalf, faCircleRight } from '@fortawesome/free-regular-svg-icons';
 import './home.scss';
 
 const circleCheckIcon = <FontAwesomeIcon icon={faCircleCheck} className='circle-check-icon' />;
@@ -30,7 +27,8 @@ const Home = () => {
   const handleClickAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
   };
-  const featureNotReady = () => {
+  const handleReadAllReviews = () => {
+    // TODO
     toast.dismiss();
     toast.info('This feature is coming soon !', { icon: '🚀' });
   };
@@ -84,7 +82,7 @@ const Home = () => {
                 <div className='feedback-name'>Elena Miles</div>
                 <div className='role'>Student</div>
               </div>
-              <div className='right' onClick={featureNotReady}>
+              <div className='right' onClick={handleReadAllReviews}>
                 <div>Read All Reviews</div>
                 <div>
                   <FontAwesomeIcon icon={faCircleRight} className='right-arrow-icon' />
