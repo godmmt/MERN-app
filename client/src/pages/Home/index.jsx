@@ -32,7 +32,7 @@ const Home = () => {
   };
   const featureNotReady = () => {
     toast.dismiss();
-    toast.info('This feature is coming soon!');
+    toast.info('This feature is coming soon !', { icon: '🚀' });
   };
 
   return (

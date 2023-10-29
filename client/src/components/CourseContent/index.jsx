@@ -42,7 +42,8 @@ const CourseContent = () => {
 
   const handleStartLesson = () => {
     //TODO
-    toast.info('This feature is coming soon.');
+    toast.dismiss();
+    toast.info('This feature is coming soon !', { icon: '🚀' });
   };
 
   return (
