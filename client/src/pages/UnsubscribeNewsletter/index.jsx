@@ -17,14 +17,14 @@ const UnsubscribeNewsletter = () => {
   const handleUnsubscribe = async () => {
     toast.dismiss(); // clear toasts
     setLoading(true);
-    const pendingToastId = toast.info('Wait a moment ...', { icon: '🚀', autoClose: false });
+    const pendingToastId = toast.loading('Wait a moment . . .');
     try {
       const res = await MailerService.unsubscribeNewsletter(email);
-      toast.update(pendingToastId, { render: res.data.message, type: 'success', icon: null });
+      toast.update(pendingToastId, { render: res.data.message, type: 'success', isLoading: false, closeOnClick: true });
       endMsgRef.current.innerText = 'Unsubscribe successfully';
       setCloseModal(true);
     } catch (err) {
-      toast.update(pendingToastId, { render: err.data.message, type: 'error', icon: null });
+      toast.update(pendingToastId, { render: err.data.message, type: 'error', isLoading: false, closeOnClick: true });
       setLoading(false);
     }
   };

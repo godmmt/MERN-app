@@ -1,0 +1,16 @@
+@import '../../styles';
+
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  z-index: 1;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  .circle-up-icon {
+    font-size: 2rem;
+    color: $primary-yellow;
+  }
+}

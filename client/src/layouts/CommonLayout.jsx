@@ -5,6 +5,7 @@ import Footer from 'components/Footer';
 import useScrollToTopWhenRouteChange from 'hooks/useScrollToTopWhenRouteChange';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTopBtn from 'components/ScrollToTopBtn';
 
 const CommonLayout = () => {
   useScrollToTopWhenRouteChange();
@@ -13,6 +14,7 @@ const CommonLayout = () => {
       <Header />
       <Outlet />
       <Footer />
+      <ScrollToTopBtn />
       <ToastContainer
         position='top-left'
         autoClose={3000}

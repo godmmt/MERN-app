@@ -15,6 +15,7 @@ const Header = () => {
 
   const handleGoToHome = () => {
     navigate(ROUTER_PATH.home);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleToggleMenu = () => {

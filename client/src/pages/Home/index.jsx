@@ -4,23 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-// Font Awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// solid-svg-icons
-import { faCircle, faCircleCheck, faUser } from '@fortawesome/free-solid-svg-icons';
-// regular-svg-icons
-import { faHourglassHalf, faCircleRight } from '@fortawesome/free-regular-svg-icons';
-
+import { toast } from 'react-toastify';
 import Button from 'components/Button';
 import Subscription from 'components/Subscription';
 import { ROUTER_PATH } from 'App';
+import { gallery, courseCards, userTestimonials } from 'config/home.config';
+// assets
 import bannerVideo1 from 'assets/video/banner-video-1.mp4';
 import bannerVideo2 from 'assets/video/banner-video-2.mp4';
-
 import happyStudent from 'assets/images/happy-student.png';
 import computer from 'assets/images/computer.jpg';
-import { gallery, courseCards, userTestimonials } from 'config/home.config';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faCircleCheck, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHourglassHalf, faCircleRight } from '@fortawesome/free-regular-svg-icons';
 import './home.scss';
 
 const circleCheckIcon = <FontAwesomeIcon icon={faCircleCheck} className='circle-check-icon' />;
@@ -30,9 +27,10 @@ const Home = () => {
   const handleClickAllCourses = () => {
     navigate(ROUTER_PATH.allCourses);
   };
-  const handleClickToTop = () => {
-    // 導航到當前頁面的頂部
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleReadAllReviews = () => {
+    // TODO
+    toast.dismiss();
+    toast.info('This feature is coming soon !', { icon: '🚀' });
   };
 
   return (
@@ -46,7 +44,6 @@ const Home = () => {
               learning experience that allows you to unleash your coding potential.
             </p>
             <div className='action'>
-              <Button onClick={handleClickToTop}>Start Course</Button>
               <Button onClick={handleClickAllCourses}>View All Courses</Button>
             </div>
           </div>
@@ -85,7 +82,7 @@ const Home = () => {
                 <div className='feedback-name'>Elena Miles</div>
                 <div className='role'>Student</div>
               </div>
-              <div className='right' onClick={handleClickToTop}>
+              <div className='right' onClick={handleReadAllReviews}>
                 <div>Read All Reviews</div>
                 <div>
                   <FontAwesomeIcon icon={faCircleRight} className='right-arrow-icon' />
@@ -116,7 +113,9 @@ const Home = () => {
                 <p>{circleCheckIcon}8+ more lessons</p>
               </div>
             </div>
-            <Button cx='start-course'>Start Course</Button>
+            <Button cx='start-course' onClick={handleClickAllCourses}>
+              Start Course
+            </Button>
           </div>
         </section>
 
@@ -151,7 +150,7 @@ const Home = () => {
               <h2>Trusted by Thousand of Students and Tutors</h2>
             </div>
             <div className='testimonial-head-right'>
-              <Button>Start Learning</Button>
+              <Button onClick={handleClickAllCourses}>Start Learning</Button>
             </div>
           </div>
           <Slider
