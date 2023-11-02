@@ -38,7 +38,7 @@ const AllCourses = () => {
 
   // 網頁組件渲染完後就執行effect
   useEffect(() => {
-    const pendingToastId = toast.loading('Wait a moment ...');
+    const pendingToastId = toast.loading('Loading ...');
     CourseService.getAllCourses()
       .then((res) => {
         toast.dismiss(pendingToastId);
