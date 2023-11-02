@@ -24,9 +24,9 @@ const Subscription = () => {
     const pendingToastId = toast.loading('Wait a moment ...');
     try {
       const res = await MailerService.subscribeNewsletter(email);
-      toast.update(pendingToastId, { render: res.data.message, type: 'success', isLoading: false, closeOnClick: true });
+      toast.update(pendingToastId, { render: res.data.message || 'Subscribe Success', type: 'success', isLoading: false, closeOnClick: true });
     } catch (err) {
-      toast.update(pendingToastId, { render: err.data?.message ?? 'System Error', type: 'error', isLoading: false, closeOnClick: true });
+      toast.update(pendingToastId, { render: err.data?.message || 'System Error', type: 'error', isLoading: false, closeOnClick: true });
     }
     emailInput.current.value = '';
     setLoading(false);

@@ -16,7 +16,7 @@ const CommonLayout = () => {
       <Footer />
       <ScrollToTopBtn />
       <ToastContainer
-        position='top-left'
+        position='top-right'
         autoClose={3000}
         limit={5}
         hideProgressBar

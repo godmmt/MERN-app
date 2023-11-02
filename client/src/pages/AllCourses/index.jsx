@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import CourseService from 'services/course.service';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,13 +38,15 @@ const AllCourses = () => {
 
   // 網頁組件渲染完後就執行effect
   useEffect(() => {
+    const pendingToastId = toast.loading('Wait a moment ...');
     CourseService.getAllCourses()
       .then((res) => {
+        toast.dismiss(pendingToastId);
         const courses = res.data?.value ?? [];
         setAllCoursesData(courses); // Array
       })
       .catch((err) => {
-        console.log({ err });
+        toast.update(pendingToastId, { render: err.data?.message || 'System Error', type: 'error', isLoading: false, closeOnClick: true });
       });
   }, []);
 
