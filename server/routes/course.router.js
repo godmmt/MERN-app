@@ -7,7 +7,7 @@ const courseRouter = Router();
 
 // # 訪客可使用 #
 courseRouter.get('/', CourseController.getCourses);
-courseRouter.get('/findByName/:name?', CourseController.getCoursesByCourseName);
+courseRouter.get('/find-by-name/:name?', CourseController.getCoursesByCourseName);
 
 // # 訪客不得使用 #
 courseRouter.use(passport.authenticate('jwt', { session: false })); // 通過passport驗證後req攜帶user物件
