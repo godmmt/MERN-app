@@ -13,7 +13,7 @@ class CourseService {
 
   // method-根據名字尋找課程
   static getCourseByName(name) {
-    return axios.get(`courses/findByName/${name}`);
+    return axios.get(`courses/find_by_name/${name}`);
   }
 
   // method-根據講師ID找到課程
